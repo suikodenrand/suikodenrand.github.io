@@ -1,0 +1,67 @@
+SUIKODEN RANDOMIZER — SETUP GUIDE
+Version 0.8.4 / Windows x64 / Suikoden I HD Remaster
+https://suikoden-story-randomizer.agilen.chatgpt.site
+
+WHAT YOU NEED
+
+- A Windows 64-bit copy of Suikoden I & II HD Remaster. The randomizer works with Suikoden I.
+- BepInEx 6 for Unity IL2CPP, Windows x64, installed in the game folder.
+- An Internet connection for setup to download any required tools.
+
+This is a test version. Keep a separate backup of your saves before playing.
+
+INSTALLATION
+
+1. Back up and close the game.
+Make a manual save, then close the game completely. Back up your save folder and, if present, the entire BepInEx\config folder together. Windows saves are usually in Save\(USER_ID) inside the game folder. Keep the backups in a separate location.
+
+2. Prepare BepInEx.
+Skip this step if BepInEx is already working. Download the BepInEx 6.0.0-pre.2 Unity IL2CPP Windows x64 build:
+https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2
+Extract it beside Suikoden I and II HD Remaster.exe. Launch the game once and let the first-run setup finish. Close it, then check that BepInEx\interop\GSD1.dll exists.
+
+3. Choose a seed.
+Open the website’s seed builder. Enter a seed or roll a random one. Seeds accept 1–128 characters, excluding backslashes. The same seed gives the same character assignments. Choose whether to include a spoiler file, then select Build installer ZIP.
+
+4. Extract and install.
+Use Windows Extract All to unpack the entire download into a fresh folder. Double-click Install.cmd and select your game folder when prompted. Setup prepares the plugin automatically and backs up the files it changes. The first installation may take a few minutes while tools download. Wait for the installation-complete message before starting the game.
+
+5. Start playing.
+Launch Suikoden I and start a New Game to use your selected seed. You can also continue an existing randomized save; it will keep its original cast.
+
+SEEDS & SAVED GAMES
+
+A new seed applies to a New Game. Installing a different seed does not reshuffle a campaign already in progress.
+Keep each randomized save with its matching BepInEx\config backup. Ordinary unmodified saves cannot be converted into randomized campaigns. Starting a New Game uses the game’s shared autosave, so keep a manual backup first.
+
+WHAT GETS SHUFFLED
+
+The randomizer assigns 75 combat heroes to different story roles. Names, portraits, appearances, and starting combat setups follow the assigned character. A hero may occasionally draw itself.
+The protagonist, Ted, Odessa, and non-combat characters are excluded. Story events, dialogue, and voices remain tied to the original roles. Some Unite attacks are unavailable when characters have changed.
+
+QUICK CHECK
+
+Check your assigned characters’ names and portraits, then complete an ordinary battle. Make a manual save, fully quit, and reload to confirm the cast and your progress stay the same.
+
+TROUBLESHOOTING
+
+Setup stops or reports an unsupported game version:
+Keep the installer log shown by setup. Confirm you selected the correct game folder and that BepInEx has finished its first launch. Report the message and log if setup still fails.
+
+The seed or characters did not change:
+Existing randomized saves keep their original assignments. Start a New Game to use a different seed. If the wrong version loads, check for duplicate randomizer files or an older installer folder.
+
+A battle stalls or another problem occurs:
+Press F6 to record a checkpoint if the game responds, then close it. Run Collect-Avatar-Diagnostics.cmd from your extracted installer folder and select the game folder. Send the resulting Desktop ZIP with a short description of what happened. Reload an earlier save after a stalled battle.
+
+Suikoden Fix is optional. If you use it, keep the original release and remove older modified copies that contain another randomizer:
+https://github.com/d3xMachina/Suikoden-Fix/releases
+
+UNDO AN INSTALLATION
+
+Close the game and run Rollback.cmd from the same extracted package. It restores the previous plugin files and seed configuration, or removes files created by a first installation. It does not restore your game saves; use your own backup for those.
+
+HELP
+
+BepInEx installation help:
+https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html

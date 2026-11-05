@@ -1,0 +1,57 @@
+{
+  "schema": "srr-web-release-v1",
+  "runtimeVersion": "0.8.4",
+  "webPackagingRevision": "web-first-install-or-update-084-v1",
+  "files": [
+    {
+      "name": "Collect-Avatar-Diagnostics.cmd",
+      "bytes": 386,
+      "sha256": "ba5409bb46495c8f37029cf3c2459d18473b4a690919a4e0c1f97da739c905e6"
+    },
+    {
+      "name": "Install.cmd",
+      "bytes": 396,
+      "sha256": "31244161d30a50e701589b7b340686a28e524921b2181175fed9a4963124ab1e"
+    },
+    {
+      "name": "Rollback.cmd",
+      "bytes": 397,
+      "sha256": "7df36feb61b3a9636a99fd7f6362ea0df5f30fdb98a437632f35bf04f0409127"
+    },
+    {
+      "name": "THIRD_PARTY_NOTICES.md",
+      "bytes": 1140,
+      "sha256": "0d38ca744f6db568bbbebf908a1cb799895e38a8529f632372f7799ac67764fc"
+    },
+    {
+      "name": "WEB_PACKAGE_VALIDATION.json",
+      "bytes": 3766,
+      "sha256": "50bf142bcb581686666517abd30cabebf9339783bb56f3bf26199b9743bc8c02"
+    },
+    {
+      "name": "collect-avatar-diagnostics.ps1",
+      "bytes": 5213,
+      "sha256": "89913db0e1889611b557c651a95799acb67c42b6d9b1b37928c38b46c412d80c"
+    },
+    {
+      "name": "docs/RUNTIME_0.8.4_VALIDATION.json",
+      "bytes": 18361,
+      "sha256": "f3cc57270e478fb798986ce43892f3f160ed2139ee39a28daa0a3663fee382a2"
+    },
+    {
+      "name": "installer/Setup.ps1",
+      "bytes": 24231,
+      "sha256": "a4429c9d7551876bf1a41886f3538532ef19ca55b2f0ee08a34457e64ad1d30e"
+    },
+    {
+      "name": "installer/package.json",
+      "bytes": 1505,
+      "sha256": "46f66ff686680a123b4a742e73c160a2596b2ac8def85a441d6ada649ef6c15a"
+    },
+    {
+      "name": "installer/payload.zip",
+      "bytes": 203184,
+      "sha256": "158a8451aed869cee3d14b55693fb575d3d847593337d0cca79f9bbe96645b45"
+    }
+  ]
+}

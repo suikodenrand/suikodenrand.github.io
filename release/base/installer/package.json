@@ -1,0 +1,32 @@
+{
+  "version": "0.8.4",
+  "kind": "experimental-story-avatar-75-shuffle",
+  "payloadSha256": "158a8451aed869cee3d14b55693fb575d3d847593337d0cca79f9bbe96645b45",
+  "gameAssemblySha256": "e093f175eaf3734d293ca0a236c652dd7fcc72ea5fa10d7b21103edf12f11c3a",
+  "sdk": {
+    "version": "10.0.403",
+    "url": "https://builds.dotnet.microsoft.com/dotnet/Sdk/10.0.403/dotnet-sdk-10.0.403-win-x64.zip",
+    "sha512": "7a114c318fa7f1d9822991b534b2814d0e78386ceda816b371f5141acefe741d87ccb606ede06cadac8f9ac5070e32b708a67bbd1619ff5e5a7858a27874ef48",
+    "checksumSource": "https://builds.dotnet.microsoft.com/dotnet/release-metadata/10.0/releases.json"
+  },
+  "description": "Website packaging of runtime0.8.4: first standalone install or update after BepInEx6 IL2CPP prerequisites. Selected website seed joins backed-up transactional config installation. Runtime payload remains unchanged.",
+  "installerRevision": "web-first-install-or-update-084-v1",
+  "expectedAvatarManagedChecks": 40,
+  "expectedCoreSmokeChecks": 30,
+  "expectedAvatarMethodContracts": 156,
+  "expectedAvatarEnumContracts": 1,
+  "expectedAvatarPublicSourceTypes": 27,
+  "defaultSeed": "agilen-080",
+  "eligibleRoleCount": 75,
+  "protectedCharacterIds": [
+    8,
+    108,
+    109
+  ],
+  "expectedAvatarShuffleManagedChecks": 42,
+  "expectedAvatarPresentationManagedChecks": 33,
+  "expectedAvatarRuntimeManagedChecks": 34,
+  "expectedTotalManagedChecks": 244,
+  "expectedAvatarPartyManagedChecks": 23,
+  "expectedAvatarUniteManagedChecks": 42
+}

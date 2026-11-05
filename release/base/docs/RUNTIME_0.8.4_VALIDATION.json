@@ -1,0 +1,267 @@
+{
+  "version": "0.8.4",
+  "releaseDate": "2026-11-04",
+  "releaseKind": "experimental-story-avatar-unite-safety",
+  "profile": {
+    "id": "combat-avatar-shuffle-v1",
+    "eligibleRoleAndDonorCount": 75,
+    "protectedCombatIds": [
+      8,
+      108,
+      109
+    ],
+    "nonCombatIdsExcluded": true,
+    "bijection": true,
+    "selfAssignmentsAllowed": true,
+    "shuffleAlgorithm": "sha256-splitmix64-fisher-yates-v1",
+    "defaultSeed": "agilen-080",
+    "configFile": "BepInEx/config/agilen.suikoden.recruitment_randomizer.cfg",
+    "configSection": "Shuffle",
+    "configKey": "Seed",
+    "seedMaximumCharacters": 128,
+    "savedMappingOverridesConfiguredSeed": true,
+    "existingBound080Through083ShuffleSavesSupported": true,
+    "oldCampaignConversion": false,
+    "newGameRequired": "Only first shuffle use or runs with no valid bound snapshot; no restart for an existing bound shuffle save."
+  },
+  "unitePolicy": {
+    "eligible": "All required canonical participants retain their own combat avatars; native party/status/command conditions still apply.",
+    "ineligible": "Any required participant has a different donor avatar, including changed non-leading participants.",
+    "scope": "Native KYORYOKU_DATA table, including alternative groups; no hand-maintained attack-number whitelist.",
+    "mechanism": "Temporarily replace the first changed participant requirement with a valid normal-combat canonical ID absent from all populated battle-player slots. Native code builds its own choices/results. Restore exact bytes after the call and on exceptions.",
+    "nativeTableShapePreserved": true,
+    "safeSharedArrayPrefixesPreserved": true,
+    "normalNativeReturnValuesAndCommandStateRetained": true,
+    "candidateBoundaries": [
+      "check_kyoryoku",
+      "make_command_data",
+      "make_kyoryoku_window",
+      "command_kyoryoku",
+      "command_kyoryoku01",
+      "command_kyoryoku02",
+      "command_kyoryoku10"
+    ],
+    "preflightAndRestorationFailure": "Stop the admitted shuffle and block saving; do not continue to unsafe native choreography. No recovery from an already queued broken attack is claimed.",
+    "donorBasedUnitesImplemented": false,
+    "midBattleRecoveryImplemented": false,
+    "nativeMatchingBodyAvailable": false,
+    "nativeSemanticsLimit": "The native participant table and boundaries are verified from metadata. Absent-party requirements are expected to fail native matching; this must be confirmed in-game."
+  },
+  "unchangedSince083": {
+    "byteIdenticalFiles": 44,
+    "receipt": "validation/final-083-compatibility-bytes.json",
+    "canonicalStoryPartyDataAndBaseIds": true,
+    "nativeStoryMembershipFlags": true,
+    "shuffleGenerationAndBindingSchema": true,
+    "savedProgressionReplay": true,
+    "independentDonorBattleTableLengths": true,
+    "portraitNameAndFieldProjection": true,
+    "stagedResidentInitializationAndPollingBudget": true,
+    "changedProductionCs": [
+      "AvatarPlugin.cs",
+      "AvatarOverlay.cs"
+    ],
+    "addedProductionCs": [
+      "AvatarUnitePatches.cs",
+      "AvatarUniteTableScope.cs"
+    ]
+  },
+  "references": {
+    "gameAssemblySha256": "e093f175eaf3734d293ca0a236c652dd7fcc72ea5fa10d7b21103edf12f11c3a",
+    "interopSha256": "3786218d881eae9c0966e2f2b825b448161cc519fb3e5fbd12239ae3e6e2cefe",
+    "sdk": "10.0.403",
+    "proprietaryBinariesRedistributed": false
+  },
+  "completed": {
+    "managedSuites": [
+      {
+        "name": "Core.SmokeTests",
+        "passed": 30,
+        "total": 30
+      },
+      {
+        "name": "Avatar.Tests",
+        "passed": 40,
+        "total": 40
+      },
+      {
+        "name": "AvatarShuffle.Tests",
+        "passed": 42,
+        "total": 42
+      },
+      {
+        "name": "AvatarPresentation.Tests",
+        "passed": 33,
+        "total": 33
+      },
+      {
+        "name": "AvatarRuntime.Tests",
+        "passed": 34,
+        "total": 34
+      },
+      {
+        "name": "AvatarParty.Tests",
+        "passed": 23,
+        "total": 23
+      },
+      {
+        "name": "AvatarUnite.Tests",
+        "passed": 42,
+        "total": 42,
+        "scope": "Actual production Unite scope and Harmony prefix/postfix/finalizer linked with explicit native-model doubles and an independent participant matcher. Not native detour or matcher execution."
+      }
+    ],
+    "totalManagedChecksPassed": 244,
+    "generatedSeedCases": 1000,
+    "gsd1Metadata": {
+      "methodsPropertiesConstructorsPassed": 156,
+      "total": 156,
+      "newGameEnumPassed": 1,
+      "publicSourceTypesVerified": 27,
+      "nativeCodeExecuted": false,
+      "finalProductionSourceFilesEmbeddedByteIdentical": 11
+    },
+    "csharpSyntax": {
+      "files": 64,
+      "errors": 0,
+      "scope": "All source/tests except bin/obj."
+    },
+    "powerShellSyntax": {
+      "scripts": 2,
+      "errors": 0,
+      "scriptsExecuted": false,
+      "windowsPowerShell51Executed": false
+    },
+    "fullNativePluginCompiled": false,
+    "buildMode": "Serialized builds followed by direct managed DLL execution, matching installer gate policy.",
+    "nativeTemplateAudit": {
+      "path": "validation/native-template-audit.json",
+      "eligibleTemplatesPass": 75,
+      "total": 75,
+      "nativeCloneExecuted": false
+    }
+  },
+  "latest083Diagnostic": {
+    "sourceDiagnostic": "upload/srr-avatar-diagnostics-20261104-220222-550233b0.zip",
+    "collectorVersion": "0.8.3",
+    "installedPluginAssemblyVersion": "0.8.3.0",
+    "collectionLogHashesVerified": true,
+    "repeatedNativeFailure": "BattleBase.kmagic01_func02(Int32 player_no) via BattleBase.battle_turn_kyoryoku(Int32 step_level)",
+    "exception": "System.IndexOutOfRangeException",
+    "exceptionRepeats": 3308,
+    "currentRunPortraitNativeFaceResults": {
+      "Gremio2->Anji11": 41,
+      "Cleo1->Meg76": 85,
+      "Pahn6->Lotte56": 81
+    },
+    "nativeSaveBindingsWritten": 2,
+    "nativeReloadReplayObserved": false,
+    "exactFailingArrayNotIdentified": true,
+    "canonicalRoleAndDonorBattleLinksObserved": true
+  },
+  "notPerformed": [
+    "Native 0.8.4 Unite availability/command/battle retest. Actual native matcher bodies and GameAssembly binary are unavailable locally.",
+    "Native 0.8.4 late-game combinations, every native table variant, special battles, duels, and full campaign.",
+    "Recovery from a Unite already queued by 0.8.3; close the game and reload a save before the softlock.",
+    "Full semantic build against real BepInEx/Unity/GSDShare/Il2Cpp wrappers; installer builds before replacing either DLL.",
+    "Windows installation, rollback, Windows PowerShell 5.1 execution, and actual game frame-time profiling.",
+    "Full native save/quit/reload replay in the supplied current-run diagnostic; save binding writes are observed."
+  ],
+  "runtimeAcceptanceChecks": [
+    "Fully close the game, install 0.8.4 from a fresh extraction, and reload a matching bound save before the softlocked battle.",
+    "Confirm the 0.8.4 startup banner and UNITE SAFETY entries in diagnostics.",
+    "With default Gremio->Anji and Pahn->Lotte, Talisman must not be available to select or confirm.",
+    "Complete ordinary battle using attacks/runes. Confirm portraits, names, and canonical party identities remain correct.",
+    "If available, check an entirely unchanged native combination and safe/unsafe alternatives in one party.",
+    "Save normally, fully quit/reload, and check progression and Unite availability again. F6 then collect diagnostics if a problem remains."
+  ],
+  "diagnostics": {
+    "folder": "BepInEx/config/SuikodenRandomizer/avatar-shuffle",
+    "trace": "avatar-shuffle.log",
+    "bindingFolder": "save-bindings",
+    "uniteTraceBounded": "At most one successful mask summary per campaign fingerprint and candidate boundary; total cap32."
+  },
+  "frozenScriptsSha256": {
+    "installer/Setup.ps1": "ca5e41ec4e44151aff48fdb8b93846f3d0960ad6fa7518f75e91385db7503eff",
+    "collect-avatar-diagnostics.ps1": "89913db0e1889611b557c651a95799acb67c42b6d9b1b37928c38b46c412d80c"
+  },
+  "sourceCodeSha256": {
+    "src/Shared/AvatarShuffleBindingJson.cs": "74c1c278b31c15e6d0978f93256512128a64b24ff145b7aa44f53bed9ed91f40",
+    "src/Shared/RoleAvatarBindingJson.cs": "01f4c539ab9d1fc75e967b6399c0008aefc83a69d330f19d44bd73e2e2d1f120",
+    "src/Shared/SeedJson.cs": "083b1ea073f0b9167a1150489fd839786254f86169d55c2e57a04ed400ca92b6",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarBindingStore.cs": "27d49c75ba9589a45bf6a24de46e5299bf3decf2fb076ecac88501d4ac2df4c4",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarLifecyclePatches.cs": "45a0cb0bdc3ca76ecf61f24af04834f5fd34b76104f1e026ed54829b417506af",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarNativeData.cs": "dd4b823321a71ed5e0abbf94219e165e9f8bac79701cd1cd64aa9b371a6ca696",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarOverlay.cs": "6dac774d7c99e34af605728e2fbeb0c6b3f118fa11124263622f56d221747948",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarPlugin.cs": "4e8454abafb3656357ecf290cbbb6aca970fddbbfc6ea1f2705f24d8030a2cbe",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarPresentation.cs": "c81257854677a350f7ffd7838027b3be7bec9ebe8a581efc2fccd361ea88bad7",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarRuntime.cs": "3948d4b8f4f8cc03e79cb7c868a0d0d387199de22da14b616ca4e59140a8c391",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarSaveIdentity.cs": "75043400b15dcdbf6d75715f20717a78f2a0108509479931443810e18d8c38e3",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarSavePatches.cs": "f2f735645db98215b33afb2432bb4c0e5c8bece18c2d70bfb2fd0dd7db2ae2d6",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarUnitePatches.cs": "bd60c0df593f3971a15cf70333583cf7c15ce0cc19ab053138e7f18029875ed1",
+    "src/SuikodenRandomizer.AvatarPlugin/AvatarUniteTableScope.cs": "176c71d1723ec13eff51b25f1285a700810984e25a1248c8f90010cc4a9eb8df",
+    "src/SuikodenRandomizer.AvatarPlugin/SuikodenRandomizer.AvatarPlugin.csproj": "7893672556dcb0c4ef5bbb5dca4fa84cbb8d7f2458c3d81ff251899af79778a7",
+    "src/SuikodenRandomizer.Core/Avatars/AvatarPartyLayout.cs": "4007b0c884bc53e15e2b23e23729bc12e96101743d3caee21ee8f548a015c1cf",
+    "src/SuikodenRandomizer.Core/Avatars/AvatarShuffleCampaignState.cs": "99820b065e31cf77f0c4984d8757f7da594e1a04fa6d6a01e7a781f9c33d1173",
+    "src/SuikodenRandomizer.Core/Avatars/AvatarShuffleProfile.cs": "a5798b3d05a76797dba05d163267c84e07761de197f8c7a0fb5b48fc7697544a",
+    "src/SuikodenRandomizer.Core/Avatars/AvatarShuffleTransaction.cs": "5436d9fdf05f0e57ab13da79efd7baa9391199be555e87f44161af8c386f388f",
+    "src/SuikodenRandomizer.Core/Avatars/AvatarTemplateTransaction.cs": "fe211fed7d0b3b05392c45051013a371ac7eabeae72dbd5f1c4a078777d5899c",
+    "src/SuikodenRandomizer.Core/Avatars/RoleAvatarCampaignState.cs": "61dab300447e7ff3b4c0c6aebe3361e232235c136047a2c7ab033765c084da89",
+    "src/SuikodenRandomizer.Core/Avatars/RoleAvatarProfile.cs": "a1f1ea65f14cb9618ba7b57c0435a2ee53e37f45cace0a430e9a423d01acee27",
+    "src/SuikodenRandomizer.Core/CampaignAcquisitionState.cs": "fd5bd9f0e5831d9635bb4fbd541953ee2674b8ffc5902fad1dbf62609cac8df0",
+    "src/SuikodenRandomizer.Core/CharacterResolution.cs": "d6a226b588df287558ab3ab8d4ac4051ea3e2c93ce5366826e073e7b38f04a65",
+    "src/SuikodenRandomizer.Core/CombatCatalog.cs": "4e5d0b726d4b561fc1bd30280eefb057b89687c2cf8a50f04df2edf427158d32",
+    "src/SuikodenRandomizer.Core/CompatibilityOperandRules.cs": "948b6760bc96723988d17823f7572d2d584986503f23d80d41170d495a310791",
+    "src/SuikodenRandomizer.Core/Discovery/DiscoveryFingerprint.cs": "ec921285aab87ba7e574be1c4f2abccac38b2128f4966ad6b182603f9a3a52fc",
+    "src/SuikodenRandomizer.Core/Discovery/DiscoveryModel.cs": "cfa62af59ac7d779291efa8eb75e3b351f3c5621f33694caec43daba25ad2b60",
+    "src/SuikodenRandomizer.Core/Discovery/DiscoveryReportBuilder.cs": "74f779f17c18c17016db09ecfc1a913ac75d9c8cfabe210e672aa1f73addcd25",
+    "src/SuikodenRandomizer.Core/ExperimentalRoleRules.cs": "a85c0f440e248f2056b3fce8a4eb9c087f1b4fc43f0212ed6e45494c0b1925f6",
+    "src/SuikodenRandomizer.Core/ForcedPartyPolicy.cs": "65d545e32089dcb18667499871b8e6aca1e7047bd36e3471f7ed694a1a3f8cd8",
+    "src/SuikodenRandomizer.Core/KaiQuickRecruitmentPlan.cs": "11ee3c6076ca500953084ba4a41b5d6d2a032ef425e787a3f1462e6d23dee01d",
+    "src/SuikodenRandomizer.Core/KaiSceneContract.cs": "1b52d83579c0951c8e3f45ff9259d2d3552b2b5062cd2e3fd3d7525c395cae26",
+    "src/SuikodenRandomizer.Core/PartyInvariants.cs": "c14e29fffa1f719b356fff15c13204fc5ba1c375a3306dde09e50fb60ccaa3c2",
+    "src/SuikodenRandomizer.Core/Recording/CaptureCatalog.cs": "ba1e557444554615db5cd9b09d67e95247ab811160cdeba4b1cdfe24fe11a6aa",
+    "src/SuikodenRandomizer.Core/Recording/CaptureState.cs": "697c94640c52b931c50d005975afd2610d4139c0e4590829a707716f54b2f725",
+    "src/SuikodenRandomizer.Core/RecruitmentPresentation.cs": "f5c3898938b4328323f325f290030615bc6c8f34c9c71239fa20e7d556baabc7",
+    "src/SuikodenRandomizer.Core/RosterProjection.cs": "bdc679b9aef10385564a6ae92290a72966f9e4988d139126afa934d00544362b",
+    "src/SuikodenRandomizer.Core/Scenes/RecruitmentSceneRegistry.Data.cs": "4d1e59f4600ba87b98f2eded709887a14e6d845e8c95acbb7eb03d53de9d4707",
+    "src/SuikodenRandomizer.Core/Scenes/RecruitmentSceneRegistry.cs": "837b94bd3822d6209ee24bc42cf451a2e319a11107133863fe0e99f337e37d4b",
+    "src/SuikodenRandomizer.Core/Scenes/ReviewedQuickPlan.cs": "dabdc46236d5d32a9619a56a11de752ba414a8dc8a71c5aad57e8a7dfbc34532",
+    "src/SuikodenRandomizer.Core/Scenes/SceneActorAdmission.cs": "cea000b4c30dec4c8fc861b51fe92148b4dc9965cc3ce876668185253db18b83",
+    "src/SuikodenRandomizer.Core/ScriptedUpgradeRules.cs": "188d4be8c1d21568700134293ee22db445c0b68c1ae3dbed18d05548fc63e37a",
+    "src/SuikodenRandomizer.Core/SeedFingerprint.cs": "d1759462cf2793d1aad31d46701ad0d10696d0c50079a75ce4e1cb0a64a6fce8",
+    "src/SuikodenRandomizer.Core/SeedGenerator.cs": "272ecdba26bc200dd7b1476c9108378df2aba10346925531d54dc68eece6b58d",
+    "src/SuikodenRandomizer.Core/SeedManifest.cs": "f1943b5a88c29b43a9c370cd6fda0a4cb0a861252dd7f883bbfad8030afb0279",
+    "src/SuikodenRandomizer.Core/SeedProfiles.cs": "8b5f28920264c4bc473a0af632803a89e220943fee23e2868035a697f3b26b1f",
+    "src/SuikodenRandomizer.Core/SeedValidationException.cs": "e1bb252d2ac9c2f165fe31c613f77ee5e1e63e831b485ae5aab71159c4534a0c",
+    "src/SuikodenRandomizer.Core/SeedValidator.cs": "60f2cd7b85de0fd158029dcfc065a51b84457596290ba9867e0060f06c4b4f1d",
+    "src/SuikodenRandomizer.Core/StoryOperandRules.cs": "fd63678b67ddc49f9d32d7fc0469bdbc34549ca27c70496936d3dc8823ded6ab",
+    "src/SuikodenRandomizer.Core/SuikodenRandomizer.Core.csproj": "936ff103169e6437bc6c37f9e99daa87a3ce2a1573647f599a0d786affa36e21",
+    "src/SuikodenRandomizer.Plugin/Runtime/BuildCompatibility.cs": "2dc511222e91f7faccfa2fb2821d45e77deb159b7d92aca4f68b10ebd5c54369",
+    "tests/AvatarRuntime.TestDoubles/AvatarRuntime.TestDoubles.csproj": "07800dd6032e80ebe7362af7ef25527e61167352ce08e42702a411a6c2c3eafe",
+    "tests/AvatarRuntime.TestDoubles/NativeDoubles.cs": "97db0ea1d2761b67bfa23f232dead1cf4b8c299d05e6d811b9a3985d14f2cf9a",
+    "tests/SuikodenRandomizer.Avatar.Contracts/Program.cs": "c1b2b5bbeca079fc6b58f67c8b526fc568d09356e06dc148071c8f99279b62a3",
+    "tests/SuikodenRandomizer.Avatar.Contracts/SuikodenRandomizer.Avatar.Contracts.csproj": "ea6e54f58c50d001dbf9d6b91b43062ef245d7693e2ced82b1f0cbe17ed79dd2",
+    "tests/SuikodenRandomizer.Avatar.Tests/Program.cs": "38eb980ee984ea522aa309c8bca979fa70dfbd6bbeef3a942e585679fdf6c7ec",
+    "tests/SuikodenRandomizer.Avatar.Tests/SuikodenRandomizer.Avatar.Tests.csproj": "91a519d488fef298e1a3c83fcf15c80d9d5ec7e5f67c376d0be5da7df1c547af",
+    "tests/SuikodenRandomizer.AvatarParty.Tests/Program.cs": "cd8b0e1152dfc4f5ba9055c37865a9c12e0cf9f890975d11cc7ea1b784e7e752",
+    "tests/SuikodenRandomizer.AvatarParty.Tests/SuikodenRandomizer.AvatarParty.Tests.csproj": "4366cf0299a03406ad1bf966a598177000f637c6d50b98bb4d98ef6deda30aeb",
+    "tests/SuikodenRandomizer.AvatarPresentation.Tests/AdapterTestDoubles.cs": "194446628f90f5b5e9c0cd1525d51f783b65bf7ade2d4b8ec266e1063f2ca0ec",
+    "tests/SuikodenRandomizer.AvatarPresentation.Tests/FakeGsd1/FakeGsd1.csproj": "dc579584ac072bf6c868f52fa338b2d6f63c35cafcc54fa367ad488a5bef4991",
+    "tests/SuikodenRandomizer.AvatarPresentation.Tests/FakeGsd1/NativeTestDoubles.cs": "74d4fe6320371e917199bca09e2fb3b346e68c61f47a24b3b6accc4c82f94e4a",
+    "tests/SuikodenRandomizer.AvatarPresentation.Tests/Program.cs": "b6e09b87c76038b759563bccdc062426e68da2108c53529ed562879b004aa205",
+    "tests/SuikodenRandomizer.AvatarPresentation.Tests/SuikodenRandomizer.AvatarPresentation.Tests.csproj": "0187a68531d47ffa9e42191858344872e03c0ea3d6e2b0c8eeba022089c2cf0b",
+    "tests/SuikodenRandomizer.AvatarRuntime.Tests/Program.cs": "c781fcbd6068c9c8842784a44d361f688f4001306f981b83317d30bfaae27d8d",
+    "tests/SuikodenRandomizer.AvatarRuntime.Tests/RuntimeSupport.cs": "2ec327101334adfb351c71154850ccc83f879f36291e6e36f1cea8f947348071",
+    "tests/SuikodenRandomizer.AvatarRuntime.Tests/SuikodenRandomizer.AvatarRuntime.Tests.csproj": "70782cf20ce350af1301c34af651ef6c1357ae5e4fc416d1b79ed1c950fdf94c",
+    "tests/SuikodenRandomizer.AvatarShuffle.Tests/Program.cs": "e5ffa00d07d4078f98d5b430f6bcb12614f8f19e9611cc927877852bdd07ba27",
+    "tests/SuikodenRandomizer.AvatarShuffle.Tests/SuikodenRandomizer.AvatarShuffle.Tests.csproj": "7a591cc814c868ea53c2edc132c7de7b705fa477e262cacc8564cc6c9b6ae1e3",
+    "tests/SuikodenRandomizer.AvatarUnite.Tests/FakeGsd1/FakeGsd1.csproj": "4d24758b85c1c310ae8dbd2b481698b55d605bd5e5965008d328cf964d4578bf",
+    "tests/SuikodenRandomizer.AvatarUnite.Tests/FakeGsd1/NativeTestDoubles.cs": "9793e99676da5038cb0327bcbbffd69dbd5b647be5f3a6a25cc8e986ddc0fe3c",
+    "tests/SuikodenRandomizer.AvatarUnite.Tests/Program.cs": "8f8bba69c1593ccd1389806d177e73cd80dca9be850d454f7257ea30b32f9161",
+    "tests/SuikodenRandomizer.AvatarUnite.Tests/SuikodenRandomizer.AvatarUnite.Tests.csproj": "749e6006418a9a834ef49312f3ed669f7e4f3c1431457c2957981235a1995865",
+    "tests/SuikodenRandomizer.AvatarUnite.Tests/TestDoubles.cs": "995824f3e871a0a33b519874f272549a98abe84aed2336a397a8e8b3b4271be0",
+    "tests/SuikodenRandomizer.Core.SmokeTests/Program.cs": "cf384db4ae3f9a837d48ea3b2a782538113a0dcd6ff77ff8fa9a2fd0f4ed95e9",
+    "tests/SuikodenRandomizer.Core.SmokeTests/SuikodenRandomizer.Core.SmokeTests.csproj": "6324d69cadc4c33f71154bac4a66dc1a1d1696795d971cb36c13583a4be96925"
+  }
+}

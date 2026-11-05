@@ -1,0 +1,60 @@
+{
+  "schema": "srr-web-package-validation-v1",
+  "runtimeVersion": "0.8.4",
+  "webPackagingRevision": "web-first-install-or-update-084-v1",
+  "runtimePayloadUnchanged": true,
+  "runtimePayloadSha256": "158a8451aed869cee3d14b55693fb575d3d847593337d0cca79f9bbe96645b45",
+  "supportedInstallModes": [
+    "first standalone install after BepInEx prerequisites",
+    "update existing standalone randomizer"
+  ],
+  "selectedSeed": "Only [Shuffle] Seed is updated; existing bound saves retain their savedmapping.",
+  "transaction": "Existing or absent pluginDLLs and seed config are backedup and installed together after compilation and checks. Rollback restores prior originals/removes newlycreated files and refuses subsequent modifiedfiles.",
+  "baselineRuntimeValidation": "runtime-validation.json describes original0.8.4 runtime, not this adaptedweb installer script.",
+  "nativeGameBinariesIncluded": false,
+  "nativePluginCompiledOnServer": false,
+  "windowsInstallerExecuted": false,
+  "powerShell51Executed": false,
+  "nativeGameRerunByWebsite": false,
+  "checks": {
+    "browserSeedCrossRuntimeGoldens": "See site seed-engine tests; actual C# Core goldens are compared with the browser port.",
+    "webPackageTests": {
+      "passed": 13,
+      "total": 13,
+      "scope": "Actual browser ZIP builder and fixed release bytes; independent Python zipfile CRC/payload validation. No Windows execution. Complete package generation is also tested with WebCrypto subtle unavailable."
+    },
+    "powerShellSyntax": {
+      "scripts": 2,
+      "errors": 0,
+      "scriptExecuted": false,
+      "parser": "System.Management.Automation 7.5.0.500"
+    },
+    "powerShellConfigPreservation": {
+      "passed": 11,
+      "total": 11,
+      "scope": "Actual shipping New-PresetConfig function in managed PowerShell7. Preserves other sections/comments/line endings and exact case-sensitive keys, escapes quotes/apostrophes and rejects literal backslashes before config creation. Not Windows PowerShell5.1."
+    },
+    "actualUpstreamStringConverter": {
+      "firstReadPassed": 5,
+      "saveReloadPassed": 5,
+      "scope": "Actual unmodified upstream BepInEx6 pre2 TomlTypeConverter.cs and TypeConverter.cs compiled with a minimal unrelated logger stub. Shipping PowerShell output is read with the real converter; allowed seed values survive converter save/reload. Backslash seeds are deliberately rejected by the web installer.",
+      "repository": "BepInEx/BepInEx",
+      "ref": "v6.0.0-pre.2",
+      "path": "BepInEx.Core/Configuration/TomlTypeConverter.cs",
+      "gitBlobSha": "41595afbfcfbc79bf23a6dd65fd5dc458101c392"
+    },
+    "powerShellDiskTransactions": {
+      "passed": 6,
+      "total": 6,
+      "scope": "Actual extracted shipping BackupTargets/RestoreBackup/WriteVerifiedFile/WriteManifest functions in managed PowerShell7 with real temporary disk IO, actual JSON cmdlets and thin labeled .NET filesystem command adapters. Covers fresh absent targets, existing targets, later config edits, partial first/update recovery and corrupted backup refusal. AssertGameClosed is stubbed; full Windows installer/native game not executed."
+    },
+    "powerShellPresetPreflight": {
+      "passed": 4,
+      "total": 4,
+      "scope": "Actual Read-WebPreset against real JSON files: normalization/quotes, backslash rejection, control-character rejection, unsupported future option rejection. No native installation."
+    }
+  },
+  "nativeGameAssemblySha256": "e093f175eaf3734d293ca0a236c652dd7fcc72ea5fa10d7b21103edf12f11c3a",
+  "webSetupSha256": "a4429c9d7551876bf1a41886f3538532ef19ca55b2f0ee08a34457e64ad1d30e",
+  "seedRestriction": "Web installer seeds accept 1 to 128 characters and cannot contain backslashes. The exact runtime shuffle algorithm is unchanged."
+}
