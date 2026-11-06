@@ -1,8 +1,11 @@
-import { generateAdventure, MODES, PROFILE_METADATA, START_POINTS } from './randomizer-core.mjs?v=0.8.6';
+import { generateAdventure, MODES, PROFILE_METADATA, START_POINTS } from './randomizer-core.mjs?v=0.8.7';
 import { sha256Hex as sha256 } from './sha256.mjs';
 
 const encoder = new TextEncoder();
-const RELEASE_BASE = new URL('../release/', import.meta.url);
+const RELEASE_BASE = new URL('../release/' + PROFILE_METADATA.pluginVersion + '/', import.meta.url);
+const SETUP_NAME = 'StarsOfDestiny-Setup.exe';
+const CONFIG_NAME = 'agilen.suikoden.recruitment_randomizer.cfg';
+const NOTICES_NAME = 'THIRD_PARTY_NOTICES.txt';
 const crcTable = Uint32Array.from({ length: 256 }, (_, index) => {
   let value = index;
   for (let bit = 0; bit < 8; bit++) value = value & 1 ? 0xedb88320 ^ (value >>> 1) : value >>> 1;
@@ -67,60 +70,83 @@ export function profileCsv(profile) {
   return '\ufeffOriginal character ID,Original character,Replacement ID,Replacement character\r\n' + rows.join('\r\n') + '\r\n';
 }
 
-function presetFor(profile) {
-  return {
-    schema: 'srr-web-preset-v2', runtimeVersion: PROFILE_METADATA.pluginVersion,
-    seed: profile.seed, mode: profile.mode, startPoint: profile.startPoint,
-    companions: profile.mode === 'FixedChosen' ? profile.companionIds : [],
-    profileId: profile.profileId, algorithm: profile.algorithm, fingerprint: profile.fingerprint
-  };
+function configFor(profile) {
+  const seed = profile.seed.replace(/['"]/g, quote => '\\' + quote);
+  const lines = ['[Shuffle]', 'Seed = ' + seed, 'Mode = ' + profile.mode];
+  if (profile.mode === 'FixedChosen') lines.push('Companions = ' + profile.companionIds.join(','));
+  if (profile.mode === 'Shuffle') lines.push('IncludeTir = ' + profile.includeTir);
+  lines.push('', '[Start]', 'Point = ' + profile.startPoint, '');
+  return lines.join('\r\n');
 }
 
-function readme(profile, includeSpoiler) {
-  return `SUIKODEN RANDOMIZER ${PROFILE_METADATA.pluginVersion}\r\n\r\nSeed: ${profile.seed}\r\nRoster mode: ${MODES[profile.mode]}\r\nStart point: ${START_POINTS[profile.startPoint]}\r\n\r\nGETTING STARTED\r\n1. Back up your saves and BepInEx/config folder.\r\n2. Read INSTALL_GUIDE.txt for the required BepInEx setup.\r\n3. Close the game. Extract the entire ZIP into a fresh folder and run Install.cmd. Select your Suikoden I & II HD Remaster game folder and wait for setup to finish.\r\n4. Start a New Game to use these settings. Existing randomized saves keep their saved cast.\r\n\r\nHELP\r\nIf something goes wrong, press F6 in-game, close the game, and run Collect-Avatar-Diagnostics.cmd. Include the Desktop ZIP with your report.\r\nRollback.cmd restores the previous plugin and configuration. It does not restore save files.\r\n\r\n${includeSpoiler ? 'mapping-spoiler.csv reveals your full cast.' : 'No spoiler file is included.'}\r\n\r\nSee INSTALL_GUIDE.txt for setup, saved games, and troubleshooting.\r\n`;
+function readme(profile) {
+  return [
+    'Stars of Destiny - Character Randomizer ' + PROFILE_METADATA.pluginVersion,
+    '',
+    MODES[profile.mode] + ' | ' + START_POINTS[profile.startPoint],
+    'Seed ' + profile.seed,
+    ...(profile.includeTir ? ['Tir is in the shuffle pool.'] : []),
+    '',
+    '1. Install BepInEx 6 IL2CPP and launch the game once to set it up.',
+    '2. Close the game and extract all files into the same folder.',
+    '3. Open ' + SETUP_NAME + ' and select your game folder.',
+    '4. Launch Suikoden I and choose New Game.',
+    '',
+    'Setup guide: https://suikodenrand.github.io/guide.html',
+    ''
+  ].join('\r\n');
 }
 
-/** Build a complete seed-specific installer ZIP, with hash-verified fixed assets. */
+async function verifiedAsset(fetcher, base, asset, name) {
+  if (asset?.name !== name || !Number.isSafeInteger(asset.bytes) || asset.bytes < 1
+      || !/^[0-9a-f]{64}$/.test(asset.sha256)) {
+    throw new Error('This release is unavailable. Refresh the page and try again.');
+  }
+  const response = await fetcher(new URL(name, base), { cache: 'no-cache' });
+  if (!response.ok) throw new Error('Could not download ' + name + '. Try again.');
+  const data = new Uint8Array(await response.arrayBuffer());
+  if (data.length !== asset.bytes || await sha256(data) !== asset.sha256) {
+    throw new Error('The download did not pass verification. Refresh the page and try again.');
+  }
+  return { name, data };
+}
+
+/** Package the same precompiled Windows setup with each player's config. */
 export async function buildInstaller({ profile, includeSpoiler = false, onProgress = () => {}, fetcher = globalThis.fetch, releaseBase = RELEASE_BASE } = {}) {
   if (!profile?.seed) throw new Error('Generate a valid seed before building an installer.');
   const actual = await generateAdventure(profile.seed, {
-    mode: profile.mode, companions: profile.companionIds, startPoint: profile.startPoint
+    mode: profile.mode, companions: profile.companionIds, startPoint: profile.startPoint,
+    includeTir: profile.includeTir
   });
   if (profile.fingerprint !== actual.fingerprint) throw new Error('The roster preview changed. Generate it again before downloading.');
+
   const base = new URL(releaseBase);
-  onProgress({ phase: 'verify', percent: 5, message: 'Checking the release manifest…' });
+  onProgress({ percent: 10 });
   const manifestResponse = await fetcher(new URL('manifest.json', base), { cache: 'no-store' });
-  if (!manifestResponse.ok) throw new Error('The release manifest could not be downloaded. Try again.');
+  if (!manifestResponse.ok) throw new Error('The release information is unavailable. Try again.');
   const manifest = await manifestResponse.json();
-  if (manifest.schema !== 'srr-web-release-v1' || manifest.runtimeVersion !== PROFILE_METADATA.pluginVersion || !Array.isArray(manifest.files) || manifest.files.length < 8) {
-    throw new Error('This release manifest is not supported.');
+  if (manifest.schema !== 'srr-precompiled-release-v1' || manifest.runtimeVersion !== PROFILE_METADATA.pluginVersion) {
+    throw new Error('This release is unavailable. Refresh the page and try again.');
   }
-  const entries = [];
-  const names = new Set();
-  for (let n = 0; n < manifest.files.length; n++) {
-    const file = manifest.files[n];
-    if (typeof file.name !== 'string' || names.has(file.name) || file.name.startsWith('/') || file.name.includes(':') || file.name.includes('\\') || file.name.split('/').some(part => part === '..' || part === '.') || !/^[0-9a-f]{64}$/.test(file.sha256)) {
-      throw new Error('The release manifest contains an invalid file.');
-    }
-    names.add(file.name);
-    const response = await fetcher(new URL('base/' + file.name, base), { cache: 'no-cache' });
-    if (!response.ok) throw new Error('Could not download ' + file.name + '. Try again.');
-    const data = new Uint8Array(await response.arrayBuffer());
-    if (data.length !== file.bytes || await sha256(data) !== file.sha256) throw new Error('Release verification failed for ' + file.name + '. Refresh the page and try again.');
-    entries.push({ name: file.name, data });
-    onProgress({ phase: 'verify', percent: 10 + Math.round(65 * (n + 1) / manifest.files.length), message: 'Verified ' + file.name });
-  }
-  const guideResponse = await fetcher(new URL('../assets/guide.txt', base), { cache: 'no-cache' });
-  if (!guideResponse.ok) throw new Error('The installation guide is unavailable. Try again.');
-  entries.push({ name: 'INSTALL_GUIDE.txt', data: await guideResponse.text() });
-  entries.push({ name: 'README-FIRST.txt', data: readme(actual, includeSpoiler) });
-  const preset = JSON.stringify(presetFor(actual), null, 2) + '\n';
-  entries.push({ name: 'installer/preset.json', data: preset });
+
+  onProgress({ percent: 40 });
+  const [installer, notices] = await Promise.all([
+    verifiedAsset(fetcher, base, manifest.setup, SETUP_NAME),
+    verifiedAsset(fetcher, base, manifest.notices, NOTICES_NAME)
+  ]);
+
+  const config = configFor(actual);
+  const entries = [
+    installer,
+    notices,
+    { name: CONFIG_NAME, data: config },
+    { name: 'README.txt', data: readme(actual) }
+  ];
   if (includeSpoiler) entries.push({ name: 'mapping-spoiler.csv', data: profileCsv(actual) });
-  onProgress({ phase: 'package', percent: 85, message: 'Assembling your installer…' });
+
+  onProgress({ percent: 85 });
   const blob = createZip(entries);
-  const hash = await sha256(new Uint8Array(await blob.arrayBuffer()));
-  const presetId = (await sha256(encoder.encode(preset))).slice(0, 12);
-  onProgress({ phase: 'ready', percent: 100, message: 'Your installer ZIP is ready.' });
-  return { blob, filename: `SuikodenRandomizer-${PROFILE_METADATA.pluginVersion}-${presetId}-Installer.zip`, sha256: hash, profile: actual };
+  const presetId = (await sha256(encoder.encode(config))).slice(0, 12);
+  onProgress({ percent: 100 });
+  return { blob, filename: 'StarsOfDestiny-' + PROFILE_METADATA.pluginVersion + '-' + presetId + '-Installer.zip' };
 }

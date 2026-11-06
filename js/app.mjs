@@ -1,5 +1,5 @@
-import { COMBAT_POOL, COMPANION_COUNT, generateAdventure, MODES, START_POINTS, validateCompanions } from './randomizer-core.mjs?v=0.8.6';
-import { buildInstaller, profileCsv } from './installer-bundle.mjs?v=0.8.6';
+import { COMBAT_POOL, COMPANION_COUNT, generateAdventure, MODES, START_POINTS, validateCompanions } from './randomizer-core.mjs?v=0.8.7';
+import { buildInstaller, profileCsv } from './installer-bundle.mjs?v=0.8.7';
 
 const $ = id => document.getElementById(id);
 const modeInputs = [...document.querySelectorAll('input[name="mode"]')];
@@ -39,6 +39,8 @@ function renderMode() {
   const mode = selectedMode();
   const chosen = mode === 'FixedChosen';
   const fixed = mode !== 'Shuffle';
+  $('include-tir-option').hidden = fixed;
+  $('include-tir').disabled = fixed || building;
   $('companion-fieldset').hidden = !chosen;
   const selected = companionSelects.map(select => select.value);
   companionSelects.forEach((select, index) => {
@@ -48,7 +50,8 @@ function renderMode() {
     }
   });
   $('summary-mode').textContent = MODES[mode];
-  $('summary-pool').textContent = fixed ? 'Tir + five companions' : '75 combat heroes';
+  $('summary-pool').textContent = fixed ? 'Tir + five companions'
+    : $('include-tir').checked ? '76 combat heroes' : '75 combat heroes';
   $('summary-start').textContent = START_POINTS[$('start-point').value];
   $('preview-label').textContent = fixed ? 'Reveal your roster' : 'Reveal character mapping';
   $('preview-title').textContent = fixed ? 'Your six heroes.' : 'Your cast, revealed.';
@@ -109,7 +112,10 @@ async function refreshSettings() {
   }
 
   try {
-    const profile = await generateAdventure($('seed').value, { mode, companions, startPoint: $('start-point').value });
+    const profile = await generateAdventure($('seed').value, {
+      mode, companions, startPoint: $('start-point').value,
+      includeTir: mode === 'Shuffle' && $('include-tir').checked
+    });
     if (generation !== settingsGeneration) return;
     currentProfile = profile;
     syncButtons();
@@ -158,7 +164,7 @@ $('random-seed').addEventListener('click', () => {
   $('seed').value = 'stars-' + [...bits].map(x => x.toString(16).padStart(2, '0')).join('');
   settingsChanged();
 });
-for (const input of [...modeInputs, ...companionSelects, $('start-point')]) {
+for (const input of [...modeInputs, ...companionSelects, $('start-point'), $('include-tir')]) {
   input.addEventListener('change', settingsChanged);
 }
 $('hero-search').addEventListener('input', renderMapping);
@@ -176,6 +182,7 @@ $('copy-seed').addEventListener('click', async () => {
   link.searchParams.set('seed', profile.seed);
   if (profile.mode !== 'Shuffle') link.searchParams.set('mode', profile.mode);
   if (profile.mode === 'FixedChosen') link.searchParams.set('companions', profile.companionIds.join(','));
+  if (profile.includeTir) link.searchParams.set('tir', '1');
   if (profile.startPoint !== 'Opening') link.searchParams.set('start', profile.startPoint);
   link.hash = 'generate';
   try {
@@ -222,7 +229,8 @@ $('generator-form').addEventListener('submit', async event => {
     downloadURL = URL.createObjectURL(result.blob);
     $('download-again').href = downloadURL;
     $('download-again').download = result.filename;
-    $('download-summary').textContent = `${MODES[profile.mode]} · ${START_POINTS[profile.startPoint]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
+    const modeLabel = MODES[profile.mode] + (profile.includeTir ? ' · Tir included' : '');
+    $('download-summary').textContent = `${modeLabel} · ${START_POINTS[profile.startPoint]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
     $('download-result').hidden = false;
     $('build-status').textContent = 'Your download is ready.';
     const click = document.createElement('a');
@@ -232,7 +240,7 @@ $('generator-form').addEventListener('submit', async event => {
     click.click();
     click.remove();
     $('download-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    toast('Installer ready. Extract the ZIP and run Install.cmd.');
+    toast('Installer ready. Extract the ZIP and open StarsOfDestiny-Setup.exe.');
   } catch (error) {
     $('build-status').textContent = 'Could not prepare the installer: ' + (error.message || 'Please try again.');
   } finally {
@@ -258,6 +266,7 @@ if (params.has('seed')) $('seed').value = params.get('seed');
 const linkedMode = modeInputs.find(input => input.value === params.get('mode'));
 if (linkedMode) linkedMode.checked = true;
 if (Object.hasOwn(START_POINTS, params.get('start'))) $('start-point').value = params.get('start');
+$('include-tir').checked = params.get('tir') === '1';
 if (selectedMode() === 'FixedChosen') {
   const ids = (params.get('companions') ?? '').split(',');
   if (ids.length === COMPANION_COUNT) companionSelects.forEach((select, index) => { select.value = ids[index]; });

@@ -1,72 +1,29 @@
-SUIKODEN RANDOMIZER — SETUP GUIDE
-Version 0.8.6 / Windows x64 / Suikoden I HD Remaster
-https://suikodenrand.github.io
+STARS OF DESTINY - CHARACTER RANDOMIZER
+Setup guide / Version 0.8.7 / Windows x64
+https://suikodenrand.github.io/#generate
 
 WHAT YOU NEED
 
-- A Windows 64-bit copy of Suikoden I & II HD Remaster. The randomizer works with Suikoden I.
+- A Windows 64-bit copy of Suikoden I & II HD Remaster.
 - BepInEx 6 for Unity IL2CPP, Windows x64, installed in the game folder.
-- An Internet connection for setup to download any required tools.
-
-This is a test version. Keep a separate backup of your saves before playing.
 
 INSTALLATION
 
-1. Back up and close the game.
-Make a manual save, then close the game completely. Back up your save folder and, if present, the entire BepInEx\config folder together. Windows saves are usually in Save\(USER_ID) inside the game folder. Keep the backups in a separate location.
+1. Close the game and back up your saves and BepInEx\config folder.
+2. If BepInEx is new to you, download the 6.0.0-pre.2 Unity IL2CPP Windows x64 build and extract it beside Suikoden I and II HD Remaster.exe. Launch the game once and close it.
+   https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2
+3. Choose a seed, mode, and start point on the website. Select Build installer ZIP.
+4. Extract the entire ZIP. Keep the configuration file beside StarsOfDestiny-Setup.exe. Open Setup, select the folder containing Suikoden I and II HD Remaster.exe, and follow the prompts. The current installer is unsigned.
+5. Launch Suikoden I and start a New Game.
 
-2. Prepare BepInEx.
-Skip this step if BepInEx is already working. Download the BepInEx 6.0.0-pre.2 Unity IL2CPP Windows x64 build:
-https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2
-Extract it beside Suikoden I and II HD Remaster.exe. Launch the game once and let the first-run setup finish. Close it, then check that BepInEx\interop\GSD1.dll exists.
+MODES & START POINT
 
-3. Choose your adventure.
-Enter a seed or roll a random one, then select your game mode and start point. Seeds accept 1–128 characters, excluding backslashes. Choose whether to include a spoiler file, then select Build installer ZIP.
+- Character Shuffle uses the seed to shuffle combat heroes into story roles. Enable Include Tir in the shuffle to add the protagonist.
+- Fixed Roster uses Tir and the five companions you select.
+- Random Roster uses Tir and five companions drawn from your seed.
+- Before Viktor starts in Gregminster after the inn scene. Recruit Viktor to continue.
 
-4. Extract and install.
-Use Windows Extract All to unpack the entire download into a fresh folder. Double-click Install.cmd and select your game folder when prompted. Setup prepares the plugin, applies your chosen settings, and backs up the files it changes. The first installation may take a few minutes while tools download. Wait for the installation-complete message before starting the game.
+Seed, roster, and start point settings apply to New Game. Existing randomized saves keep their saved roster and story progress. Keep each randomized save with its matching BepInEx\config backup.
 
-5. Start playing.
-Launch Suikoden I and start a New Game to use your selected settings.
-
-SEEDS & SAVED GAMES
-
-Seed, roster, and start point settings apply when you start a New Game. Existing randomized campaigns keep their saved roster and story progress.
-Keep each randomized save with its matching BepInEx\config backup. Ordinary unmodified saves cannot be converted into randomized campaigns. Starting a New Game uses the game’s shared autosave, so keep a manual backup first.
-
-GAME MODES & START POINT
-
-- Character shuffle assigns 75 combat heroes to story roles based on the seed. A hero may draw itself.
-- Fixed roster includes Tir automatically. Choose five different heroes from the list. When a companion slot opens, the game uses the first available fighter from your ordered list.
-- Random roster includes Tir and five different companions drawn from the seed. The same seed gives the same roster and order.
-
-Story events determine how many companion slots are active. Ted, Odessa, and non-combat characters are outside the selection pool. Story events, dialogue, and voices follow the original roles. Names, portraits, appearances, and starting combat setups follow the assigned fighters. Some Unite attacks are unavailable when characters have changed.
-
-Choose Before Viktor with any mode to begin in Gregminster after the inn scene. Tir has the Soul Eater and Viktor is still waiting to join. Choose Normal Opening for the usual start.
-
-QUICK CHECK
-
-If you picked Before Viktor, confirm you start in Gregminster and can recruit him. Check your party’s names and portraits, then complete an ordinary battle. Make a manual save, fully quit, and reload to confirm the cast and your progress stay the same.
-
-TROUBLESHOOTING
-
-Setup stops or reports an unsupported game version:
-Keep the installer log shown by setup. Confirm you selected the correct game folder and that BepInEx has finished its first launch. Report the message and log if setup still fails.
-
-My settings did not take effect
-Start a New Game to use your new roster, seed, or start point. If the wrong version loads, check for duplicate randomizer files or an older installer folder.
-
-A battle stalls or another problem occurs:
-Press F6 to record a checkpoint if the game responds, then close it. Run Collect-Avatar-Diagnostics.cmd from your extracted installer folder and select the game folder. Send the resulting Desktop ZIP with a short description of what happened. Reload an earlier save after a stalled battle.
-
-Suikoden Fix is optional. If you use it, keep the original release and remove older modified copies that contain another randomizer:
-https://github.com/d3xMachina/Suikoden-Fix/releases
-
-UNDO AN INSTALLATION
-
-Close the game and run Rollback.cmd from the same extracted package. It restores the previous plugin files and randomizer configuration, or removes files created by a first installation. It does not restore your game saves; use your own backup for those.
-
-HELP
-
-BepInEx installation help:
+BepInEx installation help
 https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html

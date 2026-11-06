@@ -27,3 +27,7 @@
 .run-summary .build-button{margin-top:22px}
 #preview-label{font-weight:inherit}
 @media(max-width:430px){.companion-selects{grid-template-columns:1fr}}
+
+.hero-subtitle{display:block;color:var(--red);font-size:.52em;letter-spacing:-.025em;margin-top:.35em}
+#include-tir-option{padding-top:0;border-top:0}
+@media(max-width:390px){.nav-inner{padding-inline:16px}.brand{font-size:14px}.brand small{font-size:6px;letter-spacing:.18em}}

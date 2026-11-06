@@ -31,7 +31,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.8.6",
+  pluginVersion: "0.8.7",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",
@@ -55,6 +55,8 @@ export const MODES = Object.freeze({ Shuffle: "Character Shuffle", FixedChosen: 
 export const START_POINTS = Object.freeze({ Opening: "Normal Opening", BeforeViktor: "Before Viktor" });
 export const COMPANION_COUNT = 5;
 const TIR_ID = 8;
+const TIR_PROFILE_ID = "combat-avatar-shuffle-with-tir-v1";
+const ROLE_IDS_WITH_TIR = Object.freeze([...ROLE_IDS.slice(0, 8), TIR_ID, ...ROLE_IDS.slice(8)]);
 const FIXED_PROFILE_ID = "fixed-roster-v1";
 
 // String.Trim uses .NET Char.IsWhiteSpace, which differs from JavaScript trim:
@@ -109,7 +111,7 @@ function stableRandom(initialHash) {
   };
 }
 
-function fingerprintBytes(seed, donors) {
+function fingerprintBytes(seed, roleIds, donors, profileId) {
   const result = [];
   const int32 = value => {
     const bytes = new Uint8Array(4);
@@ -122,33 +124,35 @@ function fingerprintBytes(seed, donors) {
     while (length >= 128) { result.push((length & 127) | 128); length >>>= 7; }
     result.push(length, ...bytes);
   };
-  string(PROFILE_METADATA.profileId);
+  string(profileId);
   int32(PROFILE_METADATA.version);
   string(PROFILE_METADATA.algorithm);
   string(seed);
   string(PROFILE_METADATA.startPolicy);
   string(PROFILE_METADATA.progressionPolicy);
-  int32(ROLE_IDS.length);
-  ROLE_IDS.forEach((role, index) => { int32(role); int32(donors[index]); });
+  int32(roleIds.length);
+  roleIds.forEach((role, index) => { int32(role); int32(donors[index]); });
   return new Uint8Array(result);
 }
 
-export async function generateProfile(value) {
+export async function generateProfile(value, includeTir = false) {
   const seed = normalizeSeed(value);
+  const roleIds = includeTir ? ROLE_IDS_WITH_TIR : ROLE_IDS;
+  const profileId = includeTir ? TIR_PROFILE_ID : PROFILE_METADATA.profileId;
   const initialHash = await sha256Bytes(utf8.encode(PROFILE_METADATA.algorithm + "\n" + seed));
   const next = stableRandom(initialHash);
-  const donors = [...ROLE_IDS];
+  const donors = [...roleIds];
   for (let index = donors.length - 1; index > 0; index--) {
     const other = next(index + 1);
     [donors[index], donors[other]] = [donors[other], donors[index]];
   }
-  const fingerprint = hex(await sha256Bytes(fingerprintBytes(seed, donors)));
-  const assignments = Object.freeze(ROLE_IDS.map((roleId, index) => Object.freeze({
+  const fingerprint = hex(await sha256Bytes(fingerprintBytes(seed, roleIds, donors, profileId)));
+  const assignments = Object.freeze(roleIds.map((roleId, index) => Object.freeze({
     roleId, roleName: NAMES[roleId], donorId: donors[index], donorName: NAMES[donors[index]]
   })));
   return Object.freeze({
     seed, fingerprint,
-    profileId: PROFILE_METADATA.profileId,
+    profileId,
     algorithm: PROFILE_METADATA.algorithm,
     startPolicy: PROFILE_METADATA.startPolicy,
     progressionPolicy: PROFILE_METADATA.progressionPolicy,
@@ -163,13 +167,14 @@ export function validateCompanions(ids) {
   }
 }
 
-export async function generateAdventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening" } = {}) {
+export async function generateAdventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening", includeTir = false } = {}) {
   if (!Object.hasOwn(MODES, mode)) throw new Error("Choose a roster mode.");
   if (!Object.hasOwn(START_POINTS, startPoint)) throw new Error("Choose a start point.");
   const seed = normalizeSeed(value);
   if (seed.includes("\\")) throw new Error("Backslashes are not supported in installer seeds. Choose another character.");
 
-  if (mode === "Shuffle") return Object.freeze({ ...await generateProfile(seed), mode, startPoint });
+  if (typeof includeTir !== "boolean") throw new Error("Choose whether to include Tir.");
+  if (mode === "Shuffle") return Object.freeze({ ...await generateProfile(seed, includeTir), mode, startPoint, includeTir });
 
   let companionIds;
   if (mode === "FixedChosen") {
@@ -182,7 +187,7 @@ export async function generateAdventure(value, { mode = "Shuffle", companions = 
   const heroIds = [TIR_ID, ...companionIds];
   const fingerprint = hex(await sha256Bytes(utf8.encode(FIXED_PROFILE_ID + "\n" + heroIds.join(","))));
   return Object.freeze({
-    seed, mode, startPoint, fingerprint, profileId: FIXED_PROFILE_ID,
+    seed, mode, startPoint, includeTir: false, fingerprint, profileId: FIXED_PROFILE_ID,
     algorithm: mode === "FixedRandom" ? PROFILE_METADATA.algorithm : undefined,
     companionIds: Object.freeze(companionIds),
     heroes: Object.freeze(heroIds.map(id => ROSTER[id]))

@@ -1,0 +1,14 @@
+{
+  "schema": "srr-precompiled-release-v1",
+  "runtimeVersion": "0.8.7",
+  "setup": {
+    "name": "StarsOfDestiny-Setup.exe",
+    "bytes": 249680,
+    "sha256": "1c28d1fd8bbff3eb21ec8df4b9d12ca7a1f6fb3373f21d9fffd2f2bb42097eb0"
+  },
+  "notices": {
+    "name": "THIRD_PARTY_NOTICES.txt",
+    "bytes": 1241,
+    "sha256": "e8fa06b70e57ab554f9325f4534e7627647f4cb6889eaa1dd5591722e37de31c"
+  }
+}
