@@ -1,5 +1,5 @@
 /**
- * Browser port of SuikodenRandomizer.Core 0.8.4 AvatarShuffleProfile.
+ * Browser port of SuikodenRandomizer.Core avatar shuffle and fixed roster profiles.
  * Keep algorithm IDs, roster IDs, BinaryWriter serialization and policy strings
  * stable: they identify the exact mapping that the installed plugin generates.
  * Tests compare complete mappings and fingerprints with the actual C# Core.
@@ -31,7 +31,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.8.4",
+  pluginVersion: "0.8.6",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",
@@ -50,6 +50,12 @@ export const ROSTER = Object.freeze(NAMES.map((name, id) => Object.freeze({
 export const COMBAT_POOL = Object.freeze(ROSTER.filter(hero => hero.eligible));
 export const PROTECTED_HEROES = Object.freeze(ROSTER.filter(hero => hero.protected));
 export const NON_COMBAT_HEROES = Object.freeze(ROSTER.filter(hero => !hero.eligible && !hero.protected));
+
+export const MODES = Object.freeze({ Shuffle: "Character Shuffle", FixedChosen: "Fixed Roster", FixedRandom: "Random Roster" });
+export const START_POINTS = Object.freeze({ Opening: "Normal Opening", BeforeViktor: "Before Viktor" });
+export const COMPANION_COUNT = 5;
+const TIR_ID = 8;
+const FIXED_PROFILE_ID = "fixed-roster-v1";
 
 // String.Trim uses .NET Char.IsWhiteSpace, which differs from JavaScript trim:
 // .NET trims U+0085 but preserves U+FEFF. Length limits count UTF-16 code units.
@@ -147,5 +153,38 @@ export async function generateProfile(value) {
     startPolicy: PROFILE_METADATA.startPolicy,
     progressionPolicy: PROFILE_METADATA.progressionPolicy,
     assignments
+  });
+}
+
+export function validateCompanions(ids) {
+  if (!Array.isArray(ids) || ids.length !== COMPANION_COUNT || new Set(ids).size !== COMPANION_COUNT
+      || ids.some(id => !ROLE_SET.has(id))) {
+    throw new Error("Choose five distinct combat heroes. Tir is already included.");
+  }
+}
+
+export async function generateAdventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening" } = {}) {
+  if (!Object.hasOwn(MODES, mode)) throw new Error("Choose a roster mode.");
+  if (!Object.hasOwn(START_POINTS, startPoint)) throw new Error("Choose a start point.");
+  const seed = normalizeSeed(value);
+  if (seed.includes("\\")) throw new Error("Backslashes are not supported in installer seeds. Choose another character.");
+
+  if (mode === "Shuffle") return Object.freeze({ ...await generateProfile(seed), mode, startPoint });
+
+  let companionIds;
+  if (mode === "FixedChosen") {
+    validateCompanions(companions);
+    companionIds = [...companions];
+  } else {
+    const shuffle = await generateProfile(seed);
+    companionIds = shuffle.assignments.slice(0, COMPANION_COUNT).map(row => row.donorId);
+  }
+  const heroIds = [TIR_ID, ...companionIds];
+  const fingerprint = hex(await sha256Bytes(utf8.encode(FIXED_PROFILE_ID + "\n" + heroIds.join(","))));
+  return Object.freeze({
+    seed, mode, startPoint, fingerprint, profileId: FIXED_PROFILE_ID,
+    algorithm: mode === "FixedRandom" ? PROFILE_METADATA.algorithm : undefined,
+    companionIds: Object.freeze(companionIds),
+    heroes: Object.freeze(heroIds.map(id => ROSTER[id]))
   });
 }

@@ -6,11 +6,11 @@ Set-StrictMode -Version Latest
 $stage=$null
 try {
     $running=@(Get-Process -ErrorAction SilentlyContinue | Where-Object { $_.ProcessName -like 'Suikoden I and II*' })
-    if ($running.Count -gt 0) { throw 'Close Suikoden before collecting the completed shuffle diagnostics.' }
+    if ($running.Count -gt 0) { throw 'Close Suikoden before collecting the completed randomizer diagnostics.' }
     if ([string]::IsNullOrWhiteSpace($GamePath)) {
         Add-Type -AssemblyName System.Windows.Forms
         $dialog=New-Object System.Windows.Forms.FolderBrowserDialog
-        $dialog.Description='Select the Suikoden game folder used for Story Avatars 75 Shuffle.'
+        $dialog.Description='Select the Suikoden game folder used for the Before Viktor test.'
         $dialog.ShowNewFolderButton=$false
         try {
             if ($dialog.ShowDialog() -ne [System.Windows.Forms.DialogResult]::OK) { throw 'Collection cancelled.' }
@@ -62,7 +62,7 @@ try {
         $startup=Select-String -LiteralPath $runtimeLog -Pattern '\[SRR AVATAR\].*\b[0-9]+\.[0-9]+\.[0-9]+\b.*loaded' | Select-Object -Last 1
         if ($null -ne $startup) { $runtimeStartup=$startup.Line }
     }
-    $manifest=[ordered]@{schema='srr-avatar-shuffle-diagnostics-v1';createdUtc=[DateTime]::UtcNow.ToString('o');collectorVersion='0.8.4';profile='combat-avatar-shuffle-v1';installedPluginAssemblyVersion=$installedVersion;installedPluginSha256=$installedHash;installedPluginMetadataError=$installedMetadataError;latestRuntimeStartup=$runtimeStartup;logs=$copied;note='Only diagnostic logs, installed plugin metadata and shuffle binding metadata are collected. Native save contents and full config files are not collected.'}
+    $manifest=[ordered]@{schema='srr-avatar-shuffle-diagnostics-v1';createdUtc=[DateTime]::UtcNow.ToString('o');collectorVersion='0.8.6';profile='before-viktor-test';installedPluginAssemblyVersion=$installedVersion;installedPluginSha256=$installedHash;installedPluginMetadataError=$installedMetadataError;latestRuntimeStartup=$runtimeStartup;logs=$copied;note='Only diagnostic logs, installed plugin metadata and shuffle binding metadata are collected. Native save contents and full config files are not collected.'}
     [IO.File]::WriteAllText((Join-Path $stage 'collection.json'),($manifest|ConvertTo-Json -Depth 6),[Text.UTF8Encoding]::new($false))
     $desktop=[Environment]::GetFolderPath('Desktop')
     if ([string]::IsNullOrWhiteSpace($desktop)) { $desktop=$PSScriptRoot }

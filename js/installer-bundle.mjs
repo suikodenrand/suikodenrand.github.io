@@ -1,4 +1,4 @@
-import { generateProfile } from './randomizer-core.mjs';
+import { generateAdventure, MODES, PROFILE_METADATA, START_POINTS } from './randomizer-core.mjs?v=0.8.6';
 import { sha256Hex as sha256 } from './sha256.mjs';
 
 const encoder = new TextEncoder();
@@ -59,35 +59,40 @@ export function createZip(entries) {
 
 export function profileCsv(profile) {
   const cell = value => '"' + String(value ?? '').replaceAll('"', '""') + '"';
+  if (profile.heroes) {
+    const rows = profile.heroes.map((hero, index) => [index || 'Hero', hero.id, hero.name].map(cell).join(','));
+    return '\ufeffRoster slot,Character ID,Character\r\n' + rows.join('\r\n') + '\r\n';
+  }
   const rows = profile.assignments.map(row => [row.roleId, row.roleName, row.donorId, row.donorName].map(cell).join(','));
   return '\ufeffOriginal character ID,Original character,Replacement ID,Replacement character\r\n' + rows.join('\r\n') + '\r\n';
 }
 
 function presetFor(profile) {
   return {
-    schema: 'srr-web-preset-v1', runtimeVersion: '0.8.4',
-    profileId: 'combat-avatar-shuffle-v1', algorithm: 'sha256-splitmix64-fisher-yates-v1',
-    seed: profile.seed, fingerprint: profile.fingerprint, characterShuffle: true,
-    futureOptions: { runes: false, items: false, equipment: false, weaponLevels: false, attackRange: false, treasureChests: false }
+    schema: 'srr-web-preset-v2', runtimeVersion: PROFILE_METADATA.pluginVersion,
+    seed: profile.seed, mode: profile.mode, startPoint: profile.startPoint,
+    companions: profile.mode === 'FixedChosen' ? profile.companionIds : [],
+    profileId: profile.profileId, algorithm: profile.algorithm, fingerprint: profile.fingerprint
   };
 }
 
 function readme(profile, includeSpoiler) {
-  return `SUIKODEN RANDOMIZER 0.8.4\r\n\r\nSeed: ${profile.seed}\r\n\r\nGETTING STARTED\r\n1. Back up your saves and BepInEx/config folder.\r\n2. Read INSTALL_GUIDE.txt for the required BepInEx setup.\r\n3. Close the game. Extract the entire ZIP into a fresh folder and run Install.cmd. Select your Suikoden I & II HD Remaster game folder and wait for setup to finish.\r\n4. Start a New Game to use this seed. Existing randomized saves keep their saved cast.\r\n\r\nHELP\r\nIf something goes wrong, press F6 in-game, close the game, and run Collect-Avatar-Diagnostics.cmd. Include the Desktop ZIP with your report.\r\nRollback.cmd restores the previous plugin and configuration. It does not restore save files.\r\n\r\n${includeSpoiler ? 'mapping-spoiler.csv reveals your full cast.' : 'No mapping spoiler is included.'}\r\n\r\nSee INSTALL_GUIDE.txt for setup, saved games, and troubleshooting.\r\n`;
+  return `SUIKODEN RANDOMIZER ${PROFILE_METADATA.pluginVersion}\r\n\r\nSeed: ${profile.seed}\r\nRoster mode: ${MODES[profile.mode]}\r\nStart point: ${START_POINTS[profile.startPoint]}\r\n\r\nGETTING STARTED\r\n1. Back up your saves and BepInEx/config folder.\r\n2. Read INSTALL_GUIDE.txt for the required BepInEx setup.\r\n3. Close the game. Extract the entire ZIP into a fresh folder and run Install.cmd. Select your Suikoden I & II HD Remaster game folder and wait for setup to finish.\r\n4. Start a New Game to use these settings. Existing randomized saves keep their saved cast.\r\n\r\nHELP\r\nIf something goes wrong, press F6 in-game, close the game, and run Collect-Avatar-Diagnostics.cmd. Include the Desktop ZIP with your report.\r\nRollback.cmd restores the previous plugin and configuration. It does not restore save files.\r\n\r\n${includeSpoiler ? 'mapping-spoiler.csv reveals your full cast.' : 'No spoiler file is included.'}\r\n\r\nSee INSTALL_GUIDE.txt for setup, saved games, and troubleshooting.\r\n`;
 }
 
 /** Build a complete seed-specific installer ZIP, with hash-verified fixed assets. */
 export async function buildInstaller({ profile, includeSpoiler = false, onProgress = () => {}, fetcher = globalThis.fetch, releaseBase = RELEASE_BASE } = {}) {
   if (!profile?.seed) throw new Error('Generate a valid seed before building an installer.');
-  const actual = await generateProfile(profile.seed);
-  if (actual.seed.includes('\\')) throw new Error('Website seeds cannot contain backslashes. Choose another seed.');
-  if (profile.fingerprint !== actual.fingerprint) throw new Error('The seed preview changed. Generate it again before downloading.');
+  const actual = await generateAdventure(profile.seed, {
+    mode: profile.mode, companions: profile.companionIds, startPoint: profile.startPoint
+  });
+  if (profile.fingerprint !== actual.fingerprint) throw new Error('The roster preview changed. Generate it again before downloading.');
   const base = new URL(releaseBase);
   onProgress({ phase: 'verify', percent: 5, message: 'Checking the release manifest…' });
   const manifestResponse = await fetcher(new URL('manifest.json', base), { cache: 'no-store' });
   if (!manifestResponse.ok) throw new Error('The release manifest could not be downloaded. Try again.');
   const manifest = await manifestResponse.json();
-  if (manifest.schema !== 'srr-web-release-v1' || manifest.runtimeVersion !== '0.8.4' || !Array.isArray(manifest.files) || manifest.files.length < 8) {
+  if (manifest.schema !== 'srr-web-release-v1' || manifest.runtimeVersion !== PROFILE_METADATA.pluginVersion || !Array.isArray(manifest.files) || manifest.files.length < 8) {
     throw new Error('This release manifest is not supported.');
   }
   const entries = [];
@@ -109,11 +114,13 @@ export async function buildInstaller({ profile, includeSpoiler = false, onProgre
   if (!guideResponse.ok) throw new Error('The installation guide is unavailable. Try again.');
   entries.push({ name: 'INSTALL_GUIDE.txt', data: await guideResponse.text() });
   entries.push({ name: 'README-FIRST.txt', data: readme(actual, includeSpoiler) });
-  entries.push({ name: 'installer/preset.json', data: JSON.stringify(presetFor(actual), null, 2) + '\n' });
+  const preset = JSON.stringify(presetFor(actual), null, 2) + '\n';
+  entries.push({ name: 'installer/preset.json', data: preset });
   if (includeSpoiler) entries.push({ name: 'mapping-spoiler.csv', data: profileCsv(actual) });
-  onProgress({ phase: 'package', percent: 85, message: 'Assembling your seed-specific installer…' });
+  onProgress({ phase: 'package', percent: 85, message: 'Assembling your installer…' });
   const blob = createZip(entries);
   const hash = await sha256(new Uint8Array(await blob.arrayBuffer()));
+  const presetId = (await sha256(encoder.encode(preset))).slice(0, 12);
   onProgress({ phase: 'ready', percent: 100, message: 'Your installer ZIP is ready.' });
-  return { blob, filename: 'SuikodenRandomizer-0.8.4-' + actual.fingerprint.slice(0, 12) + '-Installer.zip', sha256: hash, profile: actual };
+  return { blob, filename: `SuikodenRandomizer-${PROFILE_METADATA.pluginVersion}-${presetId}-Installer.zip`, sha256: hash, profile: actual };
 }

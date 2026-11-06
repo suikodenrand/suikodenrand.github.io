@@ -140,7 +140,7 @@ function Ensure-Toolchain {
         $part = $archive + '.' + $RunTag + '.partial'
         $client = New-Object Net.WebClient
         try {
-            $client.Headers.Add('User-Agent','SuikodenRandomizer-AutoInstaller/0.8.4-AvatarShuffle')
+            $client.Headers.Add('User-Agent','SuikodenRandomizer-AutoInstaller/0.8.6-Web')
             $client.DownloadFile([string]$sdk.url, $part)
             if ((Hash-File $part 'SHA512') -ne $sdk.sha512) { throw 'Microsoft SDK checksum mismatch. The downloaded tools will NOT be run.' }
             Move-Item -LiteralPath $part -Destination $archive -Force
@@ -167,7 +167,7 @@ function Ensure-Toolchain {
     return $dotnet
 }
 function Backup-Targets([string]$Folder, [object[]]$Plan) {
-    $backup = Join-Path $Folder ('SRR-Backups\avatar-web-084-' + $RunTag)
+    $backup = Join-Path $Folder ('SRR-Backups\avatar-web-086-' + $RunTag)
     New-Item -ItemType Directory -Path $backup -Force | Out-Null
     $records=@()
     foreach ($entry in $Plan) {
@@ -177,14 +177,14 @@ function Backup-Targets([string]$Folder, [object[]]$Plan) {
         if ($exists) { Copy-Item -LiteralPath $target -Destination (Join-Path $backup $entry.name); $oldHash=Hash-File (Join-Path $backup $entry.name) }
         $records += [ordered]@{name=$entry.name; relativePath=$entry.relativePath; existed=$exists; oldHash=$oldHash; newHash=(Hash-File $entry.source)}
     }
-    $manifest=[ordered]@{marker='SRR-WebInstaller-084-v1';status='pending';gameAssemblySha256=$Package.gameAssemblySha256;createdUtc=[DateTime]::UtcNow.ToString('o');files=$records}
+    $manifest=[ordered]@{marker='SRR-WebInstaller-086-v1';status='pending';gameAssemblySha256=$Package.gameAssemblySha256;createdUtc=[DateTime]::UtcNow.ToString('o');files=$records}
     Write-Manifest (Join-Path $backup 'manifest.json') $manifest
     return $backup
 }
 function Restore-Backup([string]$Folder, [string]$Backup, [bool]$Recovery) {
     $manifestPath = Join-Path $Backup 'manifest.json'
     $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
-    if ($manifest.marker -ne 'SRR-WebInstaller-084-v1' -or $manifest.gameAssemblySha256 -ne $Package.gameAssemblySha256) { throw 'Backup identity is not valid for this installer.' }
+    if ($manifest.marker -ne 'SRR-WebInstaller-086-v1' -or $manifest.gameAssemblySha256 -ne $Package.gameAssemblySha256) { throw 'Backup identity is not valid for this installer.' }
     $allowed=@{
         'SuikodenRandomizer.dll'='BepInEx\plugins\SuikodenRandomizer\SuikodenRandomizer.dll';
         'SuikodenRandomizer.Core.dll'='BepInEx\plugins\SuikodenRandomizer\SuikodenRandomizer.Core.dll';
@@ -210,35 +210,60 @@ function Restore-Backup([string]$Folder, [string]$Backup, [bool]$Recovery) {
     Write-Manifest $manifestPath $manifest
 }
 
-function New-PresetConfig([string]$Existing, [string]$Seed) {
-    # Update only Seed keys inside Shuffle sections. Preserve other sections,
-    # comments, settings and the existing line-ending convention.
-    # This BepInEx converter does not preserve literal backslash sequences
-    # across its own save/reload cycle. Keep the web preset subset stable.
-    if ($Seed.Contains('\')) { throw 'Website seeds cannot contain backslashes. Choose another seed.' }
-    $serializedSeed = $Seed.Replace("'", "\'").Replace('"', '\"')
+function New-PresetConfig([string]$Existing, [object]$Preset) {
+    # BepInEx's string converter requires quotes to be escaped. The website
+    # disallows literal backslashes because they cannot round-trip here.
+    $seed = [string]$Preset.seed
+    if ($seed.Contains('\')) { throw 'Website seeds cannot contain backslashes. Choose another seed.' }
+    $values = [ordered]@{
+        Shuffle = [ordered]@{
+            Seed = $seed.Replace("'", "\'").Replace('"', '\"')
+            Mode = [string]$Preset.mode
+            Companions = $Preset.companions -join ','
+        }
+        Start = [ordered]@{Point = [string]$Preset.startPoint}
+    }
     $newline = "`r`n"
     if ($Existing.Contains("`n") -and -not $Existing.Contains("`r`n")) { $newline = "`n" }
     $output = [Collections.Generic.List[string]]::new()
-    $insideShuffle = $false
-    $sawShuffle = $false
-    $wroteSeed = $false
+    $seenSections = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $written = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $activeValues = $null
     foreach ($line in [regex]::Split($Existing, '\r\n|\n|\r')) {
         if ($line -match '^\s*\[([^\]]+)\]\s*$') {
-            if ($insideShuffle -and -not $wroteSeed) { $output.Add('Seed = ' + $serializedSeed) }
-            $insideShuffle = ([string]$Matches[1]) -ceq 'Shuffle'
-            if ($insideShuffle) { $sawShuffle = $true; $wroteSeed = $false }
+            $heading = [string]$Matches[1]
+            if ($null -ne $activeValues) {
+                foreach ($key in $activeValues.Keys) {
+                    if (-not $written.Contains($key)) { $output.Add($key + ' = ' + $activeValues[$key]) }
+                }
+            }
+            $activeValues = $null
+            $written.Clear()
+            if ($heading -ceq 'Shuffle' -or $heading -ceq 'Start') {
+                $activeValues = $values[$heading]
+                [void]$seenSections.Add($heading)
+            }
         }
-        if ($insideShuffle -and $line -cmatch '^\s*Seed\s*=') {
-            $output.Add('Seed = ' + $serializedSeed)
-            $wroteSeed = $true
-        } else { $output.Add($line) }
+        if ($null -ne $activeValues -and $line -cmatch '^\s*([^=]+?)\s*=') {
+            $key = [string]$Matches[1]
+            if ($activeValues.Keys -ccontains $key) {
+                $output.Add($key + ' = ' + $activeValues[$key])
+                [void]$written.Add($key)
+                continue
+            }
+        }
+        $output.Add($line)
     }
-    if ($insideShuffle -and -not $wroteSeed) { $output.Add('Seed = ' + $serializedSeed) }
-    if (-not $sawShuffle) {
+    if ($null -ne $activeValues) {
+        foreach ($key in $activeValues.Keys) {
+            if (-not $written.Contains($key)) { $output.Add($key + ' = ' + $activeValues[$key]) }
+        }
+    }
+    foreach ($heading in $values.Keys) {
+        if ($seenSections.Contains($heading)) { continue }
         if ($output.Count -gt 0 -and $output[$output.Count - 1] -ne '') { $output.Add('') }
-        $output.Add('[Shuffle]')
-        $output.Add('Seed = ' + $serializedSeed)
+        $output.Add('[' + $heading + ']')
+        foreach ($key in $values[$heading].Keys) { $output.Add($key + ' = ' + $values[$heading][$key]) }
     }
     return ($output -join $newline)
 }
@@ -247,9 +272,14 @@ function Read-WebPreset {
     $path = Join-Path $PSScriptRoot 'preset.json'
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) { throw 'The website preset is missing. Extract the entire generated ZIP into a fresh folder.' }
     $preset = Get-Content -LiteralPath $path -Raw -Encoding UTF8 | ConvertFrom-Json
-    if ($preset.schema -ne 'srr-web-preset-v1' -or $preset.runtimeVersion -ne '0.8.4' -or $preset.profileId -ne 'combat-avatar-shuffle-v1') {
+    if ($null -eq $preset -or $preset -is [array]) { throw 'The website preset must be a JSON object.' }
+    foreach ($key in @('schema','runtimeVersion','seed','mode','companions','startPoint')) {
+        if ($null -eq $preset.PSObject.Properties[$key]) { throw "The website preset is missing $key." }
+    }
+    if ($preset.schema -cne 'srr-web-preset-v2' -or $preset.runtimeVersion -cne '0.8.6') {
         throw 'The selected website preset is not supported by this installer.'
     }
+    if ($preset.seed -isnot [string]) { throw 'The website seed must be text.' }
     $seed = [string]$preset.seed
     if ($seed.Length -gt 128) { throw 'Seed exceeds 128 characters.' }
     $seed = $seed.Trim().Normalize([Text.NormalizationForm]::FormC)
@@ -258,9 +288,25 @@ function Read-WebPreset {
     foreach ($character in $seed.ToCharArray()) {
         if ([char]::IsControl($character)) { throw 'Seed contains a control character.' }
     }
-    if ($preset.characterShuffle -ne $true) { throw 'This prototype supports the 75-role character shuffle only.' }
-    foreach ($name in @('runes','items','equipment','weaponLevels','attackRange','treasureChests')) {
-        if ($preset.futureOptions.$name -ne $false) { throw 'A requested randomization option is not implemented in this prototype.' }
+    if ($preset.mode -isnot [string] -or $preset.mode -cnotin @('Shuffle','FixedChosen','FixedRandom')) {
+        throw 'The website preset specifies an unknown roster mode.'
+    }
+    if ($preset.startPoint -isnot [string] -or $preset.startPoint -cnotin @('Opening','BeforeViktor')) {
+        throw 'The website preset specifies an unknown start point.'
+    }
+    if ($preset.companions -isnot [array]) { throw 'The website preset must contain a list of companions.' }
+    if ($preset.mode -ceq 'FixedChosen') {
+        # IDs match the 0.8.6 Core CombatCatalog used by the plugin.
+        $eligible = @(0,1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,25,26,28,29,30,31,32,33,35,36,37,38,39,40,41,42,43,45,47,48,49,51,52,53,54,55,56,59,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,80,81,91,92,95,101,102,107)
+        $seen = [Collections.Generic.HashSet[int]]::new()
+        if ($preset.companions.Count -ne 5) { throw 'Choose exactly five companions. Tir is included automatically.' }
+        foreach ($id in $preset.companions) {
+            if (($id -isnot [int] -and $id -isnot [long]) -or $id -notin $eligible -or -not $seen.Add([int]$id)) {
+                throw 'Choose five distinct eligible combat companions.'
+            }
+        }
+    } elseif ($preset.companions.Count -ne 0) {
+        throw 'Only the chosen fixed roster mode accepts companion selections.'
     }
     $preset.seed = $seed
     return $preset
@@ -269,11 +315,11 @@ function Read-WebPreset {
 try {
     Start-Transcript -LiteralPath $Log -Force | Out-Null
     $TranscriptStarted = $true
-    Write-Host 'Suikoden Randomizer 0.8.4 - Website installer (first install or update)'
+    Write-Host 'Suikoden Randomizer 0.8.6 - Website installer'
     Write-Host 'Unite safety: combinations involving changed combat avatars are blocked. Original story and party IDs stay canonical.'
     Write-Host 'This is a build-and-install package, not a precompiled release.'
     Write-Host 'No source editing or manual SDK installation is needed. Internet is required on first installation.'
-    Write-Host 'Existing bound 0.8.0/0.8.1/0.8.2/0.8.3 shuffle saves are supported; seed and mapping remain unchanged. Unbound pilot/ID-swap saves are not converted.'
+    Write-Host 'The selected roster, seed, and start point apply when you begin a New Game.'
     Write-Host ''
     Assert-GameClosed
     $GamePath=Resolve-GameFolder $GamePath
@@ -284,16 +330,16 @@ try {
         $backupRoot=Join-Path $GamePath 'SRR-Backups'
         $candidates=@()
         if (Test-Path -LiteralPath $backupRoot) {
-            $candidates=@(Get-ChildItem -LiteralPath $backupRoot -Directory -Filter 'avatar-web-084-*' | Sort-Object Name -Descending | Where-Object {
+            $candidates=@(Get-ChildItem -LiteralPath $backupRoot -Directory -Filter 'avatar-web-086-*' | Sort-Object Name -Descending | Where-Object {
                 $f=Join-Path $_.FullName 'manifest.json'
                 if (-not (Test-Path -LiteralPath $f)) { return $false }
                 $m=Get-Content -LiteralPath $f -Raw | ConvertFrom-Json
-                return $m.marker -eq 'SRR-WebInstaller-084-v1' -and $m.status -ne 'rolled-back'
+                return $m.marker -eq 'SRR-WebInstaller-086-v1' -and $m.status -ne 'rolled-back'
             })
         }
-        if ($candidates.Count -eq 0) { throw 'No unrestored 0.8.4 avatar-shuffle backup was found in this game folder.' }
+        if ($candidates.Count -eq 0) { throw 'No unrestored 0.8.6 website backup was found in this game folder.' }
         Restore-Backup $GamePath $candidates[0].FullName $false
-        Write-Host 'The previous plugin DLLs and selected-seed config have been restored. Native saves and shuffle bindings were not changed.'
+        Write-Host 'The previous plugin DLLs and configuration have been restored. Native saves and shuffle bindings were not changed.'
         $Succeeded=$true
     } else {
         # Avatar profiles are isolated; no old seed or save binding is adopted.
@@ -310,7 +356,7 @@ try {
         Write-Host 'Compiling the update against your installed game and BepInEx references...'
         $project=Join-Path $Workspace 'src\SuikodenRandomizer.AvatarPlugin\SuikodenRandomizer.AvatarPlugin.csproj'
         Invoke-Tool $dotnet @('build',$project,'--configuration','Release','--nologo','-m:1','-p:RestoreBuildInParallel=false','-p:BuildInParallel=false',('-p:GamePath='+$GamePath),'-p:NuGetAudit=false') $Workspace
-        foreach ($test in @('SuikodenRandomizer.Core.SmokeTests','SuikodenRandomizer.Avatar.Tests','SuikodenRandomizer.AvatarShuffle.Tests','SuikodenRandomizer.AvatarPresentation.Tests','SuikodenRandomizer.AvatarRuntime.Tests','SuikodenRandomizer.AvatarParty.Tests','SuikodenRandomizer.AvatarUnite.Tests')) {
+        foreach ($test in @('SuikodenRandomizer.Core.SmokeTests','SuikodenRandomizer.Avatar.Tests','SuikodenRandomizer.AvatarShuffle.Tests','SuikodenRandomizer.AvatarPresentation.Tests','SuikodenRandomizer.AvatarRuntime.Tests','SuikodenRandomizer.AvatarParty.Tests','SuikodenRandomizer.AvatarUnite.Tests','SuikodenRandomizer.FixedRoster.Tests')) {
             Write-Host ('Running checks: ' + $test)
             Invoke-ManagedCheck $dotnet $Workspace $test
         }
@@ -320,7 +366,7 @@ try {
             $file=Join-Path $built $name
             if (-not (Test-Path -LiteralPath $file -PathType Leaf)) { throw "Missing compiled output: $name" }
             $version=[Reflection.AssemblyName]::GetAssemblyName($file).Version
-            if ($version.ToString() -ne '0.8.4.0') { throw "Wrong compiled version for $name`: $version" }
+            if ($version.ToString() -ne $Package.assemblyVersion) { throw "Wrong compiled version for $name`: $version" }
             $plan += [pscustomobject]@{name=$name;source=$file;relativePath=('BepInEx\plugins\SuikodenRandomizer\'+$name)}
         }
         Assert-GameClosed
@@ -329,10 +375,10 @@ try {
             $oldConfig = ''
             if (Test-Path -LiteralPath $configTarget -PathType Leaf) { $oldConfig = [IO.File]::ReadAllText($configTarget) }
             $preparedConfig = Join-Path $Workspace 'web-preset-config.cfg'
-            [IO.File]::WriteAllText($preparedConfig, (New-PresetConfig $oldConfig ([string]$Preset.seed)), [Text.UTF8Encoding]::new($false))
+            [IO.File]::WriteAllText($preparedConfig, (New-PresetConfig $oldConfig $Preset), [Text.UTF8Encoding]::new($false))
             $plan += [pscustomobject]@{name='agilen.suikoden.recruitment_randomizer.cfg';source=$preparedConfig;relativePath='BepInEx\config\agilen.suikoden.recruitment_randomizer.cfg'}
         }
-        Write-Host 'Checks passed. Backing up the existing DLLs and installing Story Avatars 75 Shuffle...' 
+        Write-Host 'Checks passed. Backing up the existing files and installing Suikoden Randomizer...'
         $backup=Backup-Targets $GamePath $plan
         try {
             foreach ($entry in $plan) {
@@ -353,14 +399,13 @@ try {
         }
         $Succeeded=$true
         Write-Host ''
-        Write-Host 'Installed 0.8.4 Story Avatars 75 Shuffle. Original story IDs remain canonical.'
-        Write-Host 'Continue your bound 0.8.0/0.8.1/0.8.2/0.8.3 shuffle save. No restart is needed for this Unite safety fix; saved mappings stay fixed.'
-        Write-Host 'The selected website seed is configured for your next New Game. Existing bound saves keep their saved mapping.'
-        Write-Host 'Retest battle commands: changed avatars must not execute their original roles'' Unites. Check normal attacks and runes, press F6, then save/full quit/reload.'
-        Write-Host 'Keep your native saves and matching config together. A fresh New Game still shares the native autosave.'
-        Write-Host 'Non-combat Stars, Tir, Ted and Odessa are excluded from both roles and donors. This remains experimental.'
-        Write-Host "Previous DLLs/config: $backup"
-        if ($null -ne $Preset) { Write-Host ('Configured seed: ' + [string]$Preset.seed) }
+        Write-Host 'Installed Suikoden Randomizer 0.8.6.'
+        Write-Host ('Roster mode: ' + $Preset.mode)
+        Write-Host ('Start point: ' + $Preset.startPoint)
+        Write-Host ('Seed: ' + $Preset.seed)
+        Write-Host 'Start a New Game to use these options. Bound saves retain their saved roster.'
+        Write-Host 'Keep native saves and matching configuration together. New Game shares the native autosave.'
+        Write-Host "Previous files: $backup"
         Write-Host 'Collect-Avatar-Diagnostics.cmd collects shuffle traces, bindings and installed/runtime version evidence after the game is closed.'
 
     }

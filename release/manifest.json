@@ -1,7 +1,7 @@
 {
   "schema": "srr-web-release-v1",
-  "runtimeVersion": "0.8.4",
-  "webPackagingRevision": "web-first-install-or-update-084-v1",
+  "runtimeVersion": "0.8.6",
+  "webPackagingRevision": "web-first-install-or-update-086-v1",
   "files": [
     {
       "name": "Collect-Avatar-Diagnostics.cmd",
@@ -24,34 +24,29 @@
       "sha256": "0d38ca744f6db568bbbebf908a1cb799895e38a8529f632372f7799ac67764fc"
     },
     {
-      "name": "WEB_PACKAGE_VALIDATION.json",
-      "bytes": 3766,
-      "sha256": "50bf142bcb581686666517abd30cabebf9339783bb56f3bf26199b9743bc8c02"
-    },
-    {
       "name": "collect-avatar-diagnostics.ps1",
-      "bytes": 5213,
-      "sha256": "89913db0e1889611b557c651a95799acb67c42b6d9b1b37928c38b46c412d80c"
+      "bytes": 5208,
+      "sha256": "be6e9eca566a887eaef3b49b0c12b0a569f3d43588aafd7e7bfc8b1b63d5d4d0"
     },
     {
-      "name": "docs/RUNTIME_0.8.4_VALIDATION.json",
-      "bytes": 18361,
-      "sha256": "f3cc57270e478fb798986ce43892f3f160ed2139ee39a28daa0a3663fee382a2"
+      "name": "docs/COMPANION_IDS.txt",
+      "bytes": 995,
+      "sha256": "cbab9ea5f315cab84ec563675807ea6b48f562ca485d590feb854004441ceb6b"
     },
     {
       "name": "installer/Setup.ps1",
-      "bytes": 24231,
-      "sha256": "a4429c9d7551876bf1a41886f3538532ef19ca55b2f0ee08a34457e64ad1d30e"
+      "bytes": 25957,
+      "sha256": "bff04c87647f94187cfb03f7eeff9ee75a5af93dcaa95fa36c24a6e7d0d4195c"
     },
     {
       "name": "installer/package.json",
-      "bytes": 1505,
-      "sha256": "46f66ff686680a123b4a742e73c160a2596b2ac8def85a441d6ada649ef6c15a"
+      "bytes": 933,
+      "sha256": "27b9fb64adf997ed8b314acc9fd795aa0a0ff4ea43d45c66eea7f521d0e31ee3"
     },
     {
       "name": "installer/payload.zip",
-      "bytes": 203184,
-      "sha256": "158a8451aed869cee3d14b55693fb575d3d847593337d0cca79f9bbe96645b45"
+      "bytes": 183492,
+      "sha256": "6a49b23ef702af344a86516706d26383db079b6055edf9abc742948847bf1508"
     }
   ]
 }

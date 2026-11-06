@@ -1,0 +1,79 @@
+FIXED ROSTER COMPANION IDS
+
+Choose five distinct IDs. Tir occupies the sixth roster slot automatically.
+
+  0  Eileen
+  1  Cleo
+  2  Gremio
+  3  Camille
+  4  Kirkis
+  5  Mose
+  6  Pahn
+  7  Luikan
+  9  Sylvina
+ 10  Sonya
+ 11  Anji
+ 12  Varkas
+ 13  Ronnie Bell
+ 14  Kuromimi
+ 15  Krin
+ 16  Kasim
+ 17  Flik
+ 18  Fukien
+ 19  Futch
+ 20  Gen
+ 21  Humphrey
+ 22  Kage
+ 23  Kasumi
+ 25  Kwanda Rosman
+ 26  Luc
+ 28  Milich
+ 29  Milia
+ 30  Lepant
+ 31  Sydonia
+ 32  Tai Ho
+ 33  Tengaar
+ 35  Viktor
+ 36  Valeria
+ 37  Warren
+ 38  Yam Koo
+ 39  Juppo
+ 40  Kessler
+ 41  Leonardo
+ 42  Griffith
+ 43  Kanak
+ 45  Kimberly
+ 47  Lorelai
+ 48  Alen
+ 49  Grenshiel
+ 51  Rubi
+ 52  Morgan
+ 53  Clive
+ 54  Sarah
+ 55  Fuma
+ 56  Lotte
+ 59  Hellion
+ 61  Mina
+ 62  Sheena
+ 63  Hix
+ 64  Crowley
+ 65  Fu Su Lu
+ 66  Eikei
+ 67  Kamandol
+ 68  Quincy
+ 69  Meese
+ 70  Maas
+ 71  Mace
+ 72  Moose
+ 73  Blackman
+ 74  Kreutz
+ 75  Stallion
+ 76  Meg
+ 80  Gon
+ 81  Kirke
+ 91  Kai
+ 92  Sergei
+ 95  Sansuke
+101  Antonio
+102  Lester
+107  Pesmerga

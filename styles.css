@@ -7,3 +7,23 @@
 @media(max-width:390px){.version-badge{font-size:6px;padding:4px 6px}.nav-inner{gap:9px}.hero-actions{gap:15px}.hero-actions .button{font-size:10px;padding:12px 14px}.hero-actions .text-link{font-size:9px}h1{font-size:44px}.generator-form{padding:22px}.small-tag{display:none}.available-label{font-size:7px}.form-topline{gap:10px}.hero-name-list{columns:2}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
 @media print{.site-header,.hero-art,.hero-actions,.nav-toggle,.build-button,.source-links,footer{display:none!important}body{color:#111;background:white}section{break-inside:avoid}.section-wrap{max-width:100%;padding:20px}.run-summary{background:white;color:#111}.run-summary dt,.run-summary dd{color:#111}a{text-decoration:underline}}
+
+.mode-fieldset,.companion-fieldset{min-width:0}
+.mode-option{cursor:pointer;background:var(--white);border-color:var(--line)}
+.mode-option+.mode-option{margin-top:8px}
+.mode-option:has(input:checked){background:#f6f8f0;border-color:#a4b19b}
+.mode-option input{width:15px;height:15px;flex:none;accent-color:var(--green);margin:0}
+.mode-option strong,.mode-option small{display:block}
+.mode-option small{font-size:11px;color:#5e6c5d;line-height:1.55;margin-top:3px}
+.companion-fieldset{margin:0 0 22px;padding:0;border:0}
+.companion-fieldset .field-help{margin:0 0 10px}
+.companion-selects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px}
+.companion-selects label{min-width:0;font-size:11px;color:var(--ink)}
+.generator-form select{display:block;width:100%;min-width:0;min-height:43px;padding:8px 10px;border:1px solid #ced4c8;border-radius:4px;background:white;color:var(--ink);font:inherit;font-size:13px}
+.generator-form select:focus-visible{outline:3px solid #bd8b45;outline-offset:2px}
+.generator-form select[aria-invalid=true]{border-color:var(--red)}
+.companion-selects select{margin-top:4px}
+.start-setting{margin-bottom:21px}
+.run-summary .build-button{margin-top:22px}
+#preview-label{font-weight:inherit}
+@media(max-width:430px){.companion-selects{grid-template-columns:1fr}}

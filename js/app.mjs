@@ -1,13 +1,32 @@
-import { generateProfile } from './randomizer-core.mjs';
-import { buildInstaller } from './installer-bundle.mjs';
+import { COMBAT_POOL, COMPANION_COUNT, generateAdventure, MODES, START_POINTS, validateCompanions } from './randomizer-core.mjs?v=0.8.6';
+import { buildInstaller, profileCsv } from './installer-bundle.mjs?v=0.8.6';
 
 const $ = id => document.getElementById(id);
+const modeInputs = [...document.querySelectorAll('input[name="mode"]')];
+const heroesByName = [...COMBAT_POOL].sort((a, b) => a.name.localeCompare(b.name, 'en'));
+const companionSelects = Array.from({ length: COMPANION_COUNT }, (_, index) => {
+  const label = document.createElement('label');
+  label.className = 'companion-choice';
+  const name = document.createElement('span');
+  name.textContent = 'Companion ' + (index + 1);
+  const select = document.createElement('select');
+  select.id = 'companion-' + (index + 1);
+  select.setAttribute('aria-describedby', 'companion-help companion-error');
+  select.add(new Option('Select a hero', ''));
+  for (const hero of heroesByName) select.add(new Option(hero.name, String(hero.id)));
+  label.append(name, select);
+  $('companion-selects').append(label);
+  return select;
+});
 let currentProfile = null;
-let seedGeneration = 0;
+let settingsGeneration = 0;
 let building = false;
 let downloadURL = null;
 let debounce;
 let toastTimer;
+
+const selectedMode = () => modeInputs.find(input => input.checked)?.value ?? 'Shuffle';
+const selectedCompanions = () => companionSelects.map(select => select.value === '' ? NaN : Number(select.value));
 
 function toast(message) {
   clearTimeout(toastTimer);
@@ -16,139 +35,231 @@ function toast(message) {
   toastTimer = setTimeout(() => { $('toast').hidden = true; }, 3500);
 }
 
-function csvFor(profile) {
-  const cell = value => '"' + String(value).replaceAll('"', '""') + '"';
-  return 'Story role,Assigned avatar\r\n' + profile.assignments.map(row => [row.roleName,row.donorName].map(cell).join(',')).join('\r\n') + '\r\n';
+function renderMode() {
+  const mode = selectedMode();
+  const chosen = mode === 'FixedChosen';
+  const fixed = mode !== 'Shuffle';
+  $('companion-fieldset').hidden = !chosen;
+  const selected = companionSelects.map(select => select.value);
+  companionSelects.forEach((select, index) => {
+    select.disabled = !chosen || building;
+    for (const option of select.options) {
+      option.disabled = option.value !== '' && selected.some((id, other) => other !== index && id === option.value);
+    }
+  });
+  $('summary-mode').textContent = MODES[mode];
+  $('summary-pool').textContent = fixed ? 'Tir + five companions' : '75 combat heroes';
+  $('summary-start').textContent = START_POINTS[$('start-point').value];
+  $('preview-label').textContent = fixed ? 'Reveal your roster' : 'Reveal character mapping';
+  $('preview-title').textContent = fixed ? 'Your six heroes.' : 'Your cast, revealed.';
+  $('preview-description').textContent = fixed
+    ? 'Tir and the five companions available during your run.'
+    : 'Assignments for the selected seed.';
+  $('preview-left-heading').textContent = fixed ? 'Roster slot' : 'Original character';
+  $('preview-right-heading').textContent = fixed ? 'Hero' : 'Replacement character';
 }
 
 function renderMapping() {
   const query = $('hero-search').value.trim().toLocaleLowerCase();
-  const rows = currentProfile?.assignments.filter(row => (row.roleName + ' ' + row.donorName).toLocaleLowerCase().includes(query)) ?? [];
+  const roster = currentProfile?.heroes;
+  const all = roster
+    ? roster.map((hero, index) => [index ? 'Companion ' + index : 'Hero (reserved)', hero.name])
+    : currentProfile?.assignments.map(row => [row.roleName, row.donorName]) ?? [];
+  const rows = all.filter(row => row.join(' ').toLocaleLowerCase().includes(query));
   $('mapping-table').replaceChildren(...rows.map(row => {
     const tr = document.createElement('tr');
-    for (const name of [row.roleName, row.donorName]) {
-      const td = document.createElement('td'); td.textContent = name; tr.append(td);
+    for (const name of row) {
+      const td = document.createElement('td');
+      td.textContent = name;
+      tr.append(td);
     }
     return tr;
   }));
-  $('mapping-count').textContent = `${rows.length} of 75 characters shown.`;
+  $('mapping-count').textContent = currentProfile
+    ? `${rows.length} of ${all.length} ${roster ? 'heroes' : 'characters'} shown.`
+    : 'Choose valid settings to preview your cast.';
 }
 
-async function refreshSeed() {
-  const generation = ++seedGeneration;
+function syncButtons() {
+  $('build-installer').disabled = building || !currentProfile;
+  $('copy-seed').disabled = building || !currentProfile;
+  $('download-spoiler').disabled = building || !currentProfile;
+}
+
+async function refreshSettings() {
+  const generation = ++settingsGeneration;
   currentProfile = null;
-  $('build-installer').disabled = true;
-  $('download-spoiler').disabled = true;
+  syncButtons();
+  renderMode();
+  renderMapping();
   $('seed-error').hidden = true;
+  $('companion-error').hidden = true;
   $('seed').removeAttribute('aria-invalid');
+
+  const mode = selectedMode();
+  const companions = selectedCompanions();
+  if (mode === 'FixedChosen') {
+    try {
+      validateCompanions(companions);
+    } catch (error) {
+      $('companion-error').textContent = error.message;
+      $('companion-error').hidden = false;
+      return;
+    }
+  }
+
   try {
-    if ($('seed').value.includes('\\')) throw new Error('Backslashes are not supported in installer seeds. Choose another character.');
-    const profile = await generateProfile($('seed').value);
-    if (generation !== seedGeneration) return null;
+    const profile = await generateAdventure($('seed').value, { mode, companions, startPoint: $('start-point').value });
+    if (generation !== settingsGeneration) return;
     currentProfile = profile;
-    $('build-installer').disabled = building;
-    $('download-spoiler').disabled = false;
+    syncButtons();
     renderMapping();
-    return profile;
   } catch (error) {
-    if (generation !== seedGeneration) return null;
+    if (generation !== settingsGeneration) return;
     $('seed-error').textContent = error.message || 'Enter a valid seed.';
     $('seed-error').hidden = false;
-    $('seed').setAttribute('aria-invalid','true');
-    $('mapping-table').replaceChildren();
-    $('mapping-count').textContent = 'Enter a valid seed to preview its cast.';
-    return null;
+    $('seed').setAttribute('aria-invalid', 'true');
   }
+}
+
+function clearResult() {
+  $('download-result').hidden = true;
+  $('build-status').textContent = '';
+}
+
+function settingsChanged() {
+  clearTimeout(debounce);
+  clearResult();
+  refreshSettings();
 }
 
 function downloadBlob(blob, filename) {
   const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url; a.download = filename; document.body.append(a); a.click(); a.remove();
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.append(link);
+  link.click();
+  link.remove();
   setTimeout(() => URL.revokeObjectURL(url), 30_000);
 }
 
 $('seed').addEventListener('input', () => {
   clearTimeout(debounce);
-  ++seedGeneration;
+  ++settingsGeneration;
   currentProfile = null;
-  $('build-installer').disabled = true;
-  $('download-result').hidden = true;
-  $('build-status').textContent = '';
-  debounce = setTimeout(refreshSeed, 200);
+  syncButtons();
+  renderMapping();
+  clearResult();
+  debounce = setTimeout(refreshSettings, 200);
 });
-$('seed').addEventListener('change', () => { clearTimeout(debounce); refreshSeed(); });
 $('random-seed').addEventListener('click', () => {
   const bits = crypto.getRandomValues(new Uint8Array(6));
-  $('seed').value = 'stars-' + [...bits].map(x => x.toString(16).padStart(2,'0')).join('');
-  $('download-result').hidden = true;
-  $('build-status').textContent = '';
-  refreshSeed();
+  $('seed').value = 'stars-' + [...bits].map(x => x.toString(16).padStart(2, '0')).join('');
+  settingsChanged();
 });
+for (const input of [...modeInputs, ...companionSelects, $('start-point')]) {
+  input.addEventListener('change', settingsChanged);
+}
 $('hero-search').addEventListener('input', renderMapping);
-$('include-spoiler').addEventListener('change', () => {
-  $('download-result').hidden = true;
-  $('build-status').textContent = '';
-});
+$('include-spoiler').addEventListener('change', clearResult);
 $('download-spoiler').addEventListener('click', () => {
   if (!currentProfile) return;
-  downloadBlob(new Blob(['\ufeff' + csvFor(currentProfile)],{type:'text/csv;charset=utf-8'}),`Suikoden-${currentProfile.fingerprint.slice(0,12)}-spoiler.csv`);
+  downloadBlob(new Blob([profileCsv(currentProfile)], { type: 'text/csv;charset=utf-8' }),
+    `Suikoden-${currentProfile.fingerprint.slice(0, 12)}-spoiler.csv`);
 });
 $('copy-seed').addEventListener('click', async () => {
-  const profile = await refreshSeed();
+  const profile = currentProfile;
   if (!profile) return;
   const link = new URL(location.href);
-  link.search = ''; link.searchParams.set('seed',profile.seed); link.hash = 'generate';
-  try { await navigator.clipboard.writeText(link.href); toast('Seed link copied. Share the same cast.'); }
-  catch {
-    const field = document.createElement('textarea'); field.value = link.href;
-    field.style.position = 'fixed'; field.style.opacity = '0'; document.body.append(field);
-    field.select(); const copied = document.execCommand('copy'); field.remove();
-    if (copied) toast('Seed link copied.');
-    else { $('build-status').textContent = 'Copy this seed link: ' + link.href; }
+  link.search = '';
+  link.searchParams.set('seed', profile.seed);
+  if (profile.mode !== 'Shuffle') link.searchParams.set('mode', profile.mode);
+  if (profile.mode === 'FixedChosen') link.searchParams.set('companions', profile.companionIds.join(','));
+  if (profile.startPoint !== 'Opening') link.searchParams.set('start', profile.startPoint);
+  link.hash = 'generate';
+  try {
+    await navigator.clipboard.writeText(link.href);
+    toast('Settings link copied.');
+  } catch {
+    const field = document.createElement('textarea');
+    field.value = link.href;
+    field.style.position = 'fixed';
+    field.style.opacity = '0';
+    document.body.append(field);
+    field.select();
+    const copied = document.execCommand('copy');
+    field.remove();
+    if (copied) toast('Settings link copied.');
+    else $('build-status').textContent = 'Copy this settings link: ' + link.href;
   }
 });
+
+function setBuilding(value) {
+  building = value;
+  for (const input of [...modeInputs, $('seed'), $('random-seed'), $('include-spoiler'), $('start-point')]) {
+    input.disabled = value;
+  }
+  renderMode();
+  syncButtons();
+}
+
 $('generator-form').addEventListener('submit', async event => {
   event.preventDefault();
-  if (building) return;
-  clearTimeout(debounce);
-  const profile = await refreshSeed();
-  if (!profile) { $('seed').focus(); return; }
-  building = true;
-  for (const id of ['seed','random-seed','include-spoiler','copy-seed','build-installer']) $(id).disabled = true;
+  const profile = currentProfile;
+  if (building || !profile) return;
+  setBuilding(true);
   $('download-result').hidden = true;
   $('build-installer').textContent = 'Preparing your ZIP…';
   $('build-status').textContent = 'Checking the package files…';
   try {
-    const result = await buildInstaller({profile,includeSpoiler:$('include-spoiler').checked,onProgress:progress => { $('build-status').textContent = typeof progress === 'string' ? 'Preparing your download…' : `Preparing your download… ${progress.percent}%`; }});
+    const result = await buildInstaller({
+      profile,
+      includeSpoiler: $('include-spoiler').checked,
+      onProgress: progress => { $('build-status').textContent = `Preparing your download… ${progress.percent}%`; }
+    });
     if (downloadURL) URL.revokeObjectURL(downloadURL);
     downloadURL = URL.createObjectURL(result.blob);
     $('download-again').href = downloadURL;
     $('download-again').download = result.filename;
-    $('download-summary').textContent = `Seed: ${profile.seed} · ${Math.ceil(result.blob.size/1024)} KB · Extract all files and run Install.cmd.`;
+    $('download-summary').textContent = `${MODES[profile.mode]} · ${START_POINTS[profile.startPoint]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
     $('download-result').hidden = false;
     $('build-status').textContent = 'Your download is ready.';
-    const click = document.createElement('a'); click.href = downloadURL; click.download = result.filename; document.body.append(click); click.click(); click.remove();
-    $('download-result').scrollIntoView({behavior:'smooth',block:'nearest'});
-    toast('Installer ready. Your adventure is packed.');
+    const click = document.createElement('a');
+    click.href = downloadURL;
+    click.download = result.filename;
+    document.body.append(click);
+    click.click();
+    click.remove();
+    $('download-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    toast('Installer ready. Extract the ZIP and run Install.cmd.');
   } catch (error) {
     $('build-status').textContent = 'Could not prepare the installer: ' + (error.message || 'Please try again.');
   } finally {
-    building = false;
-    for (const id of ['seed','random-seed','include-spoiler','copy-seed']) $(id).disabled = false;
-    $('build-installer').disabled = !currentProfile;
+    setBuilding(false);
     $('build-installer').innerHTML = '<span aria-hidden="true">↓</span> Build installer ZIP';
   }
 });
 
 $('nav-toggle').addEventListener('click', () => {
   const open = $('nav-toggle').getAttribute('aria-expanded') === 'true';
-  $('nav-toggle').setAttribute('aria-expanded',String(!open));
+  $('nav-toggle').setAttribute('aria-expanded', String(!open));
   $('main-nav').dataset.open = String(!open);
 });
 $('main-nav').addEventListener('click', event => {
-  if (event.target.closest('a')) { $('main-nav').dataset.open='false'; $('nav-toggle').setAttribute('aria-expanded','false'); }
+  if (event.target.closest('a')) {
+    $('main-nav').dataset.open = 'false';
+    $('nav-toggle').setAttribute('aria-expanded', 'false');
+  }
 });
-const urlSeed = new URL(location.href).searchParams.get('seed');
-if (urlSeed !== null) $('seed').value = urlSeed;
-refreshSeed();
+
+const params = new URL(location.href).searchParams;
+if (params.has('seed')) $('seed').value = params.get('seed');
+const linkedMode = modeInputs.find(input => input.value === params.get('mode'));
+if (linkedMode) linkedMode.checked = true;
+if (Object.hasOwn(START_POINTS, params.get('start'))) $('start-point').value = params.get('start');
+if (selectedMode() === 'FixedChosen') {
+  const ids = (params.get('companions') ?? '').split(',');
+  if (ids.length === COMPANION_COUNT) companionSelects.forEach((select, index) => { select.value = ids[index]; });
+}
+refreshSettings();

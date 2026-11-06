@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Set up Suikoden Randomizer, choose a seed, and start playing. Installation, saved games, and help for testers.">
+  <meta name="description" content="Set up Suikoden Randomizer, choose a roster and start point, and start playing. Installation, saved games, and help for testers.">
   <title>Printable setup guide · Suikoden Randomizer</title>
   <style>
     :root{color-scheme:light;--paper:#f7f4eb;--ink:#233443;--muted:#637079;--red:#9f3c36;--gold:#a9823e;--line:#ded9cb;--white:#fffef9}
@@ -14,16 +14,16 @@
   </style>
 </head>
 <body class="print-layout">
-<header><nav class="guide-nav" aria-label="Main navigation"><a class="wordmark" href="/"><span aria-hidden="true">✦</span>SUIKODEN RANDOMIZER</a><div class="guide-nav-links"><a href="/#generate">Build a seed</a><a href="/guide.html">Setup guide</a><a href="/#faq">FAQ</a></div></nav></header>
+<header><nav class="guide-nav" aria-label="Main navigation"><a class="wordmark" href="/"><span aria-hidden="true">✦</span>SUIKODEN RANDOMIZER</a><div class="guide-nav-links"><a href="/#generate">Generator</a><a href="/guide.html">Setup guide</a><a href="/#faq">FAQ</a></div></nav></header>
 <main class="guide-shell">
   <div class="eyebrow">Setup guide</div>
   <h1>Install. Shuffle. Play.</h1>
-  <p class="guide-lead">Choose a seed and bring a new cast into Suikoden I. Follow these steps to get started.</p>
-  <div class="guide-meta"><span>Version 0.8.4</span><span>Windows x64</span><span>Suikoden I HD Remaster</span></div>
-  <div class="guide-actions"><button type="button" onclick="window.print()">Print / save as PDF</button><a href="/assets/guide.txt" download="INSTALL_GUIDE.txt">Download this guide</a><a href="/#generate">Build a seed →</a></div>
-  <p class="print-note">Suikoden Randomizer · Setup guide · Version 0.8.4</p>
+  <p class="guide-lead">Choose your cast and where to begin in Suikoden I. Follow these steps to build and install your adventure.</p>
+  <div class="guide-meta"><span>Version 0.8.6</span><span>Windows x64</span><span>Suikoden I HD Remaster</span></div>
+  <div class="guide-actions"><button type="button" onclick="window.print()">Print / save as PDF</button><a href="/assets/guide.txt" download="INSTALL_GUIDE.txt">Download this guide</a><a href="/#generate">Build an installer →</a></div>
+  <p class="print-note">Suikoden Randomizer · Setup guide · Version 0.8.6</p>
   <div class="guide-layout">
-    <aside class="guide-index" aria-label="Guide contents"><h2>In this guide</h2><a href="#before-you-start">What you need</a><a href="#installation">Installation</a><a href="#campaigns">Seeds &amp; saved games</a><a href="#scope">What gets shuffled</a><a href="#first-test">Quick check</a><a href="#troubleshooting">Troubleshooting</a><a href="#rollback">Undo an installation</a><a href="#resources">Downloads &amp; links</a></aside>
+    <aside class="guide-index" aria-label="Guide contents"><h2>In this guide</h2><a href="#before-you-start">What you need</a><a href="#installation">Installation</a><a href="#campaigns">Seeds &amp; saved games</a><a href="#scope">Modes &amp; start point</a><a href="#first-test">Quick check</a><a href="#troubleshooting">Troubleshooting</a><a href="#rollback">Undo an installation</a><a href="#resources">Downloads &amp; links</a></aside>
     <div class="guide-content">
       <section id="before-you-start"><h2>What you need</h2>
         <ul><li>A Windows 64-bit copy of <strong>Suikoden I &amp; II HD Remaster</strong>. The randomizer works with Suikoden I.</li><li><strong>BepInEx 6 for Unity IL2CPP, Windows x64</strong>, installed in the game folder.</li><li>An Internet connection for setup to download any required tools.</li></ul>
@@ -33,33 +33,38 @@
         <ol class="steps">
           <li><h3>Back up and close the game</h3><p>Make a manual save, then close the game completely. Back up your save folder and, if present, the entire <code>BepInEx\config</code> folder together. Windows saves are usually in <code>Save\(USER_ID)</code> inside the game folder. Keep the backups in a separate location.</p></li>
           <li><h3>Prepare BepInEx</h3><p>Skip this step if BepInEx is already working. Download the <a href="https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2" target="_blank" rel="noopener noreferrer">BepInEx 6.0.0-pre.2 Unity IL2CPP Windows x64 build</a> and extract it beside <code>Suikoden I and II HD Remaster.exe</code>.</p><p>Launch the game once and let the first-run setup finish. Close it, then check that <code>BepInEx\interop\GSD1.dll</code> exists.</p></li>
-          <li><h3>Choose a seed</h3><p>Open the <a href="/#generate">seed builder</a>. Enter a seed or roll a random one. Seeds accept 1–128 characters, excluding backslashes. The same seed gives the same character assignments.</p><p>Choose whether to include a spoiler file, then select <strong>Build installer ZIP</strong>.</p></li>
-          <li><h3>Extract and install</h3><p>Use Windows <strong>Extract All</strong> to unpack the entire download into a fresh folder. Double-click <code>Install.cmd</code> and select your game folder when prompted.</p><p>Setup prepares the plugin automatically and backs up the files it changes. The first installation may take a few minutes while tools download. Wait for the installation-complete message before starting the game.</p></li>
-          <li><h3>Start playing</h3><p>Launch Suikoden I and start a <strong>New Game</strong> to use your selected seed. You can also continue an existing randomized save; it will keep its original cast.</p></li>
+          <li><h3>Choose your adventure</h3><p>Enter a seed or roll a random one, then select your game mode and start point. Seeds accept 1–128 characters, excluding backslashes. <a href="/#generate">Open the generator →</a></p><p>Choose whether to include a spoiler file, then select <strong>Build installer ZIP</strong>.</p></li>
+          <li><h3>Extract and install</h3><p>Use Windows <strong>Extract All</strong> to unpack the entire download into a fresh folder. Double-click <code>Install.cmd</code> and select your game folder when prompted.</p><p>Setup prepares the plugin, applies your chosen settings, and backs up the files it changes. The first installation may take a few minutes while tools download. Wait for the installation-complete message before starting the game.</p></li>
+          <li><h3>Start playing</h3><p>Launch Suikoden I and start a <strong>New Game</strong> to use your selected settings.</p></li>
         </ol>
       </section>
       <section id="campaigns"><h2>Seeds &amp; saved games</h2>
-        <p>A new seed applies to a New Game. Installing a different seed does not reshuffle a campaign already in progress.</p>
+        <p>Seed, roster, and start point settings apply when you start a New Game. Existing randomized campaigns keep their saved roster and story progress.</p>
         <p>Keep each randomized save with its matching <code>BepInEx\config</code> backup. Ordinary unmodified saves cannot be converted into randomized campaigns. Starting a New Game uses the game’s shared autosave, so keep a manual backup first.</p>
       </section>
-      <section id="scope"><span id="what-changes"></span><h2>What gets shuffled</h2>
-        <p>The randomizer assigns <strong>75 combat heroes</strong> to different story roles. Names, portraits, appearances, and starting combat setups follow the assigned character. A hero may occasionally draw itself.</p>
-        <p>The protagonist, Ted, Odessa, and non-combat characters are excluded. Story events, dialogue, and voices remain tied to the original roles. Some Unite attacks are unavailable when characters have changed.</p>
+      <section id="scope"><span id="what-changes"></span><h2>Game modes &amp; start point</h2>
+        <ul>
+          <li><strong>Character shuffle</strong> assigns 75 combat heroes to story roles based on the seed. A hero may draw itself.</li>
+          <li><strong>Fixed roster</strong> includes Tir automatically. Choose five different heroes from the list. When a companion slot opens, the game uses the first available fighter from your ordered list.</li>
+          <li><strong>Random roster</strong> includes Tir and five different companions drawn from the seed. The same seed gives the same roster and order.</li>
+        </ul>
+        <p>Story events determine how many companion slots are active. Ted, Odessa, and non-combat characters are outside the selection pool. Story events, dialogue, and voices follow the original roles. Names, portraits, appearances, and starting combat setups follow the assigned fighters. Some Unite attacks are unavailable when characters have changed.</p>
+        <p>Choose <strong>Before Viktor</strong> with any mode to begin in Gregminster after the inn scene. Tir has the Soul Eater and Viktor is still waiting to join. Choose <strong>Normal Opening</strong> for the usual start.</p>
       </section>
       <section id="first-test"><h2>Quick check</h2>
-        <p>Check your assigned characters’ names and portraits, then complete an ordinary battle. Make a manual save, fully quit, and reload to confirm the cast and your progress stay the same.</p>
+        <p>If you picked Before Viktor, confirm you start in Gregminster and can recruit him. Check your party’s names and portraits, then complete an ordinary battle. Make a manual save, fully quit, and reload to confirm the cast and your progress stay the same.</p>
       </section>
       <section id="troubleshooting"><h2>Troubleshooting</h2>
         <details><summary>Setup stops or reports an unsupported game version</summary><p>Keep the installer log shown by setup. Confirm you selected the correct game folder and that BepInEx has finished its first launch. Report the message and log if setup still fails.</p></details>
-        <details><summary>The seed or characters did not change</summary><p>Existing randomized saves keep their original assignments. Start a New Game to use a different seed. If the wrong version loads, check for duplicate randomizer files or an older installer folder.</p></details>
+        <details><summary>My settings did not take effect</summary><p>Start a New Game to use your new roster, seed, or start point. If the wrong version loads, check for duplicate randomizer files or an older installer folder.</p></details>
         <details><summary>A battle stalls or another problem occurs</summary><p>Press <kbd>F6</kbd> to record a checkpoint if the game responds, then close it. Run <code>Collect-Avatar-Diagnostics.cmd</code> from your extracted installer folder and select the game folder. Send the resulting Desktop ZIP with a short description of what happened. Reload an earlier save after a stalled battle.</p></details>
         <p class="small">Suikoden Fix is optional. If you use it, keep the <a href="https://github.com/d3xMachina/Suikoden-Fix/releases" target="_blank" rel="noopener noreferrer">original release</a> and remove older modified copies that contain another randomizer.</p>
       </section>
       <section id="rollback"><h2>Undo an installation</h2>
-        <p>Close the game and run <code>Rollback.cmd</code> from the same extracted package. It restores the previous plugin files and seed configuration, or removes files created by a first installation. It does not restore your game saves; use your own backup for those.</p>
+        <p>Close the game and run <code>Rollback.cmd</code> from the same extracted package. It restores the previous plugin files and randomizer configuration, or removes files created by a first installation. It does not restore your game saves; use your own backup for those.</p>
       </section>
       <section id="resources"><h2>Downloads &amp; links</h2>
-        <ul><li><a href="/#generate">Build a seed-specific installer</a></li><li><a href="/assets/guide.txt" download="INSTALL_GUIDE.txt">Download this guide</a></li><li><a href="https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html" target="_blank" rel="noopener noreferrer">BepInEx installation help</a></li></ul>
+        <ul><li><a href="/#generate">Build an installer</a></li><li><a href="/assets/guide.txt" download="INSTALL_GUIDE.txt">Download this guide</a></li><li><a href="https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html" target="_blank" rel="noopener noreferrer">BepInEx installation help</a></li></ul>
       </section>
     </div>
   </div>
