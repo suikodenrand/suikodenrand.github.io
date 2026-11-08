@@ -24,7 +24,7 @@ MODES & START POINT
 - Balanced starting gear is on by default. Incoming weapon levels and compatible armor match the original story character’s starting gear. Six-hero rosters start with equipment suited to the opening. Runes, stats, and character levels keep their usual behavior. Turn it off to use each hero’s original starting gear.
 - Before Viktor starts in Gregminster after the inn scene. Recruit Viktor to continue.
 
-Seed, roster, starting gear, and start point settings apply to New Game. Existing randomized saves keep their saved roster and story progress. Keep each randomized save with its matching BepInEx\config backup.
+Seed, roster, starting gear, and start point settings apply to New Game. Existing randomized saves keep their saved roster, story progress, equipment, and upgrades. Keep each randomized save with its matching BepInEx\config backup.
 
 BepInEx installation help
 https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html
