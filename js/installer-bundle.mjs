@@ -1,4 +1,4 @@
-import { generateAdventure, MODES, PROFILE_METADATA, START_POINTS } from './randomizer-core.mjs?v=0.8.7';
+import { generateAdventure, MODES, PROFILE_METADATA, START_POINTS, STARTING_GEAR } from './randomizer-core.mjs?v=0.8.12';
 import { sha256Hex as sha256 } from './sha256.mjs';
 
 const encoder = new TextEncoder();
@@ -75,7 +75,8 @@ function configFor(profile) {
   const lines = ['[Shuffle]', 'Seed = ' + seed, 'Mode = ' + profile.mode];
   if (profile.mode === 'FixedChosen') lines.push('Companions = ' + profile.companionIds.join(','));
   if (profile.mode === 'Shuffle') lines.push('IncludeTir = ' + profile.includeTir);
-  lines.push('', '[Start]', 'Point = ' + profile.startPoint, '');
+  lines.push('', '[Balance]', 'StartingGear = ' + profile.startingGear,
+    '', '[Start]', 'Point = ' + profile.startPoint, '');
   return lines.join('\r\n');
 }
 
@@ -84,6 +85,7 @@ function readme(profile) {
     'Stars of Destiny - Character Randomizer ' + PROFILE_METADATA.pluginVersion,
     '',
     MODES[profile.mode] + ' | ' + START_POINTS[profile.startPoint],
+    STARTING_GEAR[profile.startingGear] + ' | Runes keep their usual behavior.',
     'Seed ' + profile.seed,
     ...(profile.includeTir ? ['Tir is in the shuffle pool.'] : []),
     '',
@@ -116,7 +118,7 @@ export async function buildInstaller({ profile, includeSpoiler = false, onProgre
   if (!profile?.seed) throw new Error('Generate a valid seed before building an installer.');
   const actual = await generateAdventure(profile.seed, {
     mode: profile.mode, companions: profile.companionIds, startPoint: profile.startPoint,
-    includeTir: profile.includeTir
+    includeTir: profile.includeTir, startingGear: profile.startingGear
   });
   if (profile.fingerprint !== actual.fingerprint) throw new Error('The roster preview changed. Generate it again before downloading.');
 

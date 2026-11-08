@@ -1,5 +1,5 @@
-import { COMBAT_POOL, COMPANION_COUNT, generateAdventure, MODES, START_POINTS, validateCompanions } from './randomizer-core.mjs?v=0.8.7';
-import { buildInstaller, profileCsv } from './installer-bundle.mjs?v=0.8.7';
+import { COMBAT_POOL, COMPANION_COUNT, generateAdventure, MODES, START_POINTS, STARTING_GEAR, validateCompanions } from './randomizer-core.mjs?v=0.8.12';
+import { buildInstaller, profileCsv } from './installer-bundle.mjs?v=0.8.12';
 
 const $ = id => document.getElementById(id);
 const modeInputs = [...document.querySelectorAll('input[name="mode"]')];
@@ -27,6 +27,7 @@ let toastTimer;
 
 const selectedMode = () => modeInputs.find(input => input.checked)?.value ?? 'Shuffle';
 const selectedCompanions = () => companionSelects.map(select => select.value === '' ? NaN : Number(select.value));
+const selectedGear = () => $('balanced-gear').checked ? 'Balanced' : 'Original';
 
 function toast(message) {
   clearTimeout(toastTimer);
@@ -53,6 +54,7 @@ function renderMode() {
   $('summary-pool').textContent = fixed ? 'Tir + five companions'
     : $('include-tir').checked ? '76 combat heroes' : '75 combat heroes';
   $('summary-start').textContent = START_POINTS[$('start-point').value];
+  $('summary-gear').textContent = $('balanced-gear').checked ? 'Balanced' : 'Original';
   $('preview-label').textContent = fixed ? 'Reveal your roster' : 'Reveal character mapping';
   $('preview-title').textContent = fixed ? 'Your six heroes.' : 'Your cast, revealed.';
   $('preview-description').textContent = fixed
@@ -114,7 +116,8 @@ async function refreshSettings() {
   try {
     const profile = await generateAdventure($('seed').value, {
       mode, companions, startPoint: $('start-point').value,
-      includeTir: mode === 'Shuffle' && $('include-tir').checked
+      includeTir: mode === 'Shuffle' && $('include-tir').checked,
+      startingGear: selectedGear()
     });
     if (generation !== settingsGeneration) return;
     currentProfile = profile;
@@ -164,7 +167,7 @@ $('random-seed').addEventListener('click', () => {
   $('seed').value = 'stars-' + [...bits].map(x => x.toString(16).padStart(2, '0')).join('');
   settingsChanged();
 });
-for (const input of [...modeInputs, ...companionSelects, $('start-point'), $('include-tir')]) {
+for (const input of [...modeInputs, ...companionSelects, $('start-point'), $('include-tir'), $('balanced-gear')]) {
   input.addEventListener('change', settingsChanged);
 }
 $('hero-search').addEventListener('input', renderMapping);
@@ -183,6 +186,7 @@ $('copy-seed').addEventListener('click', async () => {
   if (profile.mode !== 'Shuffle') link.searchParams.set('mode', profile.mode);
   if (profile.mode === 'FixedChosen') link.searchParams.set('companions', profile.companionIds.join(','));
   if (profile.includeTir) link.searchParams.set('tir', '1');
+  if (profile.startingGear !== 'Balanced') link.searchParams.set('gear', profile.startingGear);
   if (profile.startPoint !== 'Opening') link.searchParams.set('start', profile.startPoint);
   link.hash = 'generate';
   try {
@@ -204,7 +208,7 @@ $('copy-seed').addEventListener('click', async () => {
 
 function setBuilding(value) {
   building = value;
-  for (const input of [...modeInputs, $('seed'), $('random-seed'), $('include-spoiler'), $('start-point')]) {
+  for (const input of [...modeInputs, $('seed'), $('random-seed'), $('include-spoiler'), $('start-point'), $('balanced-gear')]) {
     input.disabled = value;
   }
   renderMode();
@@ -230,7 +234,7 @@ $('generator-form').addEventListener('submit', async event => {
     $('download-again').href = downloadURL;
     $('download-again').download = result.filename;
     const modeLabel = MODES[profile.mode] + (profile.includeTir ? ' · Tir included' : '');
-    $('download-summary').textContent = `${modeLabel} · ${START_POINTS[profile.startPoint]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
+    $('download-summary').textContent = `${modeLabel} · ${START_POINTS[profile.startPoint]} · ${STARTING_GEAR[profile.startingGear]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
     $('download-result').hidden = false;
     $('build-status').textContent = 'Your download is ready.';
     const click = document.createElement('a');
@@ -267,6 +271,7 @@ const linkedMode = modeInputs.find(input => input.value === params.get('mode'));
 if (linkedMode) linkedMode.checked = true;
 if (Object.hasOwn(START_POINTS, params.get('start'))) $('start-point').value = params.get('start');
 $('include-tir').checked = params.get('tir') === '1';
+if (Object.hasOwn(STARTING_GEAR, params.get('gear'))) $('balanced-gear').checked = params.get('gear') === 'Balanced';
 if (selectedMode() === 'FixedChosen') {
   const ids = (params.get('companions') ?? '').split(',');
   if (ids.length === COMPANION_COUNT) companionSelects.forEach((select, index) => { select.value = ids[index]; });

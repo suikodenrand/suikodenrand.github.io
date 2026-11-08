@@ -31,7 +31,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.8.7",
+  pluginVersion: "0.8.12",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",
@@ -53,6 +53,7 @@ export const NON_COMBAT_HEROES = Object.freeze(ROSTER.filter(hero => !hero.eligi
 
 export const MODES = Object.freeze({ Shuffle: "Character Shuffle", FixedChosen: "Fixed Roster", FixedRandom: "Random Roster" });
 export const START_POINTS = Object.freeze({ Opening: "Normal Opening", BeforeViktor: "Before Viktor" });
+export const STARTING_GEAR = Object.freeze({ Balanced: "Balanced starting gear", Original: "Original starting gear" });
 export const COMPANION_COUNT = 5;
 const TIR_ID = 8;
 const TIR_PROFILE_ID = "combat-avatar-shuffle-with-tir-v1";
@@ -167,14 +168,15 @@ export function validateCompanions(ids) {
   }
 }
 
-export async function generateAdventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening", includeTir = false } = {}) {
+export async function generateAdventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening", includeTir = false, startingGear = "Balanced" } = {}) {
   if (!Object.hasOwn(MODES, mode)) throw new Error("Choose a roster mode.");
   if (!Object.hasOwn(START_POINTS, startPoint)) throw new Error("Choose a start point.");
+  if (!Object.hasOwn(STARTING_GEAR, startingGear)) throw new Error("Choose a starting gear option.");
   const seed = normalizeSeed(value);
   if (seed.includes("\\")) throw new Error("Backslashes are not supported in installer seeds. Choose another character.");
 
   if (typeof includeTir !== "boolean") throw new Error("Choose whether to include Tir.");
-  if (mode === "Shuffle") return Object.freeze({ ...await generateProfile(seed, includeTir), mode, startPoint, includeTir });
+  if (mode === "Shuffle") return Object.freeze({ ...await generateProfile(seed, includeTir), mode, startPoint, includeTir, startingGear });
 
   let companionIds;
   if (mode === "FixedChosen") {
@@ -187,7 +189,7 @@ export async function generateAdventure(value, { mode = "Shuffle", companions = 
   const heroIds = [TIR_ID, ...companionIds];
   const fingerprint = hex(await sha256Bytes(utf8.encode(FIXED_PROFILE_ID + "\n" + heroIds.join(","))));
   return Object.freeze({
-    seed, mode, startPoint, includeTir: false, fingerprint, profileId: FIXED_PROFILE_ID,
+    seed, mode, startPoint, includeTir: false, startingGear, fingerprint, profileId: FIXED_PROFILE_ID,
     algorithm: mode === "FixedRandom" ? PROFILE_METADATA.algorithm : undefined,
     companionIds: Object.freeze(companionIds),
     heroes: Object.freeze(heroIds.map(id => ROSTER[id]))

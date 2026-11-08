@@ -1,5 +1,5 @@
 STARS OF DESTINY - CHARACTER RANDOMIZER
-Setup guide / Version 0.8.7 / Windows x64
+Setup guide / Version 0.8.12 / Windows x64
 https://suikodenrand.github.io/#generate
 
 WHAT YOU NEED
@@ -12,7 +12,7 @@ INSTALLATION
 1. Close the game and back up your saves and BepInEx\config folder.
 2. If BepInEx is new to you, download the 6.0.0-pre.2 Unity IL2CPP Windows x64 build and extract it beside Suikoden I and II HD Remaster.exe. Launch the game once and close it.
    https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2
-3. Choose a seed, mode, and start point on the website. Select Build installer ZIP.
+3. Choose a seed, mode, starting gear, and start point on the website. Select Build installer ZIP.
 4. Extract the entire ZIP. Keep the configuration file beside StarsOfDestiny-Setup.exe. Open Setup, select the folder containing Suikoden I and II HD Remaster.exe, and follow the prompts. The current installer is unsigned.
 5. Launch Suikoden I and start a New Game.
 
@@ -21,9 +21,10 @@ MODES & START POINT
 - Character Shuffle uses the seed to shuffle combat heroes into story roles. Enable Include Tir in the shuffle to add the protagonist.
 - Fixed Roster uses Tir and the five companions you select.
 - Random Roster uses Tir and five companions drawn from your seed.
+- Balanced starting gear is on by default. Incoming weapon levels and compatible armor match the original story character’s starting gear. Six-hero rosters start with equipment suited to the opening. Runes, stats, and character levels keep their usual behavior. Turn it off to use each hero’s original starting gear.
 - Before Viktor starts in Gregminster after the inn scene. Recruit Viktor to continue.
 
-Seed, roster, and start point settings apply to New Game. Existing randomized saves keep their saved roster and story progress. Keep each randomized save with its matching BepInEx\config backup.
+Seed, roster, starting gear, and start point settings apply to New Game. Existing randomized saves keep their saved roster and story progress. Keep each randomized save with its matching BepInEx\config backup.
 
 BepInEx installation help
 https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html
