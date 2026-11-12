@@ -19,9 +19,9 @@
   <div class="eyebrow">Setup guide</div>
   <h1>Install Stars of Destiny</h1>
   <p class="guide-lead">Set up the character randomizer and start a new adventure in Suikoden I HD Remaster.</p>
-  <div class="guide-meta"><span>Version 0.8.7</span><span>Windows x64</span><span>Suikoden I HD Remaster</span></div>
+  <div class="guide-meta"><span>Version 0.8.14</span><span>Windows x64</span><span>Suikoden I HD Remaster</span></div>
   <div class="guide-actions"><button type="button" onclick="window.print()">Print / save as PDF</button><a href="/assets/guide.txt" download="INSTALL_GUIDE.txt">Download this guide</a><a href="/#generate">Build an installer →</a></div>
-  <p class="print-note">Stars of Destiny - Character Randomizer · Setup guide · Version 0.8.7</p>
+  <p class="print-note">Stars of Destiny - Character Randomizer · Setup guide · Version 0.8.14</p>
   <div class="guide-layout">
     <aside class="guide-index" aria-label="Guide contents"><h2>In this guide</h2><a href="#before-you-start">What you need</a><a href="#installation">Installation</a><a href="#campaigns">Seeds &amp; saved games</a><a href="#scope">Modes &amp; start point</a><a href="#resources">Downloads &amp; links</a></aside>
     <div class="guide-content">
@@ -33,13 +33,13 @@
         <ol class="steps">
           <li><h3>Back up and close the game</h3><p>Close the game and back up your saves and <code>BepInEx\config</code> folder.</p></li>
           <li><h3>Prepare BepInEx</h3><p>Skip this step if BepInEx is already working. Download the <a href="https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2" target="_blank" rel="noopener noreferrer">BepInEx 6.0.0-pre.2 Unity IL2CPP Windows x64 build</a> and extract it beside <code>Suikoden I and II HD Remaster.exe</code>.</p><p>Launch the game once and let the first-run setup finish. Close it, then check that <code>BepInEx\interop\GSD1.dll</code> exists.</p></li>
-          <li><h3>Choose your adventure</h3><p>Enter or roll a seed, then select a game mode and start point. <a href="/#generate">Open the generator →</a></p><p>Choose whether to include a spoiler file, then select <strong>Build installer ZIP</strong>.</p></li>
+          <li><h3>Choose your adventure</h3><p>Enter or roll a seed, then select a game mode, start point, and joining weapon level. <a href="/#generate">Open the generator →</a></p><p>Choose whether to include a spoiler file, then select <strong>Build installer ZIP</strong>.</p></li>
           <li><h3>Extract and install</h3><p>Extract the entire ZIP. Open <code>StarsOfDestiny-Setup.exe</code>, select the folder containing <code>Suikoden I and II HD Remaster.exe</code>, and follow the setup prompts. Keep the generated configuration file beside Setup so it can install your settings. The current installer is unsigned.</p></li>
           <li><h3>Start playing</h3><p>Launch Suikoden I and start a <strong>New Game</strong> to use your selected settings.</p></li>
         </ol>
       </section>
       <section id="campaigns"><h2>Seeds &amp; saved games</h2>
-        <p>Seed, roster, and start point settings apply when you start a New Game. Existing randomized campaigns keep their saved roster and story progress.</p>
+        <p>Seed, roster, start point, and joining weapon level settings apply when you start a New Game. Existing randomized campaigns keep their saved roster and story progress.</p>
         <p>Keep each randomized save with its matching <code>BepInEx\config</code> backup. Ordinary unmodified saves cannot be converted into randomized campaigns. Starting a New Game uses the game’s shared autosave, so keep a manual backup first.</p>
       </section>
       <section id="scope"><span id="what-changes"></span><h2>Game modes &amp; start point</h2>
@@ -49,6 +49,7 @@
           <li><strong>Random roster</strong> includes Tir and five different companions drawn from the seed. The same seed gives the same roster and order.</li>
         </ul>
         <p>Story events determine how many companion slots are active. Ted, Odessa, and non-combat characters are outside the selection pool. Story events, dialogue, and voices follow the original roles. Names, portraits, appearances, and starting combat setups follow the assigned fighters. Some Unite attacks are unavailable when characters have changed.</p>
+        <p><strong>Joining weapon level</strong> defaults to <strong>Match Tir at first join (±3)</strong>: at the first actual party join, use the current weapon level of Tir plus a seeded modifier from −3 to +3 (including 0), clamped to levels 1–16. This is applied once; rejoining and later sharpening preserve earned levels. <strong>Match original character</strong> uses the weapon level of the original story character; <strong>Level 1</strong> starts replacements at weapon level 1. Existing campaigns keep their saved behavior.</p>
         <p>Choose <strong>Before Viktor</strong> with any mode to begin in Gregminster after the inn scene. The protagonist has the Soul Eater and Viktor is waiting to join. Choose <strong>Normal Opening</strong> for the usual start.</p>
       </section>
       <section id="resources"><h2>Downloads &amp; links</h2>

@@ -5,7 +5,7 @@
   <title>Stars of Destiny - Character Randomizer</title>
   <meta name="description" content="Shuffle the cast or pick a six-hero roster in Suikoden I HD Remaster. Choose your starting point and download your setup.">
   <meta name="theme-color" content="#172a35"><link rel="icon" href="/assets/title.jpg" type="image/jpg">
-  <link rel="stylesheet" href="/styles.css?v=0.8.7"><script type="module" src="/js/app.mjs?v=0.8.7"></script>
+  <link rel="stylesheet" href="/styles.css?v=0.8.14"><script type="module" src="/js/app.mjs?v=0.8.14"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -13,7 +13,7 @@
     <a href="#top" class="brand" aria-label="Stars of Destiny - Character Randomizer home"><img src="/assets/title.jpg" alt="" width="34" height="38"><span>STARS OF DESTINY<small>CHARACTER RANDOMIZER</small></span></a>
     <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Toggle navigation">☰</button>
     <nav id="main-nav" aria-label="Main navigation"><a href="#generate">Generate game</a><a href="/guide.html">Setup guide</a><a href="#faq">FAQ</a></nav>
-    <span class="version-badge"><span class="status-dot"></span>VERSION 0.8.7</span>
+    <span class="version-badge"><span class="status-dot"></span>VERSION 0.8.14</span>
   </div></header>
   <main id="main">
     <section class="hero section-wrap" id="top" aria-labelledby="hero-title">
@@ -65,12 +65,21 @@
             </select>
             <p id="start-help" class="field-help">Start in Gregminster after the inn scene, shortly before recruiting Viktor.</p>
           </div>
+          <div class="start-setting">
+            <label class="field-label" for="joining-weapon-level">Joining weapon level</label>
+            <select id="joining-weapon-level" name="joiningWeaponLevel" aria-describedby="joining-weapon-help">
+              <option value="TirVariance">Match Tir at first join (±3)</option>
+              <option value="MatchRole">Match original character</option>
+              <option value="Level1">Level 1</option>
+            </select>
+            <p id="joining-weapon-help" class="field-help">Default: Tir's current weapon level at the replacement's first party join, plus a seeded −3 to +3 (including 0), clamped to 1–16. Applied once in new campaigns; rejoining and later sharpening keep earned levels.</p>
+          </div>
           <div class="pool-setting"><span class="field-label">Always outside the shuffle and companion pools</span><div class="chips"><span>Ted</span><span>Odessa</span><span>Non-combat characters</span></div></div>
           <label class="checkbox-row"><input id="include-spoiler" type="checkbox"><span><strong>Include a spoiler file</strong><small>Includes the shuffle mapping or the six-hero roster, depending on your mode.</small></span></label>
           <div class="form-bottom"><p>These options apply when you choose <strong>New Game</strong>. Existing randomized saves keep their campaign settings.</p><a href="/guide.html#campaigns">Using an existing save →</a></div>
           <noscript><p class="field-error">Enable JavaScript to generate an installer. You can still read the <a href="/guide.html">setup guide</a>.</p></noscript>
         </form>
-        <aside class="run-summary" aria-label="Installer summary"><div class="summary-label"><span aria-hidden="true">✦</span> YOUR ADVENTURE</div><h3 id="summary-mode">Character Shuffle</h3><p class="summary-version">Version 0.8.7</p><dl><div><dt>Game</dt><dd>Suikoden I HD Remaster</dd></div><div><dt>Roster</dt><dd id="summary-pool">75 combat heroes</dd></div><div><dt>Start point</dt><dd id="summary-start">Normal opening</dd></div><div><dt>Platform</dt><dd>Windows x64</dd></div></dl><button class="button build-button" id="build-installer" type="submit" form="generator-form" disabled><span aria-hidden="true">↓</span> Build installer ZIP</button><button type="button" id="copy-seed" class="copy-link">Copy settings link <span aria-hidden="true">↗</span></button><p class="summary-footnote">Includes Windows setup and your selected settings.</p><p id="build-status" role="status" aria-live="polite" class="build-status"></p></aside>
+        <aside class="run-summary" aria-label="Installer summary"><div class="summary-label"><span aria-hidden="true">✦</span> YOUR ADVENTURE</div><h3 id="summary-mode">Character Shuffle</h3><p class="summary-version">Version 0.8.14</p><dl><div><dt>Game</dt><dd>Suikoden I HD Remaster</dd></div><div><dt>Roster</dt><dd id="summary-pool">75 combat heroes</dd></div><div><dt>Start point</dt><dd id="summary-start">Normal opening</dd></div><div><dt>Joining weapons</dt><dd id="summary-weapons">Match Tir at first join (±3)</dd></div><div><dt>Platform</dt><dd>Windows x64</dd></div></dl><button class="button build-button" id="build-installer" type="submit" form="generator-form" disabled><span aria-hidden="true">↓</span> Build installer ZIP</button><button type="button" id="copy-seed" class="copy-link">Copy settings link <span aria-hidden="true">↗</span></button><p class="summary-footnote">Includes Windows setup and your selected settings.</p><p id="build-status" role="status" aria-live="polite" class="build-status"></p></aside>
       </div>
       <div id="download-result" class="download-result" hidden><div><span class="success-icon" aria-hidden="true">✓</span><div><strong>Your installer is ready.</strong><p id="download-summary"></p></div></div><div class="download-actions"><a class="button primary small" id="download-again" href="#">Download ZIP</a><a href="/guide.html#installation">How to install →</a></div></div>
       <details class="mapping-preview" id="mapping-preview"><summary><span><span aria-hidden="true">◈</span> <b id="preview-label">Reveal character mapping</b></span><span class="spoiler-label">SPOILERS <span aria-hidden="true">＋</span></span></summary><div class="mapping-content"><div class="mapping-tools"><div><h3 id="preview-title">Your cast, revealed.</h3><p id="preview-description">Assignments for the selected seed.</p></div><div><label class="sr-only" for="hero-search">Search the character mapping</label><input type="search" id="hero-search" placeholder="Find a hero…"><button type="button" class="secondary-button" id="download-spoiler">Download CSV</button></div></div><div class="table-scroll"><table><thead><tr><th id="preview-left-heading" scope="col">Original character</th><th id="preview-right-heading" scope="col">Replacement character</th></tr></thead><tbody id="mapping-table"></tbody></table></div><p class="field-help" id="mapping-count"></p></div></details>
