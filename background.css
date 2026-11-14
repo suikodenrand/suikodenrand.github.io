@@ -32,7 +32,7 @@
   }
 
   .hero-art img {
-    mix-blend-mode: multiply;
+    mix-blend-mode: normal;
   }
 
   .generator-form,
