@@ -1,0 +1,6491 @@
+{
+  "sourceCommit": "25653141271a71fa0b0d8e2bdaa5ca271244c845",
+  "cases": [
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "fingerprint": "9c0722892caedca6f92b06ac05a5c5f2d610215b3ce24b896987b59d264512cb",
+        "profileId": "combat-avatar-shuffle-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 16,
+            "donorName": "Kasim"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": false
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": true,
+        "companions": []
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "fingerprint": "72da1297e5dab7e385e535d4e01b70fc9cfbe50b993e8dd07af9dbd2d5326a6f",
+        "profileId": "combat-avatar-shuffle-with-tir-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 8,
+            "roleName": "Tir McDohl",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 8,
+            "donorName": "Tir McDohl"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 81,
+            "donorName": "Kirke"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": true
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "FixedChosen",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ]
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "mode": "FixedChosen",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "fingerprint": "21a0604ce641e8a0a69bf061ebeeaad7a3f56b0e3e5b2354706d1c9d7d5f3385",
+        "profileId": "fixed-roster-v1",
+        "companionIds": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 65,
+            "name": "Fu Su Lu",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 37,
+            "name": "Warren",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 102,
+            "name": "Lester",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 40,
+            "name": "Kessler",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "FixedRandom",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "mode": "FixedRandom",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "fingerprint": "8b70786b8eb083050c9c78cb6e6e5a9ab23e435cc4a3ce01c0081cea8142d604",
+        "profileId": "fixed-roster-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "companionIds": [
+          107,
+          22,
+          54,
+          18,
+          26
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 107,
+            "name": "Pesmerga",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 22,
+            "name": "Kage",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 54,
+            "name": "Sarah",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 18,
+            "name": "Fukien",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "fingerprint": "9c0722892caedca6f92b06ac05a5c5f2d610215b3ce24b896987b59d264512cb",
+        "profileId": "combat-avatar-shuffle-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 16,
+            "donorName": "Kasim"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": false
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": true,
+        "companions": []
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "fingerprint": "72da1297e5dab7e385e535d4e01b70fc9cfbe50b993e8dd07af9dbd2d5326a6f",
+        "profileId": "combat-avatar-shuffle-with-tir-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 8,
+            "roleName": "Tir McDohl",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 8,
+            "donorName": "Tir McDohl"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 81,
+            "donorName": "Kirke"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": true
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "FixedChosen",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ]
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "mode": "FixedChosen",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "fingerprint": "21a0604ce641e8a0a69bf061ebeeaad7a3f56b0e3e5b2354706d1c9d7d5f3385",
+        "profileId": "fixed-roster-v1",
+        "companionIds": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 65,
+            "name": "Fu Su Lu",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 37,
+            "name": "Warren",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 102,
+            "name": "Lester",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 40,
+            "name": "Kessler",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "first-adventure",
+      "options": {
+        "mode": "FixedRandom",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "first-adventure",
+        "mode": "FixedRandom",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "fingerprint": "8b70786b8eb083050c9c78cb6e6e5a9ab23e435cc4a3ce01c0081cea8142d604",
+        "profileId": "fixed-roster-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "companionIds": [
+          107,
+          22,
+          54,
+          18,
+          26
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 107,
+            "name": "Pesmerga",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 22,
+            "name": "Kage",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 54,
+            "name": "Sarah",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 18,
+            "name": "Fukien",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "fingerprint": "3a7ac55f5060155b8d8f20727a0d52146edaa3109813dacbacc0a3fe706710b7",
+        "profileId": "combat-avatar-shuffle-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": false
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": true,
+        "companions": []
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "fingerprint": "6e61657e77d97d2414cfff31caf364a44ad7bec9d6da315d583c82ce80ed4524",
+        "profileId": "combat-avatar-shuffle-with-tir-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 8,
+            "roleName": "Tir McDohl",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 8,
+            "donorName": "Tir McDohl"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 52,
+            "donorName": "Morgan"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": true
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "FixedChosen",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ]
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "mode": "FixedChosen",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "fingerprint": "21a0604ce641e8a0a69bf061ebeeaad7a3f56b0e3e5b2354706d1c9d7d5f3385",
+        "profileId": "fixed-roster-v1",
+        "companionIds": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 65,
+            "name": "Fu Su Lu",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 37,
+            "name": "Warren",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 102,
+            "name": "Lester",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 40,
+            "name": "Kessler",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "FixedRandom",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "mode": "FixedRandom",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "fingerprint": "3bee0948667fe70b0e9229a842e975944c92a9dbb50d1a9541acb9b5c417c491",
+        "profileId": "fixed-roster-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "companionIds": [
+          31,
+          76,
+          11,
+          59,
+          2
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 31,
+            "name": "Sydonia",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 76,
+            "name": "Meg",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 11,
+            "name": "Anji",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 59,
+            "name": "Hellion",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 2,
+            "name": "Gremio",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "fingerprint": "3a7ac55f5060155b8d8f20727a0d52146edaa3109813dacbacc0a3fe706710b7",
+        "profileId": "combat-avatar-shuffle-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": false
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": true,
+        "companions": []
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "fingerprint": "6e61657e77d97d2414cfff31caf364a44ad7bec9d6da315d583c82ce80ed4524",
+        "profileId": "combat-avatar-shuffle-with-tir-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 8,
+            "roleName": "Tir McDohl",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 8,
+            "donorName": "Tir McDohl"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 52,
+            "donorName": "Morgan"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": true
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "FixedChosen",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ]
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "mode": "FixedChosen",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "fingerprint": "21a0604ce641e8a0a69bf061ebeeaad7a3f56b0e3e5b2354706d1c9d7d5f3385",
+        "profileId": "fixed-roster-v1",
+        "companionIds": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 65,
+            "name": "Fu Su Lu",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 37,
+            "name": "Warren",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 102,
+            "name": "Lester",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 40,
+            "name": "Kessler",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "agilen-080",
+      "options": {
+        "mode": "FixedRandom",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "agilen-080",
+        "mode": "FixedRandom",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "fingerprint": "3bee0948667fe70b0e9229a842e975944c92a9dbb50d1a9541acb9b5c417c491",
+        "profileId": "fixed-roster-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "companionIds": [
+          31,
+          76,
+          11,
+          59,
+          2
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 31,
+            "name": "Sydonia",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 76,
+            "name": "Meg",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 11,
+            "name": "Anji",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 59,
+            "name": "Hellion",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 2,
+            "name": "Gremio",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "fingerprint": "ba3911996195023c57df940a85ac8f89c8d6edd3a227773412f6cc473f759bab",
+        "profileId": "combat-avatar-shuffle-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 26,
+            "donorName": "Luc"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": false
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": true,
+        "companions": []
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "fingerprint": "ff64de5fd0ecedc6566a2e766f8ef90f810d8f9d752138a5d72b4bbad6d4df7b",
+        "profileId": "combat-avatar-shuffle-with-tir-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 8,
+            "roleName": "Tir McDohl",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 8,
+            "donorName": "Tir McDohl"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 69,
+            "donorName": "Meese"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "Opening",
+        "includeTir": true
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "FixedChosen",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ]
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "mode": "FixedChosen",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "fingerprint": "21a0604ce641e8a0a69bf061ebeeaad7a3f56b0e3e5b2354706d1c9d7d5f3385",
+        "profileId": "fixed-roster-v1",
+        "companionIds": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 65,
+            "name": "Fu Su Lu",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 37,
+            "name": "Warren",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 102,
+            "name": "Lester",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 40,
+            "name": "Kessler",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "FixedRandom",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "mode": "FixedRandom",
+        "startPoint": "Opening",
+        "includeTir": false,
+        "fingerprint": "6254374b09d1c4604465e9d1fb089819241cc4152e6af8dae0b4f10ae8f63bfa",
+        "profileId": "fixed-roster-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "companionIds": [
+          22,
+          29,
+          14,
+          0,
+          55
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 22,
+            "name": "Kage",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 29,
+            "name": "Milia",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 14,
+            "name": "Kuromimi",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 0,
+            "name": "Eileen",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 55,
+            "name": "Fuma",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "fingerprint": "ba3911996195023c57df940a85ac8f89c8d6edd3a227773412f6cc473f759bab",
+        "profileId": "combat-avatar-shuffle-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 69,
+            "donorName": "Meese"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 26,
+            "donorName": "Luc"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": false
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": true,
+        "companions": []
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "fingerprint": "ff64de5fd0ecedc6566a2e766f8ef90f810d8f9d752138a5d72b4bbad6d4df7b",
+        "profileId": "combat-avatar-shuffle-with-tir-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "startPolicy": "donor-live-start-once",
+        "progressionPolicy": "donor-live-start-once-canonical-save-replay-v1",
+        "assignments": [
+          {
+            "roleId": 0,
+            "roleName": "Eileen",
+            "donorId": 36,
+            "donorName": "Valeria"
+          },
+          {
+            "roleId": 1,
+            "roleName": "Cleo",
+            "donorId": 10,
+            "donorName": "Sonya"
+          },
+          {
+            "roleId": 2,
+            "roleName": "Gremio",
+            "donorId": 67,
+            "donorName": "Kamandol"
+          },
+          {
+            "roleId": 3,
+            "roleName": "Camille",
+            "donorId": 37,
+            "donorName": "Warren"
+          },
+          {
+            "roleId": 4,
+            "roleName": "Kirkis",
+            "donorId": 29,
+            "donorName": "Milia"
+          },
+          {
+            "roleId": 5,
+            "roleName": "Mose",
+            "donorId": 19,
+            "donorName": "Futch"
+          },
+          {
+            "roleId": 6,
+            "roleName": "Pahn",
+            "donorId": 55,
+            "donorName": "Fuma"
+          },
+          {
+            "roleId": 7,
+            "roleName": "Luikan",
+            "donorId": 53,
+            "donorName": "Clive"
+          },
+          {
+            "roleId": 8,
+            "roleName": "Tir McDohl",
+            "donorId": 95,
+            "donorName": "Sansuke"
+          },
+          {
+            "roleId": 9,
+            "roleName": "Sylvina",
+            "donorId": 14,
+            "donorName": "Kuromimi"
+          },
+          {
+            "roleId": 10,
+            "roleName": "Sonya",
+            "donorId": 64,
+            "donorName": "Crowley"
+          },
+          {
+            "roleId": 11,
+            "roleName": "Anji",
+            "donorId": 13,
+            "donorName": "Ronnie Bell"
+          },
+          {
+            "roleId": 12,
+            "roleName": "Varkas",
+            "donorId": 42,
+            "donorName": "Griffith"
+          },
+          {
+            "roleId": 13,
+            "roleName": "Ronnie Bell",
+            "donorId": 52,
+            "donorName": "Morgan"
+          },
+          {
+            "roleId": 14,
+            "roleName": "Kuromimi",
+            "donorId": 43,
+            "donorName": "Kanak"
+          },
+          {
+            "roleId": 15,
+            "roleName": "Krin",
+            "donorId": 30,
+            "donorName": "Lepant"
+          },
+          {
+            "roleId": 16,
+            "roleName": "Kasim",
+            "donorId": 35,
+            "donorName": "Viktor"
+          },
+          {
+            "roleId": 17,
+            "roleName": "Flik",
+            "donorId": 70,
+            "donorName": "Maas"
+          },
+          {
+            "roleId": 18,
+            "roleName": "Fukien",
+            "donorId": 2,
+            "donorName": "Gremio"
+          },
+          {
+            "roleId": 19,
+            "roleName": "Futch",
+            "donorId": 73,
+            "donorName": "Blackman"
+          },
+          {
+            "roleId": 20,
+            "roleName": "Gen",
+            "donorId": 26,
+            "donorName": "Luc"
+          },
+          {
+            "roleId": 21,
+            "roleName": "Humphrey",
+            "donorId": 4,
+            "donorName": "Kirkis"
+          },
+          {
+            "roleId": 22,
+            "roleName": "Kage",
+            "donorId": 17,
+            "donorName": "Flik"
+          },
+          {
+            "roleId": 23,
+            "roleName": "Kasumi",
+            "donorId": 107,
+            "donorName": "Pesmerga"
+          },
+          {
+            "roleId": 25,
+            "roleName": "Kwanda Rosman",
+            "donorId": 12,
+            "donorName": "Varkas"
+          },
+          {
+            "roleId": 26,
+            "roleName": "Luc",
+            "donorId": 41,
+            "donorName": "Leonardo"
+          },
+          {
+            "roleId": 28,
+            "roleName": "Milich",
+            "donorId": 61,
+            "donorName": "Mina"
+          },
+          {
+            "roleId": 29,
+            "roleName": "Milia",
+            "donorId": 39,
+            "donorName": "Juppo"
+          },
+          {
+            "roleId": 30,
+            "roleName": "Lepant",
+            "donorId": 71,
+            "donorName": "Mace"
+          },
+          {
+            "roleId": 31,
+            "roleName": "Sydonia",
+            "donorId": 7,
+            "donorName": "Luikan"
+          },
+          {
+            "roleId": 32,
+            "roleName": "Tai Ho",
+            "donorId": 54,
+            "donorName": "Sarah"
+          },
+          {
+            "roleId": 33,
+            "roleName": "Tengaar",
+            "donorId": 76,
+            "donorName": "Meg"
+          },
+          {
+            "roleId": 35,
+            "roleName": "Viktor",
+            "donorId": 32,
+            "donorName": "Tai Ho"
+          },
+          {
+            "roleId": 36,
+            "roleName": "Valeria",
+            "donorId": 40,
+            "donorName": "Kessler"
+          },
+          {
+            "roleId": 37,
+            "roleName": "Warren",
+            "donorId": 66,
+            "donorName": "Eikei"
+          },
+          {
+            "roleId": 38,
+            "roleName": "Yam Koo",
+            "donorId": 65,
+            "donorName": "Fu Su Lu"
+          },
+          {
+            "roleId": 39,
+            "roleName": "Juppo",
+            "donorId": 101,
+            "donorName": "Antonio"
+          },
+          {
+            "roleId": 40,
+            "roleName": "Kessler",
+            "donorId": 51,
+            "donorName": "Rubi"
+          },
+          {
+            "roleId": 41,
+            "roleName": "Leonardo",
+            "donorId": 6,
+            "donorName": "Pahn"
+          },
+          {
+            "roleId": 42,
+            "roleName": "Griffith",
+            "donorId": 5,
+            "donorName": "Mose"
+          },
+          {
+            "roleId": 43,
+            "roleName": "Kanak",
+            "donorId": 11,
+            "donorName": "Anji"
+          },
+          {
+            "roleId": 45,
+            "roleName": "Kimberly",
+            "donorId": 91,
+            "donorName": "Kai"
+          },
+          {
+            "roleId": 47,
+            "roleName": "Lorelai",
+            "donorId": 47,
+            "donorName": "Lorelai"
+          },
+          {
+            "roleId": 48,
+            "roleName": "Alen",
+            "donorId": 9,
+            "donorName": "Sylvina"
+          },
+          {
+            "roleId": 49,
+            "roleName": "Grenshiel",
+            "donorId": 16,
+            "donorName": "Kasim"
+          },
+          {
+            "roleId": 51,
+            "roleName": "Rubi",
+            "donorId": 45,
+            "donorName": "Kimberly"
+          },
+          {
+            "roleId": 52,
+            "roleName": "Morgan",
+            "donorId": 72,
+            "donorName": "Moose"
+          },
+          {
+            "roleId": 53,
+            "roleName": "Clive",
+            "donorId": 20,
+            "donorName": "Gen"
+          },
+          {
+            "roleId": 54,
+            "roleName": "Sarah",
+            "donorId": 48,
+            "donorName": "Alen"
+          },
+          {
+            "roleId": 55,
+            "roleName": "Fuma",
+            "donorId": 31,
+            "donorName": "Sydonia"
+          },
+          {
+            "roleId": 56,
+            "roleName": "Lotte",
+            "donorId": 21,
+            "donorName": "Humphrey"
+          },
+          {
+            "roleId": 59,
+            "roleName": "Hellion",
+            "donorId": 68,
+            "donorName": "Quincy"
+          },
+          {
+            "roleId": 61,
+            "roleName": "Mina",
+            "donorId": 63,
+            "donorName": "Hix"
+          },
+          {
+            "roleId": 62,
+            "roleName": "Sheena",
+            "donorId": 23,
+            "donorName": "Kasumi"
+          },
+          {
+            "roleId": 63,
+            "roleName": "Hix",
+            "donorId": 33,
+            "donorName": "Tengaar"
+          },
+          {
+            "roleId": 64,
+            "roleName": "Crowley",
+            "donorId": 1,
+            "donorName": "Cleo"
+          },
+          {
+            "roleId": 65,
+            "roleName": "Fu Su Lu",
+            "donorId": 102,
+            "donorName": "Lester"
+          },
+          {
+            "roleId": 66,
+            "roleName": "Eikei",
+            "donorId": 0,
+            "donorName": "Eileen"
+          },
+          {
+            "roleId": 67,
+            "roleName": "Kamandol",
+            "donorId": 8,
+            "donorName": "Tir McDohl"
+          },
+          {
+            "roleId": 68,
+            "roleName": "Quincy",
+            "donorId": 25,
+            "donorName": "Kwanda Rosman"
+          },
+          {
+            "roleId": 69,
+            "roleName": "Meese",
+            "donorId": 15,
+            "donorName": "Krin"
+          },
+          {
+            "roleId": 70,
+            "roleName": "Maas",
+            "donorId": 22,
+            "donorName": "Kage"
+          },
+          {
+            "roleId": 71,
+            "roleName": "Mace",
+            "donorId": 62,
+            "donorName": "Sheena"
+          },
+          {
+            "roleId": 72,
+            "roleName": "Moose",
+            "donorId": 81,
+            "donorName": "Kirke"
+          },
+          {
+            "roleId": 73,
+            "roleName": "Blackman",
+            "donorId": 92,
+            "donorName": "Sergei"
+          },
+          {
+            "roleId": 74,
+            "roleName": "Kreutz",
+            "donorId": 38,
+            "donorName": "Yam Koo"
+          },
+          {
+            "roleId": 75,
+            "roleName": "Stallion",
+            "donorId": 56,
+            "donorName": "Lotte"
+          },
+          {
+            "roleId": 76,
+            "roleName": "Meg",
+            "donorId": 74,
+            "donorName": "Kreutz"
+          },
+          {
+            "roleId": 80,
+            "roleName": "Gon",
+            "donorId": 49,
+            "donorName": "Grenshiel"
+          },
+          {
+            "roleId": 81,
+            "roleName": "Kirke",
+            "donorId": 80,
+            "donorName": "Gon"
+          },
+          {
+            "roleId": 91,
+            "roleName": "Kai",
+            "donorId": 75,
+            "donorName": "Stallion"
+          },
+          {
+            "roleId": 92,
+            "roleName": "Sergei",
+            "donorId": 18,
+            "donorName": "Fukien"
+          },
+          {
+            "roleId": 95,
+            "roleName": "Sansuke",
+            "donorId": 3,
+            "donorName": "Camille"
+          },
+          {
+            "roleId": 101,
+            "roleName": "Antonio",
+            "donorId": 28,
+            "donorName": "Milich"
+          },
+          {
+            "roleId": 102,
+            "roleName": "Lester",
+            "donorId": 59,
+            "donorName": "Hellion"
+          },
+          {
+            "roleId": 107,
+            "roleName": "Pesmerga",
+            "donorId": 69,
+            "donorName": "Meese"
+          }
+        ],
+        "mode": "Shuffle",
+        "startPoint": "BeforeViktor",
+        "includeTir": true
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "FixedChosen",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ]
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "mode": "FixedChosen",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "fingerprint": "21a0604ce641e8a0a69bf061ebeeaad7a3f56b0e3e5b2354706d1c9d7d5f3385",
+        "profileId": "fixed-roster-v1",
+        "companionIds": [
+          65,
+          26,
+          37,
+          102,
+          40
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 65,
+            "name": "Fu Su Lu",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 26,
+            "name": "Luc",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 37,
+            "name": "Warren",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 102,
+            "name": "Lester",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 40,
+            "name": "Kessler",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    },
+    {
+      "seed": "Å rune 😺",
+      "options": {
+        "mode": "FixedRandom",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "companions": []
+      },
+      "expected": {
+        "seed": "Å rune 😺",
+        "mode": "FixedRandom",
+        "startPoint": "BeforeViktor",
+        "includeTir": false,
+        "fingerprint": "6254374b09d1c4604465e9d1fb089819241cc4152e6af8dae0b4f10ae8f63bfa",
+        "profileId": "fixed-roster-v1",
+        "algorithm": "sha256-splitmix64-fisher-yates-v1",
+        "companionIds": [
+          22,
+          29,
+          14,
+          0,
+          55
+        ],
+        "heroes": [
+          {
+            "id": 8,
+            "name": "Tir McDohl",
+            "eligible": false,
+            "protected": true
+          },
+          {
+            "id": 22,
+            "name": "Kage",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 29,
+            "name": "Milia",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 14,
+            "name": "Kuromimi",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 0,
+            "name": "Eileen",
+            "eligible": true,
+            "protected": false
+          },
+          {
+            "id": 55,
+            "name": "Fuma",
+            "eligible": true,
+            "protected": false
+          }
+        ]
+      }
+    }
+  ]
+}

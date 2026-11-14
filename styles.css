@@ -31,3 +31,22 @@
 .hero-subtitle{display:block;color:var(--red);font-size:.52em;letter-spacing:-.025em;margin-top:.35em}
 #include-tir-option{padding-top:0;border-top:0}
 @media(max-width:390px){.nav-inner{padding-inline:16px}.brand{font-size:14px}.brand small{font-size:6px;letter-spacing:.18em}}
+
+/* Full release and preset workflow, 0.14.3. */
+.download-section{padding-top:28px;padding-bottom:38px;border-top:1px solid var(--line)}
+.release-download{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;background:#f0f2e9;border:1px solid var(--line);padding:30px;border-radius:4px}
+.release-download h3{font-family:var(--serif);font-size:28px;font-weight:400;margin-bottom:12px}
+.release-download p{font-size:13px;line-height:1.9;color:#566655;max-width:610px}
+.release-download .field-help{font-size:11px;margin-top:10px}
+.release-actions{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;font-size:12px}
+.release-actions .button{width:100%;font-size:12px;justify-content:center}
+.release-links{display:flex;flex-wrap:wrap;gap:16px 28px;margin-top:18px;font-size:11px;color:#526a53}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.feature-grid article{border-top:1px solid var(--line);padding-top:19px}
+.feature-grid h3{font-size:15px;font-weight:500;margin-bottom:12px}
+.feature-grid p{font-size:12px;line-height:1.9;color:#65725e}
+.preview-tag{display:inline-block;font-size:9px;background:#eee7d2;color:#735d31;padding:3px 6px;margin-top:5px;border-radius:3px;vertical-align:middle}
+.generator-section .field-help{color:#62705a;font-size:11px}
+.generator-section .summary-footnote{color:#bfd0c6;font-size:11px;margin-top:8px}
+.generator-section .form-bottom p{margin-bottom:8px}
+@media(max-width:760px){.release-download{grid-template-columns:1fr;padding:24px;gap:22px}.feature-grid{grid-template-columns:1fr;gap:22px}.release-links{gap:12px 20px}.release-download h3{font-size:25px}.release-download p{font-size:12px}}

@@ -1,9 +1,9 @@
-import { COMBAT_POOL, COMPANION_COUNT, generateAdventure, JOINING_WEAPON_LEVELS, MODES, START_POINTS, validateCompanions } from './randomizer-core.mjs?v=0.8.14';
-import { buildInstaller, profileCsv } from './installer-bundle.mjs?v=0.8.14';
+import { COMPANION_COUNT, generateAdventure, MODES, GAMES, getCombatPool, getStartPoints, getStartPointHelp, getProfileMetadata, getJoiningWeaponLevels, validateCompanions } from './randomizer-core.mjs?v=0.14.3';
+import { createLauncherPreset, profileCsv, presetFilename } from './launcher-preset.mjs?v=0.14.3';
+import { settingsUrl, readSettingsUrl } from './settings-links.mjs?v=0.14.3';
 
 const $ = id => document.getElementById(id);
 const modeInputs = [...document.querySelectorAll('input[name="mode"]')];
-const heroesByName = [...COMBAT_POOL].sort((a, b) => a.name.localeCompare(b.name, 'en'));
 const companionSelects = Array.from({ length: COMPANION_COUNT }, (_, index) => {
   const label = document.createElement('label');
   label.className = 'companion-choice';
@@ -13,7 +13,6 @@ const companionSelects = Array.from({ length: COMPANION_COUNT }, (_, index) => {
   select.id = 'companion-' + (index + 1);
   select.setAttribute('aria-describedby', 'companion-help companion-error');
   select.add(new Option('Select a hero', ''));
-  for (const hero of heroesByName) select.add(new Option(hero.name, String(hero.id)));
   label.append(name, select);
   $('companion-selects').append(label);
   return select;
@@ -24,7 +23,9 @@ let building = false;
 let downloadURL = null;
 let debounce;
 let toastTimer;
+let populatedGame = null;
 
+const selectedGame = () => $('game').value;
 const selectedMode = () => modeInputs.find(input => input.checked)?.value ?? 'Shuffle';
 const selectedCompanions = () => companionSelects.map(select => select.value === '' ? NaN : Number(select.value));
 
@@ -35,7 +36,28 @@ function toast(message) {
   toastTimer = setTimeout(() => { $('toast').hidden = true; }, 3500);
 }
 
+function renderGame() {
+  const game = selectedGame();
+  if (populatedGame === game) return;
+  const heroes = [...getCombatPool(game)].sort((a, b) => a.name.localeCompare(b.name, 'en'));
+  for (const select of companionSelects) {
+    select.replaceChildren(new Option('Select a hero', ''));
+    for (const hero of heroes) {
+      const large = game === 'GSD2' && hero.slotCost === 2;
+      const option = new Option((hero.displayName ?? hero.name) + (large ? ' (two slots; Shuffle only)' : ''), String(hero.id));
+      option.dataset.fixedExcluded = String(large);
+      select.add(option);
+    }
+  }
+  $('start-point').replaceChildren(...Object.entries(getStartPoints(game)).map(([id, name]) => new Option(name, id)));
+  $('joining-weapon-level').replaceChildren(...Object.entries(getJoiningWeaponLevels(game)).map(([id, name]) => new Option(name, id)));
+  $('include-tir').checked = false;
+  populatedGame = game;
+}
+
 function renderMode() {
+  renderGame();
+  const game = selectedGame();
   const mode = selectedMode();
   const chosen = mode === 'FixedChosen';
   const fixed = mode !== 'Shuffle';
@@ -46,18 +68,37 @@ function renderMode() {
   companionSelects.forEach((select, index) => {
     select.disabled = !chosen || building;
     for (const option of select.options) {
-      option.disabled = option.value !== '' && selected.some((id, other) => other !== index && id === option.value);
+      option.disabled = option.dataset.fixedExcluded === 'true' || (option.value !== '' && selected.some((id, other) => other !== index && id === option.value));
     }
   });
   $('summary-mode').textContent = MODES[mode];
-  $('summary-pool').textContent = fixed ? 'Tir + five companions'
-    : $('include-tir').checked ? '76 combat heroes' : '75 combat heroes';
-  $('summary-start').textContent = START_POINTS[$('start-point').value];
-  $('summary-weapons').textContent = JOINING_WEAPON_LEVELS[$('joining-weapon-level').value];
+  const hero = game === 'GSD1' ? 'Tir' : 'Your hero';
+  $('summary-game').textContent = GAMES[game];
+  $('summary-version').textContent = 'Runtime version ' + getProfileMetadata(game).pluginVersion;
+  $('summary-pool').textContent = fixed ? hero + ' + five companions'
+    : (getCombatPool(game).length + ($('include-tir').checked ? 1 : 0)) + ' combat heroes';
+  $('summary-start').textContent = getStartPoints(game)[$('start-point').value];
+  $('summary-weapons').textContent = getJoiningWeaponLevels(game)[$('joining-weapon-level').value];
+  $('joining-weapon-help').textContent = `Default: ${game === 'GSD1' ? 'Tir' : 'Riou'}’s current weapon level at first join, plus a seeded −3 to +3 (including a match). Applied once; later sharpening is kept.`;
+  $('fixed-mode-description').textContent = game === 'GSD1' ? 'Choose five companions. Tir fills the sixth slot.' : 'Choose five single-slot companions. Your hero has a reserved slot.';
+  $('random-mode-description').textContent = 'Your seed picks five distinct companions alongside ' + (game === 'GSD1' ? 'Tir.' : 'your hero.');
+  $('include-protagonist-label').textContent = 'Include ' + (game === 'GSD1' ? 'Tir' : 'the protagonist') + ' in the shuffle';
+  $('include-tir-help').textContent = game === 'GSD1'
+    ? 'Experimental. Adds the protagonist and their story role to the pool. Your entered name is preserved.'
+    : 'Adds the player-named hero to the pool. The hero and anyone given the hero’s appearance keep their original stats, equipment and runes. Your entered name is preserved.';
+  $('companion-help').textContent = game === 'GSD1' ? 'Pick five different heroes. Story roles fill from your roster as the party grows.' : 'Pick five different single-slot heroes. Story roles fill from your roster as the party grows.';
+  $('start-help').textContent = getStartPointHelp(game, $('start-point').value);
+  $('formation-help').hidden = game !== 'GSD2';
+  $('formation-help').textContent = fixed
+    ? 'Abizboah, Feather, Siegfried and Rulodia use two formation slots and are available in Character Shuffle only.'
+    : 'Two-slot fighters shuffle among other two-slot fighters, preserving the story’s party formations.';
+  $('pool-exclusions').replaceChildren(...(game === 'GSD1' ? ['Ted', 'Odessa', 'Non-combat characters'] : ['Jowy / special guests', 'Alternate character records', 'Non-combat characters']).map(name => {
+    const span = document.createElement('span'); span.textContent = name; return span;
+  }));
   $('preview-label').textContent = fixed ? 'Reveal your roster' : 'Reveal character mapping';
   $('preview-title').textContent = fixed ? 'Your six heroes.' : 'Your cast, revealed.';
   $('preview-description').textContent = fixed
-    ? 'Tir and the five companions available during your run.'
+    ? (game === 'GSD1' ? 'Tir' : 'Your hero') + ' and the five companions available during your run.'
     : 'Assignments for the selected seed.';
   $('preview-left-heading').textContent = fixed ? 'Roster slot' : 'Original character';
   $('preview-right-heading').textContent = fixed ? 'Hero' : 'Replacement character';
@@ -67,7 +108,7 @@ function renderMapping() {
   const query = $('hero-search').value.trim().toLocaleLowerCase();
   const roster = currentProfile?.heroes;
   const all = roster
-    ? roster.map((hero, index) => [index ? 'Companion ' + index : 'Hero (reserved)', hero.name])
+    ? roster.map((hero, index) => [index ? 'Companion ' + index : 'Hero (reserved)', hero.displayName ?? hero.name])
     : currentProfile?.assignments.map(row => [row.roleName, row.donorName]) ?? [];
   const rows = all.filter(row => row.join(' ').toLocaleLowerCase().includes(query));
   $('mapping-table').replaceChildren(...rows.map(row => {
@@ -104,7 +145,7 @@ async function refreshSettings() {
   const companions = selectedCompanions();
   if (mode === 'FixedChosen') {
     try {
-      validateCompanions(companions);
+      validateCompanions(companions, selectedGame());
     } catch (error) {
       $('companion-error').textContent = error.message;
       $('companion-error').hidden = false;
@@ -114,9 +155,10 @@ async function refreshSettings() {
 
   try {
     const profile = await generateAdventure($('seed').value, {
-      mode, companions, startPoint: $('start-point').value,
-      includeTir: mode === 'Shuffle' && $('include-tir').checked,
-      joiningWeaponLevel: $('joining-weapon-level').value
+      game: selectedGame(),
+      mode, companions, startPoint: $('start-point').value, joiningWeaponLevel: $('joining-weapon-level').value,
+      includeTir: selectedGame() === 'GSD1' && mode === 'Shuffle' && $('include-tir').checked,
+      includeProtagonist: selectedGame() === 'GSD2' && mode === 'Shuffle' && $('include-tir').checked
     });
     if (generation !== settingsGeneration) return;
     currentProfile = profile;
@@ -166,11 +208,10 @@ $('random-seed').addEventListener('click', () => {
   $('seed').value = 'stars-' + [...bits].map(x => x.toString(16).padStart(2, '0')).join('');
   settingsChanged();
 });
-for (const input of [...modeInputs, ...companionSelects, $('start-point'), $('include-tir'), $('joining-weapon-level')]) {
+for (const input of [...modeInputs, ...companionSelects, $('game'), $('start-point'), $('joining-weapon-level'), $('include-tir')]) {
   input.addEventListener('change', settingsChanged);
 }
 $('hero-search').addEventListener('input', renderMapping);
-$('include-spoiler').addEventListener('change', clearResult);
 $('download-spoiler').addEventListener('click', () => {
   if (!currentProfile) return;
   downloadBlob(new Blob([profileCsv(currentProfile)], { type: 'text/csv;charset=utf-8' }),
@@ -179,15 +220,7 @@ $('download-spoiler').addEventListener('click', () => {
 $('copy-seed').addEventListener('click', async () => {
   const profile = currentProfile;
   if (!profile) return;
-  const link = new URL(location.href);
-  link.search = '';
-  link.searchParams.set('seed', profile.seed);
-  if (profile.mode !== 'Shuffle') link.searchParams.set('mode', profile.mode);
-  if (profile.mode === 'FixedChosen') link.searchParams.set('companions', profile.companionIds.join(','));
-  if (profile.includeTir) link.searchParams.set('tir', '1');
-  if (profile.startPoint !== 'Opening') link.searchParams.set('start', profile.startPoint);
-  if (profile.joiningWeaponLevel !== 'TirVariance') link.searchParams.set('weapon', profile.joiningWeaponLevel);
-  link.hash = 'generate';
+  const link = settingsUrl(profile, location.href);
   try {
     await navigator.clipboard.writeText(link.href);
     toast('Settings link copied.');
@@ -207,7 +240,7 @@ $('copy-seed').addEventListener('click', async () => {
 
 function setBuilding(value) {
   building = value;
-  for (const input of [...modeInputs, $('seed'), $('random-seed'), $('include-spoiler'), $('start-point'), $('joining-weapon-level')]) {
+  for (const input of [...modeInputs, $('game'), $('seed'), $('random-seed'), $('start-point'), $('joining-weapon-level')]) {
     input.disabled = value;
   }
   renderMode();
@@ -220,20 +253,17 @@ $('generator-form').addEventListener('submit', async event => {
   if (building || !profile) return;
   setBuilding(true);
   $('download-result').hidden = true;
-  $('build-installer').textContent = 'Preparing your ZIP…';
-  $('build-status').textContent = 'Checking the package files…';
+  $('build-installer').textContent = 'Preparing preset…';
+  $('build-status').textContent = 'Validating your settings…';
   try {
-    const result = await buildInstaller({
-      profile,
-      includeSpoiler: $('include-spoiler').checked,
-      onProgress: progress => { $('build-status').textContent = `Preparing your download… ${progress.percent}%`; }
-    });
+    const preset = await createLauncherPreset(profile);
+    const result = { blob: new Blob([JSON.stringify(preset, null, 2) + '\n'], { type: 'application/json' }), filename: presetFilename(profile) };
     if (downloadURL) URL.revokeObjectURL(downloadURL);
     downloadURL = URL.createObjectURL(result.blob);
     $('download-again').href = downloadURL;
     $('download-again').download = result.filename;
-    const modeLabel = MODES[profile.mode] + (profile.includeTir ? ' · Tir included' : '');
-    $('download-summary').textContent = `${modeLabel} · ${START_POINTS[profile.startPoint]} · Weapons: ${JOINING_WEAPON_LEVELS[profile.joiningWeaponLevel]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
+    const modeLabel = MODES[profile.mode] + (profile.includeTir ? ' · Tir included' : profile.includeProtagonist ? ' · Protagonist included' : '');
+    $('download-summary').textContent = `${GAMES[profile.game ?? 'GSD1']} · ${modeLabel} · ${getStartPoints(profile.game ?? 'GSD1')[profile.startPoint]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
     $('download-result').hidden = false;
     $('build-status').textContent = 'Your download is ready.';
     const click = document.createElement('a');
@@ -243,12 +273,12 @@ $('generator-form').addEventListener('submit', async event => {
     click.click();
     click.remove();
     $('download-result').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    toast('Installer ready. Extract the ZIP and open StarsOfDestiny-Setup.exe.');
+    toast('Preset ready. In the launcher, choose Load settings… then Apply settings.');
   } catch (error) {
-    $('build-status').textContent = 'Could not prepare the installer: ' + (error.message || 'Please try again.');
+    $('build-status').textContent = 'Could not prepare the preset: ' + (error.message || 'Please try again.');
   } finally {
     setBuilding(false);
-    $('build-installer').innerHTML = '<span aria-hidden="true">↓</span> Build installer ZIP';
+    $('build-installer').innerHTML = 'Download settings preset ↓';
   }
 });
 
@@ -264,15 +294,19 @@ $('main-nav').addEventListener('click', event => {
   }
 });
 
-const params = new URL(location.href).searchParams;
-if (params.has('seed')) $('seed').value = params.get('seed');
-const linkedMode = modeInputs.find(input => input.value === params.get('mode'));
-if (linkedMode) linkedMode.checked = true;
-if (Object.hasOwn(START_POINTS, params.get('start'))) $('start-point').value = params.get('start');
-$('joining-weapon-level').value = Object.hasOwn(JOINING_WEAPON_LEVELS, params.get('weapon')) ? params.get('weapon') : 'TirVariance';
-$('include-tir').checked = params.get('tir') === '1';
-if (selectedMode() === 'FixedChosen') {
-  const ids = (params.get('companions') ?? '').split(',');
-  if (ids.length === COMPANION_COUNT) companionSelects.forEach((select, index) => { select.value = ids[index]; });
+try {
+  const linked = readSettingsUrl(location.href);
+  $('game').value = linked.game;
+  renderGame();
+  if (linked.seed !== undefined) $('seed').value = linked.seed;
+  modeInputs.find(input => input.value === linked.mode).checked = true;
+  $('start-point').value = linked.startPoint;
+  $('joining-weapon-level').value = linked.joiningWeaponLevel;
+  $('include-tir').checked = linked.includeTir || linked.includeProtagonist;
+  if (linked.companionStrings.length === COMPANION_COUNT) companionSelects.forEach((select, index) => { select.value = linked.companionStrings[index]; });
+  refreshSettings();
+} catch (error) {
+  renderMode();
+  $('build-status').textContent = error.message;
+  syncButtons();
 }
-refreshSettings();

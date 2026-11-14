@@ -1,0 +1,30 @@
+STARS OF DESTINY - CHARACTER RANDOMIZER
+Setup guide / Version 0.8.14 / Windows x64
+https://suikodenrand.github.io/#generate
+
+WHAT YOU NEED
+
+- A Windows 64-bit copy of Suikoden I & II HD Remaster.
+- BepInEx 6 for Unity IL2CPP, Windows x64, installed in the game folder.
+
+INSTALLATION
+
+1. Close the game and back up your saves and BepInEx\config folder.
+2. If BepInEx is new to you, download the 6.0.0-pre.2 Unity IL2CPP Windows x64 build and extract it beside Suikoden I and II HD Remaster.exe. Launch the game once and close it.
+   https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2
+3. Choose a seed, mode, start point, and joining weapon level on the website. Select Build installer ZIP.
+4. Extract the entire ZIP. Keep the configuration file beside StarsOfDestiny-Setup.exe. Open Setup, select the folder containing Suikoden I and II HD Remaster.exe, and follow the prompts. The current installer is unsigned.
+5. Launch Suikoden I and start a New Game.
+
+MODES & START POINT
+
+- Character Shuffle uses the seed to shuffle combat heroes into story roles. Enable Include Tir in the shuffle to add the protagonist.
+- Fixed Roster uses Tir and the five companions you select.
+- Random Roster uses Tir and five companions drawn from your seed.
+- Before Viktor starts in Gregminster after the inn scene. Recruit Viktor to continue.
+- Joining weapon level defaults to Match Tir at first join (±3): at the first actual party join, use the current weapon level of Tir plus a seeded modifier from -3 to +3 (including 0), clamped to levels 1-16. Applied once; rejoining and later sharpening preserve earned levels. Match original character and Level 1 remain available.
+
+Seed, roster, start point, and joining weapon level settings apply to New Game. Existing campaigns keep their saved joining weapon behavior. Existing randomized saves keep their saved roster and story progress. Keep each randomized save with its matching BepInEx\config backup.
+
+BepInEx installation help
+https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html

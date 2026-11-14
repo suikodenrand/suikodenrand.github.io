@@ -5,6 +5,7 @@
  * Tests compare complete mappings and fingerprints with the actual C# Core.
  */
 import { sha256Bytes } from "./sha256.mjs";
+import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.3";
 
 const NAMES = Object.freeze([
   "Eileen", "Cleo", "Gremio", "Camille", "Kirkis", "Mose", "Pahn", "Luikan", "Tir McDohl",
@@ -31,7 +32,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.8.14",
+  pluginVersion: "0.14.3",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",
@@ -112,7 +113,7 @@ function stableRandom(initialHash) {
   };
 }
 
-function fingerprintBytes(seed, roleIds, donors, profileId) {
+function fingerprintBytes(seed, roleIds, donors, profileId, metadata = PROFILE_METADATA) {
   const result = [];
   const int32 = value => {
     const bytes = new Uint8Array(4);
@@ -126,11 +127,11 @@ function fingerprintBytes(seed, roleIds, donors, profileId) {
     result.push(length, ...bytes);
   };
   string(profileId);
-  int32(PROFILE_METADATA.version);
-  string(PROFILE_METADATA.algorithm);
+  int32(metadata.version);
+  string(metadata.algorithm);
   string(seed);
-  string(PROFILE_METADATA.startPolicy);
-  string(PROFILE_METADATA.progressionPolicy);
+  string(metadata.startPolicy);
+  string(metadata.progressionPolicy);
   int32(roleIds.length);
   roleIds.forEach((role, index) => { int32(role); int32(donors[index]); });
   return new Uint8Array(result);
@@ -161,14 +162,14 @@ export async function generateProfile(value, includeTir = false) {
   });
 }
 
-export function validateCompanions(ids) {
+function validateS1Companions(ids) {
   if (!Array.isArray(ids) || ids.length !== COMPANION_COUNT || new Set(ids).size !== COMPANION_COUNT
       || ids.some(id => !ROLE_SET.has(id))) {
     throw new Error("Choose five distinct combat heroes. Tir is already included.");
   }
 }
 
-export async function generateAdventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening", includeTir = false, joiningWeaponLevel = "TirVariance" } = {}) {
+async function generateS1Adventure(value, { mode = "Shuffle", companions = [], startPoint = "Opening", includeTir = false, joiningWeaponLevel = "TirVariance" } = {}) {
   if (!Object.hasOwn(MODES, mode)) throw new Error("Choose a roster mode.");
   if (!Object.hasOwn(START_POINTS, startPoint)) throw new Error("Choose a start point.");
   if (!Object.hasOwn(JOINING_WEAPON_LEVELS, joiningWeaponLevel)) throw new Error("Choose a joining weapon level.");
@@ -180,7 +181,7 @@ export async function generateAdventure(value, { mode = "Shuffle", companions = 
 
   let companionIds;
   if (mode === "FixedChosen") {
-    validateCompanions(companions);
+    validateS1Companions(companions);
     companionIds = [...companions];
   } else {
     const shuffle = await generateProfile(seed);
@@ -194,4 +195,32 @@ export async function generateAdventure(value, { mode = "Shuffle", companions = 
     companionIds: Object.freeze(companionIds),
     heroes: Object.freeze(heroIds.map(id => ROSTER[id]))
   });
+}
+
+
+export const GAMES = Object.freeze({ GSD1: "Suikoden I HD Remaster", GSD2: "Suikoden II HD Remaster" });
+const S2_WEAPONS = Object.freeze({ RiouVariance: "Match Riou at first join (±3)", MatchRole: "Match original character", Level1: "Level 1" });
+const gsd2 = createGsd2Generators({ normalizeSeed, stableRandom, fingerprintBytes, utf8, hex });
+function checkedGame(game = "GSD1") {
+  if (!Object.hasOwn(GAMES, game)) throw new Error("Choose Suikoden I or II.");
+  return game;
+}
+export function getGameRoster(game = "GSD1") { return checkedGame(game) === "GSD2" ? GSD2_ROSTER : ROSTER; }
+export function getCombatPool(game = "GSD1") { return checkedGame(game) === "GSD2" ? GSD2_COMBAT_POOL : COMBAT_POOL; }
+export function getStartPoints(game = "GSD1") { return checkedGame(game) === "GSD2" ? GSD2_START_POINTS : START_POINTS; }
+export function getStartPointHelp(game = "GSD1", startPoint = "Opening") {
+  checkedGame(game);
+  if (!Object.hasOwn(getStartPoints(game), startPoint)) throw new Error("Choose a start point for this game.");
+  return game === "GSD2" && startPoint === "ViktorCamp" ? GSD2_CAMP_START_HELP
+    : game === "GSD1" && startPoint === "BeforeViktor" ? "Start at the prepared Gregminster checkpoint before Viktor joins." : "Play the normal opening.";
+}
+export function getProfileMetadata(game = "GSD1") { return checkedGame(game) === "GSD2" ? GSD2_METADATA : PROFILE_METADATA; }
+export function getJoiningWeaponLevels(game = "GSD1") { return checkedGame(game) === "GSD2" ? S2_WEAPONS : JOINING_WEAPON_LEVELS; }
+export function validateCompanions(ids, game = "GSD1") { return checkedGame(game) === "GSD2" ? gsd2.validateCompanions(ids) : validateS1Companions(ids); }
+export async function generateAdventure(value, options = {}) {
+  const game = checkedGame(options.game ?? "GSD1");
+  const joiningWeaponLevel = options.joiningWeaponLevel === undefined ? (game === "GSD2" ? "RiouVariance" : "TirVariance") : options.joiningWeaponLevel;
+  if (!Object.hasOwn(getJoiningWeaponLevels(game), joiningWeaponLevel)) throw new Error("Choose a joining weapon level for this game.");
+  return game === "GSD2" ? Object.freeze({ ...await gsd2.generateAdventure(value, options), joiningWeaponLevel })
+    : generateS1Adventure(value, { ...options, joiningWeaponLevel });
 }

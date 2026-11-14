@@ -1,0 +1,597 @@
+{
+  "schema": "stars-of-destiny-full-preview-verification-v1",
+  "packageVersion": "0.14.3",
+  "createdUtc": "2026-11-14T04:50:04.696046+00:00",
+  "installerName": "Stars-of-Destiny-0.14.3-Nexus-Setup.exe",
+  "installerSha256": "eafedf9ef41549b0530a55e91d611c8a72fb1d1f9507242c106a0e238e045c8a",
+  "installerBytes": 60527182,
+  "payloadManifestSha256": "c83fabc1bcea31b3f1f66766695c40b20aa3faa929007e27e26e24b16fe71edc",
+  "payloadFilesVerified": 1026,
+  "runtimePayloadMatchesManagedVerification": true,
+  "sourcePackaging": "extracted-folders",
+  "sourceExtraction": {
+    "schema": "stars-extracted-upstream-sources-v1",
+    "status": "passed",
+    "version": "0.14.3",
+    "checkedUtc": "2026-11-14T04:23:38.731064+00:00",
+    "extractedFileCount": 478,
+    "sourceTrees": [
+      {
+        "originalArchive": "Source/BepInEx-source-5362580.zip",
+        "originalArchiveSha256": "ed21ca48a9738cf07fbb95f0a791475f96c95af6fef24c7143f3f4c456e4cd3a",
+        "upstream": "https://github.com/BepInEx/BepInEx",
+        "revision": "53625800b86f6c68751445248260edf0b27a71c2",
+        "extractedDirectory": "Source/BepInEx-source-5362580",
+        "strippedArchiveRoot": "BepInEx-53625800b86f6c68751445248260edf0b27a71c2",
+        "fileCount": 159
+      },
+      {
+        "originalArchive": "Source/Il2CppInterop-source-56bf1da.zip",
+        "originalArchiveSha256": "c54614d3e0200ecf977645b4f4420ca5be1d1640a7750a9ef4643f4cbe2654f8",
+        "upstream": "https://github.com/BepInEx/Il2CppInterop",
+        "revision": "56bf1dadede34de71f5a8f5812e7063ff553c90b",
+        "extractedDirectory": "Source/Il2CppInterop-source-56bf1da",
+        "strippedArchiveRoot": "Il2CppInterop-56bf1dadede34de71f5a8f5812e7063ff553c90b",
+        "fileCount": 264
+      },
+      {
+        "originalArchive": "Source/UnityDoorstop-source-v4.3.0.zip",
+        "originalArchiveSha256": "63a7364d13b82c18e646efb5504f0b9bda64650450632f85ac43622f981334ac",
+        "upstream": "https://github.com/NeighTools/UnityDoorstop",
+        "revision": "v4.3.0",
+        "extractedDirectory": "Source/UnityDoorstop-source-v4.3.0",
+        "strippedArchiveRoot": "UnityDoorstop-4.3.0",
+        "fileCount": 55
+      }
+    ],
+    "allExtractedBytesVerified": true,
+    "retainedNoticeFilesUnchanged": 26,
+    "modifiedMetadata": [
+      "Third-party notices.txt",
+      "source-manifest.json"
+    ],
+    "removedClonedArchives": [
+      "Source/BepInEx-source-5362580.zip",
+      "Source/Il2CppInterop-source-56bf1da.zip",
+      "Source/UnityDoorstop-source-v4.3.0.zip"
+    ],
+    "noArchiveFilesInLicenses": true,
+    "originalInputsUnchanged": true,
+    "installerInvalidPaths": [],
+    "maximumLicensesRelativePathLength": 130,
+    "longestSourcePath": "Source/Il2CppInterop-source-56bf1da/Il2CppInterop.Runtime/Injection/Hooks/MetadataCache_GetTypeInfoFromTypeDefinitionIndex_Hook.cs",
+    "licenseFiles": 506,
+    "licenseManifestSha256": "e96d152c60f1af4de4281e0f4018c70af2ab781cdc1bbffd6a924f169d89f52b",
+    "liveGameModified": false,
+    "websitePublished": false
+  },
+  "compilerVerification": {
+    "status": "passed",
+    "installer": "<build-workspace>\\outputs\\stars-of-destiny-nexus-0.14.3\\Stars-of-Destiny-0.14.3-Nexus-Setup.exe",
+    "installerSha256": "eafedf9ef41549b0530a55e91d611c8a72fb1d1f9507242c106a0e238e045c8a",
+    "bytes": 60527182,
+    "compilerInputFilesVerified": 1541,
+    "compilerMaximumInputPathLength": 227,
+    "sourcePayloadUnchanged": true,
+    "liveGameModified": false,
+    "websitePublished": false
+  },
+  "packageDelta": {
+    "status": "passed",
+    "version": "0.14.3",
+    "oldStageFiles": 591,
+    "newStageFiles": 1541,
+    "unchangedRuntimePluginLauncherDefaultFiles": 509,
+    "allRuntimePluginLauncherDefaultBytesUnchanged": true,
+    "freshDefaultsUnchanged": true,
+    "sourceFilesVerifiedAgainstOriginalArchives": 478,
+    "extractedCopiesVerified": 956,
+    "sourceArchivesRemoved": [
+      "Game Files/StarsOfDestiny Setup/Licenses/Source/BepInEx-source-5362580.zip",
+      "Game Files/StarsOfDestiny Setup/Licenses/Source/Il2CppInterop-source-56bf1da.zip",
+      "Game Files/StarsOfDestiny Setup/Licenses/Source/UnityDoorstop-source-v4.3.0.zip",
+      "Licenses/Source/BepInEx-source-5362580.zip",
+      "Licenses/Source/Il2CppInterop-source-56bf1da.zip",
+      "Licenses/Source/UnityDoorstop-source-v4.3.0.zip"
+    ],
+    "addedExtractedFiles": 956,
+    "changedMetadataAndPackagingFiles": [
+      "Build information.txt",
+      "Game Files/StarsOfDestiny Setup/Install.ps1",
+      "Game Files/StarsOfDestiny Setup/Licenses/Third-party notices.txt",
+      "Game Files/StarsOfDestiny Setup/Licenses/source-manifest.json",
+      "Install.ps1",
+      "Licenses/Third-party notices.txt",
+      "Licenses/source-manifest.json",
+      "payload-manifest.json"
+    ],
+    "unexpectedDifferences": [],
+    "noArchiveFilesInStagedPackage": true,
+    "payloadEntriesVerified": 1026,
+    "websitePublished": false,
+    "liveGameModified": false
+  },
+  "independentPackagingAudit": {
+    "schema": "stars-nexus143-independent-packaging-audit-v1",
+    "status": "passed",
+    "findings": [],
+    "checkedUtc": "2026-11-14T04:39:38.255271+00:00",
+    "reviewer": "independent child agent nexus143_audit",
+    "verifiedReceiptPathsAndHashes": [
+      {
+        "path": "Install.ps1",
+        "sha256": "ccc7e29bdd393218319f7c265f67f9cd8761212b61c800fb96bb6bbc6b4375bd"
+      },
+      {
+        "path": "Restore.ps1",
+        "sha256": "a449c4df1ec123768e15851f5528981a565cdd16a0fe35c5ab73ca90a7f34887"
+      },
+      {
+        "path": "Restore.cmd",
+        "sha256": "787d11882bbc2d9c68645312e09ff338bb62f84cf6cea4dc8377d3f83b68c1e4"
+      },
+      {
+        "path": "StarsOfDestiny.Full.nsi",
+        "sha256": "3dcb858d970507533ac2ee1e6bba4f1817b19cf2edc6a7d66f0a6963ff344d7e"
+      },
+      {
+        "path": "build-package.py",
+        "sha256": "380fe88c1f278769e5ba2607e3e0d708c6a424cb04dee6aa92272c15a018615f"
+      },
+      {
+        "path": "compile-short-stage.py",
+        "sha256": "68f3cde5777b042098264204361abd20f268ef49f30f10bb1b0b13b10edc5f28"
+      },
+      {
+        "path": "defaults/agilen.starsofdestiny.cfg",
+        "sha256": "a58e058e395d557bba9057aa1f5e556ab4c1952d72b45902c28c24984a2536e9"
+      },
+      {
+        "path": "defaults/agilen.suikoden.recruitment_randomizer.cfg",
+        "sha256": "5a473439bcb7083af8b5f0e993e111a9233b79c0645a35b6a049402b2116c70a"
+      },
+      {
+        "path": "defaults/agilen.suikoden1.battle-preview.cfg",
+        "sha256": "e25c66b7398652fd44e895b4022efcd7578ee75f558572b0c660041f6ddd514d"
+      },
+      {
+        "path": "defaults/agilen.suikoden2.recruitment_randomizer.cfg",
+        "sha256": "996fc1f32be3eb3b63470840663364c6e765a33515fca4f8111c6b10fa1af07e"
+      },
+      {
+        "path": "defaults/d3xMachina.suikoden_fix.cfg",
+        "sha256": "898d79e0a0e759930737e8c11d1643aac070b47fba54627afaadbc89f638e168"
+      },
+      {
+        "path": "launcher-verification.json",
+        "sha256": "9eb8fe9b305342b763a4df451737c843f7b4e5810db9ad0ce8ae97edffa2cc3c"
+      }
+    ],
+    "unchangedAgainstOriginal0143": [
+      "Restore.ps1",
+      "Restore.cmd",
+      "StarsOfDestiny.Full.nsi",
+      "defaults/agilen.starsofdestiny.cfg",
+      "defaults/agilen.suikoden.recruitment_randomizer.cfg",
+      "defaults/agilen.suikoden1.battle-preview.cfg",
+      "defaults/agilen.suikoden2.recruitment_randomizer.cfg",
+      "defaults/d3xMachina.suikoden_fix.cfg"
+    ],
+    "exactExtractedSourceFilesIndependentlyByteVerified": 478,
+    "extractedLicenseFiles": 506,
+    "nestedArchivesInLicenses": 0,
+    "sourceExtractionReceipt": {
+      "path": "source-extraction-verification.json",
+      "sha256": "61910f05e61b4813d79c8e141bbc65eae0b22b347b63f8177c8019e55eb13dcf"
+    },
+    "installChange": {
+      "sha256": "ccc7e29bdd393218319f7c265f67f9cd8761212b61c800fb96bb6bbc6b4375bd",
+      "onlyOriginalDiff": "Adds the three exact legacy source ZIPs to the existing guarded transactional retirement plan; no other install behavior changed.",
+      "retiredTargets": [
+        "StarsOfDestiny Setup/Licenses/Source/BepInEx-source-5362580.zip",
+        "StarsOfDestiny Setup/Licenses/Source/Il2CppInterop-source-56bf1da.zip",
+        "StarsOfDestiny Setup/Licenses/Source/UnityDoorstop-source-v4.3.0.zip"
+      ],
+      "originalBytesJournaledAndRestorable": true,
+      "fixtureVerification": "Pending current frozen-EXE suite; this audit does not claim runtime success."
+    },
+    "shortCompileStage": {
+      "path": "compile-short-stage.py",
+      "sha256": "68f3cde5777b042098264204361abd20f268ef49f30f10bb1b0b13b10edc5f28",
+      "review": "Build-only unique resolved TEMP child. Full copied file/hash map compared with verified stage; all NSIS source paths must be below 260. Argument-list compiler invocation. Recursive cleanup restricted to the exact resolved child under TEMP with symlink/junction rejection.",
+      "changesRuntimePayload": false
+    },
+    "longPathHostProbes": [
+      {
+        "path": "actual-winps64-path-probe.json",
+        "sha256": "cf3ecb0d2cf6cc4a351ee13caf168ad02758b00393565c66d2724a5cd0ec14e6"
+      },
+      {
+        "path": "actual-winps32-path-probe.json",
+        "sha256": "11134a757411884458b194bb1d2b6b067180a5a124f48364111084bcb33d5339"
+      }
+    ],
+    "longPathHostProbeResult": "Actual 64-bit and 32-bit Windows PowerShell 5.1 passed .NET/cmdlet file operations through 409 characters without switches; does not assert NSIS compiler long-path support.",
+    "liveGameModified": false,
+    "websitePublished": false,
+    "frozenFixtureDriver": {
+      "path": "test-nsis.py",
+      "sha256": "6bda68d8229614f8bf16c8b8feb1c554c491cc9f5e7216a739876de6c10df27f"
+    }
+  },
+  "components": {
+    "randomizer": "0.14.3",
+    "launcher": "1.0.3",
+    "bepInEx": "6.0.0-be.697",
+    "suikodenFix": "1.5.2b",
+    "optionalS1Atb": "0.10.1",
+    "launcherRuntime": "10.0.14"
+  },
+  "defaults": {
+    "characterShuffle": true,
+    "dialogue": true,
+    "shuffledUnites": true,
+    "s1Atb": false,
+    "s1AtbInstalled": false,
+    "s1Treasure": false,
+    "f6View": "Hidden",
+    "s1JoiningWeaponLevel": "TirVariance",
+    "s2JoiningWeaponLevel": "RiouVariance"
+  },
+  "qualification": {
+    "schema": "stars-full-nsis-qualification-v1",
+    "packageVersion": "0.14.3",
+    "checkedUtc": "2026-11-14T04:48:53.583145+00:00",
+    "installer": "<build-workspace>\\outputs\\stars-of-destiny-nexus-0.14.3\\Stars-of-Destiny-0.14.3-Nexus-Setup.exe",
+    "installerSha256": "eafedf9ef41549b0530a55e91d611c8a72fb1d1f9507242c106a0e238e045c8a",
+    "manifestSha256": "c83fabc1bcea31b3f1f66766695c40b20aa3faa929007e27e26e24b16fe71edc",
+    "payloadFiles": 1026,
+    "count": 24,
+    "checks": [
+      "Explicit /S /D target with spaces and ampersand: preflight made no target writes",
+      "Default install matched 1024 required payload hashes, omitted ATB, preserved saves/mappings/plugins, and hid F6",
+      "Identical default repeat preserved file bytes and timestamps",
+      "Fresh /ATB=1 install matched all 1026 payload hashes, kept ATB disabled, and preserved saved data",
+      "Identical selected-ATB repeat preserved file bytes and timestamps",
+      "Upgrade retained existing configs/preferences/saves, backed up replaced DLLs, and retired canonical legacy S2",
+      "Durable installed restore helper performed readonly preflight and recovered exact previous DLLs and all three retired source ZIPs",
+      "Explicit /ATB=1 installed optional ATB with fresh activation disabled",
+      "Default optional deselection preserved existing ATB and its config without changes",
+      "Duplicate randomizer: rejected with no target changes",
+      "Renamed randomizer: rejected with no target changes",
+      "Duplicate ATB: rejected with no target changes",
+      "Renamed ATB: rejected with no target changes",
+      "Duplicate Fix: rejected with no target changes",
+      "Embedded old randomizer: rejected with no target changes",
+      "Locked game executable with pending update: rejected with no target changes",
+      "Locked final-host failure restored preceding changes to exact original bytes and timestamps",
+      "Restore refused a changed installed file without writing",
+      "Different BepInEx loader: rejected with no target changes",
+      "Missing game assembly: rejected with no target changes",
+      "Unsupported game build: rejected with no target changes",
+      "Readonly source GameAssembly.dll remained unchanged; all executed target paths were marked disposable workspace fixtures",
+      "Fresh optional installation matched all 1026 hashes; installed Restore.cmd preflight made no writes",
+      "Fresh installed Restore.cmd returned success, removed its own helpers and every added component, and restored exact baseline non-backup files/timestamps"
+    ],
+    "sourceArchivesAbsentFromActiveInstall": true,
+    "legacySourceArchivesBackupRestoreVerified": true,
+    "driverSha256": "6bda68d8229614f8bf16c8b8feb1c554c491cc9f5e7216a739876de6c10df27f",
+    "scope": "Exact production NSIS executable executed on marked disposable workspace fixtures only. No live installation or fresh game boot claimed.",
+    "nativeGameplayTested": false,
+    "liveGameModified": false,
+    "phases": [
+      {
+        "name": "main",
+        "count": 22,
+        "driverSha256": "6bda68d8229614f8bf16c8b8feb1c554c491cc9f5e7216a739876de6c10df27f"
+      },
+      {
+        "name": "fresh-cmd-undo",
+        "count": 2,
+        "driverSha256": "6bda68d8229614f8bf16c8b8feb1c554c491cc9f5e7216a739876de6c10df27f"
+      }
+    ]
+  },
+  "launcherChecks": 30,
+  "runtimeVerification": {
+    "status": "passed",
+    "version": "0.14.3",
+    "tests": [
+      {
+        "name": "S2 linked runtime",
+        "count": 48,
+        "passed": true
+      },
+      {
+        "name": "S1 linked runtime regression",
+        "count": 90,
+        "passed": true
+      },
+      {
+        "name": "Compiled unified-host PE contracts",
+        "count": 29,
+        "passed": true
+      }
+    ],
+    "files": [
+      {
+        "path": "BepInEx/plugins/SuikodenRandomizer/SuikodenRandomizer.dll",
+        "sha256": "ba993cf03c2407f43c8602265a00b27beb28bccaab2ac7e6a069199a9fbf7c87",
+        "bytes": 1253376
+      },
+      {
+        "path": "BepInEx/plugins/SuikodenRandomizer/SuikodenRandomizer.Core.dll",
+        "sha256": "0ecc72748f848dc7c116375bb0ad63d2ca0b9869f5fd6d6fbc7f2bb897c96dac",
+        "bytes": 204288
+      },
+      {
+        "path": "BepInEx/plugins/SuikodenRandomizer/SuikodenRandomizer.Shared.dll",
+        "sha256": "a222e8fdd604ba038b36295e7eac09ae7e637503bb5f246a9ebf36b96324b75a",
+        "bytes": 14848
+      },
+      {
+        "path": "BepInEx/plugins/SuikodenRandomizer/SuikodenRandomizer.Suikoden2.Core.dll",
+        "sha256": "ec57741be645193f4367fd5ac55d20e11ddfea2093dbb2e1f270280494fb7da5",
+        "bytes": 25088
+      }
+    ],
+    "sources": [
+      {
+        "path": "src/SuikodenRandomizer.Suikoden2Plugin/Gsd2Runtime.cs",
+        "sha256": "541fb75fdddea0695a5d3f89747e076ad6b8dfa33d76169523f23d39cc763b14"
+      },
+      {
+        "path": "src/SuikodenRandomizer.Suikoden2Plugin/Gsd2Plugin.cs",
+        "sha256": "ea27e0229cd96437094e0904bf98c099730a4b3141230533fea9015d965051d4"
+      },
+      {
+        "path": "src/SuikodenRandomizer.Unified/LegacyPluginFacades.cs",
+        "sha256": "2042b41f3164e242ead8c21cc4d801bb71e5c64ebec8422cf3addbd07f7884e3"
+      }
+    ],
+    "s2RuntimeReceiptSha256": "270c52a9524aeddb0fd2598d6bbc5af4a6cf66f448d2262577b4e468e1e4a029",
+    "scope": {
+      "status": "passed",
+      "untouchedGroups": [
+        "src/SuikodenRandomizer.AvatarPlugin",
+        "src/SuikodenRandomizer.Dialogue",
+        "src/SuikodenRandomizer.S1BattlePreview",
+        "src/SuikodenRandomizer.Core",
+        "src/SuikodenRandomizer.Suikoden2.Core"
+      ],
+      "metadataChecks": 29,
+      "productionBuildPassed": true,
+      "s1RegressionPassed": true,
+      "websitePublished": false,
+      "liveInstallationChanged": false
+    },
+    "metadata": {
+      "schemaVersion": 2,
+      "status": "passed",
+      "checks": {
+        "combined assembly version 0.14.3": true,
+        "exactly one BepInEx bootstrap": true,
+        "BepInEx bootstrap retains GUID and version 0.14.3": true,
+        "exactly one BasePlugin subclass": true,
+        "exactly one Unity frame/UI component": true,
+        "standalone UI drivers excluded": true,
+        "both engine runtimes included": true,
+        "separate core identities and shared router library": true,
+        "both native games use distinct interop references": true,
+        "no standalone S2 plugin dependency": true,
+        "dialogue gate compiled into the unified assembly": true,
+        "no separate dialogue DLL dependency": true,
+        "exactly two embedded English dialogue catalog resources": true,
+        "embedded catalog matches verified source bytes for StarsOfDestiny.Dialogue.GSD1.en.json": true,
+        "embedded catalog matches verified source bytes for StarsOfDestiny.Dialogue.GSD2.en.json": true,
+        "no broad PatchAll call in combined assembly": true,
+        "one explicit patch-class dispatcher": true,
+        "engine and dialogue installers share the one dispatcher": true,
+        "one component registration": true,
+        "one F6 consumer": true,
+        "one OnGUI method": true,
+        "both explicit patch namespaces present": true,
+        "exactly twelve allowed declarative dialogue patch classes": true,
+        "declarative patches stay in exact engine namespaces or the dialogue allowlist": true,
+        "both engine patch sets included": true,
+        "ownership checks compiled into both engines": true,
+        "suspension calls compiled into host": true,
+        "ownership does not depend on Unity's active battle scene": true,
+        "host uses native game selection and both loaded roots": true
+      },
+      "checksPassed": 29,
+      "assemblySha256": "ba993cf03c2407f43c8602265a00b27beb28bccaab2ac7e6a069199a9fbf7c87",
+      "assemblyVersion": "0.14.3.0",
+      "pluginClasses": [
+        "SuikodenRandomizer.Unified.UnifiedPlugin"
+      ],
+      "patchClassCounts": {
+        "GSD2": 34,
+        "GSD1": 35,
+        "Dialogue": 12
+      },
+      "dialoguePatchClassCounts": {
+        "GSD1": 7,
+        "GSD2": 4,
+        "Shared": 1
+      },
+      "embeddedDialogueCatalogs": [
+        {
+          "name": "StarsOfDestiny.Dialogue.GSD1.en.json",
+          "bytes": 347063,
+          "sha256": "2173a8c93274ace217bb6f67242fc12cb025e9627df9ab1f5b9312409f4808af",
+          "expectedSha256": "2173a8c93274ace217bb6f67242fc12cb025e9627df9ab1f5b9312409f4808af",
+          "sourcePath": null
+        },
+        {
+          "name": "StarsOfDestiny.Dialogue.GSD2.en.json",
+          "bytes": 524901,
+          "sha256": "3035772bda11419d851373d65b0a26438013d5ed4fe5b794f18139258062467e",
+          "expectedSha256": "3035772bda11419d851373d65b0a26438013d5ed4fe5b794f18139258062467e",
+          "sourcePath": null
+        }
+      ],
+      "targetCodeExecuted": false,
+      "scope": "Read-only PE metadata/CIL audit; no game/native assemblies loaded as executable code."
+    },
+    "sourceReview": {
+      "schema": "stars-riou-variance-independent-source-review-v1",
+      "status": "passed",
+      "version": "0.14.3",
+      "checkedUtc": "2026-11-14T01:18:30.590282+00:00",
+      "findings": [],
+      "sources": [
+        {
+          "path": "src/SuikodenRandomizer.Suikoden2Plugin/Gsd2Runtime.cs",
+          "sha256": "541fb75fdddea0695a5d3f89747e076ad6b8dfa33d76169523f23d39cc763b14"
+        },
+        {
+          "path": "src/SuikodenRandomizer.Suikoden2Plugin/Gsd2Plugin.cs",
+          "sha256": "ea27e0229cd96437094e0904bf98c099730a4b3141230533fea9015d965051d4"
+        },
+        {
+          "path": "src/SuikodenRandomizer.Unified/LegacyPluginFacades.cs",
+          "sha256": "2042b41f3164e242ead8c21cc4d801bb71e5c64ebec8422cf3addbd07f7884e3"
+        },
+        {
+          "path": "src/StarsOfDestiny.Launcher.Core/SettingsCatalog.cs",
+          "sha256": "5ea95e11c39a2cd3025e4ba011ae878ffe74bf44879248a7d66c3847cf6c1b34"
+        },
+        {
+          "path": "src/StarsOfDestiny.Launcher.Core/SettingsWorkspace.cs",
+          "sha256": "049638f8d735e8c9cb8f719f2659ff4c85504f9252af663d3e8ed34db6be6d0b"
+        },
+        {
+          "path": "src/StarsOfDestiny.Launcher.Core/GameInstallation.cs",
+          "sha256": "6513950db1b1d7d14bb2227004586384cb4204e35c189e028a040125050d6d42"
+        },
+        {
+          "path": "src/StarsOfDestiny.Launcher/MainForm.cs",
+          "sha256": "744fd31e1607562369f9f6f3869663650975ba9161b1b39ea832202f6ddacd73"
+        },
+        {
+          "path": "src/StarsOfDestiny.Launcher/MainForm.Presets.cs",
+          "sha256": "5622db791a654c9fd7e154c2a688d4bce93f83501b10c3613b4607d709eb6382"
+        },
+        {
+          "path": "src/SuikodenRandomizer.Core/Suikoden2/Gsd2CharacterCatalog.cs",
+          "sha256": "f3bc8de3107d73fed93a0085d437d95f7e94df94f6ae74f2b0a2d8d04bbac1e3"
+        }
+      ],
+      "checks": [
+        "Canonical Riou is ID1 and KeepCanonical protects role1 and donor1 combat metadata, so Shuffle permutation cannot replace the reference weapon row.",
+        "Initial resident Shuffle weapons take one Riou reference before any joining-weapon writes; later residents normalize only buki_lv in place, with pointer/state verification and rollback.",
+        "Fixed rosters capture current canonical Riou before assignment/replacement and initialize only previously unused fighters at first assignment.",
+        "Normal weapon levels clamp to1..16, natural weapons retain0 and protected story/protagonist loadouts stay native.",
+        "Seed/profile/role-or-fixed/donor SHA256 stream uses rejection sampling for unbiased seven-value offsets and does not advance unrelated RNG.",
+        "Committed initialization history prevents rejoin/reload resets; unused Shuffle/fixed fighters remain eligible for the current Riou reference on their later first join.",
+        "Old Donor/MatchRole/Level1 saved policies ignore the new config default and retain stored sharpening. Resident missing-history Riou saves are rejected rather than reinitialized.",
+        "BeginSave flushes pending first-join initialization before recording policy/history; markers commit only after verified native changes/publication.",
+        "Preset/advanced edits are staged and Apply funnels through SaveChanges; RiouVariance host version0.14.3 requirement is checked before config writes and again before commit.",
+        "Launcher defaults/choices are game-specific, existing MatchRole/Level1 values remain valid, and title versions now come from assembly metadata."
+      ],
+      "resolvedFindings": [
+        {
+          "file": "src/StarsOfDestiny.Launcher/MainForm.cs",
+          "description": "Hardcoded1.0.2 title was replaced by assembly-derived version and launcher agent reran actual title checks."
+        }
+      ],
+      "productionSourceEditsByReviewer": false,
+      "nativeGameplayPerformed": false,
+      "websiteModified": false
+    },
+    "nativeGameBooted": false,
+    "liveGameModified": false,
+    "websitePublished": false
+  },
+  "sourceReview": {
+    "status": "passed",
+    "findings": [],
+    "reviewedSources": [
+      {
+        "path": "Install.ps1",
+        "sha256": "ccc7e29bdd393218319f7c265f67f9cd8761212b61c800fb96bb6bbc6b4375bd"
+      },
+      {
+        "path": "Restore.ps1",
+        "sha256": "a449c4df1ec123768e15851f5528981a565cdd16a0fe35c5ab73ca90a7f34887"
+      },
+      {
+        "path": "Restore.cmd",
+        "sha256": "787d11882bbc2d9c68645312e09ff338bb62f84cf6cea4dc8377d3f83b68c1e4"
+      },
+      {
+        "path": "StarsOfDestiny.Full.nsi",
+        "sha256": "3dcb858d970507533ac2ee1e6bba4f1817b19cf2edc6a7d66f0a6963ff344d7e"
+      },
+      {
+        "path": "build-package.py",
+        "sha256": "380fe88c1f278769e5ba2607e3e0d708c6a424cb04dee6aa92272c15a018615f"
+      },
+      {
+        "path": "compile-short-stage.py",
+        "sha256": "68f3cde5777b042098264204361abd20f268ef49f30f10bb1b0b13b10edc5f28"
+      }
+    ],
+    "defaults": [
+      {
+        "path": "defaults/agilen.starsofdestiny.cfg",
+        "sha256": "a58e058e395d557bba9057aa1f5e556ab4c1952d72b45902c28c24984a2536e9"
+      },
+      {
+        "path": "defaults/agilen.suikoden.recruitment_randomizer.cfg",
+        "sha256": "5a473439bcb7083af8b5f0e993e111a9233b79c0645a35b6a049402b2116c70a"
+      },
+      {
+        "path": "defaults/agilen.suikoden1.battle-preview.cfg",
+        "sha256": "e25c66b7398652fd44e895b4022efcd7578ee75f558572b0c660041f6ddd514d"
+      },
+      {
+        "path": "defaults/agilen.suikoden2.recruitment_randomizer.cfg",
+        "sha256": "996fc1f32be3eb3b63470840663364c6e765a33515fca4f8111c6b10fa1af07e"
+      },
+      {
+        "path": "defaults/d3xMachina.suikoden_fix.cfg",
+        "sha256": "898d79e0a0e759930737e8c11d1643aac070b47fba54627afaadbc89f638e168"
+      }
+    ],
+    "launcher": {
+      "receipt": "launcher-verification.json",
+      "sha256": "9eb8fe9b305342b763a4df451737c843f7b4e5810db9ad0ce8ae97edffa2cc3c"
+    },
+    "checks": [
+      "Pinned0.14.3 gameplayDLLs and1.0.3 launcher preserved",
+      "478 extracted upstream source files byte-verified",
+      "Source archive paths retired only from active managed support folder and transactionally backed up",
+      "No nested archives accepted in staged package",
+      "Supported game hash, namespace, backup, rollback and restore guards retained",
+      "ATB remains optional with fresh activation off",
+      "Exact source folders remain inside existing support target allowlist"
+    ],
+    "independentAudit": {
+      "status": "passed",
+      "receipt": "independent-packaging-audit.json",
+      "sha256": "0d87b8271302bc451f7ced34ac5fa25e1b223aee50f4d4d73d32e9b46d4942ad",
+      "reviewer": "independent child agent nexus143_audit",
+      "findings": []
+    }
+  },
+  "installerUi": {
+    "status": "not-performed",
+    "installerSha256": "eafedf9ef41549b0530a55e91d611c8a72fb1d1f9507242c106a0e238e045c8a",
+    "finalVisualCheckCompleted": false,
+    "reason": "No desktop interaction was used for this build; the exact EXE was qualified noninteractively."
+  },
+  "restoreSelfRemovalVerified": true,
+  "restoreWrapperSha256": "787d11882bbc2d9c68645312e09ff338bb62f84cf6cea4dc8377d3f83b68c1e4",
+  "freshNativeGameBootTested": false,
+  "liveGameModified": false,
+  "websitePublished": false,
+  "limitations": [
+    "First BepInEx launch needs internet for Unity reference libraries.",
+    "Existing settings are preserved; fresh defaults do not overwrite them.",
+    "S1 ATB remains experimental and requires disabling shuffled S1 Unites.",
+    "The exact full installer was qualified on disposable fixtures; no native game boot is claimed.",
+    "Riou-based joining weapons have managed regression coverage; native first-join playtesting remains pending."
+  ]
+}

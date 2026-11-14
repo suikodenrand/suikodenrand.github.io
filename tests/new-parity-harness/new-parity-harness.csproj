@@ -1,0 +1,5 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup><ItemGroup>
+<Reference Include="SuikodenRandomizer.Core"><HintPath>../../../../../outputs/stars-of-destiny-nexus-0.14.3/Stars-of-Destiny-0.14.3-Nexus-Windows/Game Files/BepInEx/plugins/SuikodenRandomizer/SuikodenRandomizer.Core.dll</HintPath></Reference>
+<Reference Include="SuikodenRandomizer.Suikoden2.Core"><HintPath>../../../../../outputs/stars-of-destiny-nexus-0.14.3/Stars-of-Destiny-0.14.3-Nexus-Windows/Game Files/BepInEx/plugins/SuikodenRandomizer/SuikodenRandomizer.Suikoden2.Core.dll</HintPath></Reference>
+<Compile Include="../../../repos/suikodenrando/src/StarsOfDestiny.Launcher.Core/IniDocument.cs" Link="IniDocument.cs" />
+</ItemGroup></Project>

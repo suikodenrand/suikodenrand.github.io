@@ -1,30 +1,109 @@
-STARS OF DESTINY - CHARACTER RANDOMIZER
-Setup guide / Version 0.8.14 / Windows x64
-https://suikodenrand.github.io/#generate
+STARS OF DESTINY 0.14.3 - SETUP GUIDE
+Suikoden I & II HD Remaster | Steam | Windows x64
+https://suikodenrand.github.io/
+
+DOWNLOADS
+Full installer:
+https://suikodenrand.github.io/release/0.14.3/Stars-of-Destiny-0.14.3-Nexus-Setup.exe
+Full ZIP with offline instructions, notices and extracted source folders:
+https://suikodenrand.github.io/release/0.14.3/Stars-of-Destiny-0.14.3-Nexus-Windows.zip
 
 WHAT YOU NEED
+Your own Steam copy of the game on Windows x64. BepInEx 6 IL2CPP x64,
+Suikoden Fix, the combined randomizer, launcher and private .NET runtimes
+are included. No separate loader, SDK or compiler is required. The first
+BepInEx launch needs internet to download Unity reference libraries.
 
-- A Windows 64-bit copy of Suikoden I & II HD Remaster.
-- BepInEx 6 for Unity IL2CPP, Windows x64, installed in the game folder.
+INSTALL
+1. Close the game and launcher. Back up Save and BepInEx/config together,
+   outside the game directory. Keep both folders paired for each campaign.
+2. Run Stars-of-Destiny-0.14.3-Nexus-Setup.exe. If using the ZIP, extract it
+   first. Select the folder containing Suikoden I and II HD Remaster.exe
+   and GameAssembly.dll (Steam > Manage > Browse local files).
+3. Leave Experimental S1 ATB (installed disabled) unchecked for ordinary
+   turn-based combat. Installing the optional component does not enable it.
+4. Open Stars of Destiny Preview from the current user's Start Menu, or
+   <game>/StarsOfDestiny Launcher/StarsOfDestiny.Launcher.exe.
+5. Choose S1 or S2, seed and options. With the game closed, click Apply
+   settings or Save & launch game.
+6. Keep Steam and internet access available while BepInEx downloads its
+   Unity references and generates interop. Wait for the title screen.
+7. Choose the matching game and start New Game. F6 starts hidden; press F6
+   to cycle Full, Compact and Hidden text views.
 
-INSTALLATION
+WEBSITE SETTINGS PRESETS
+The website settings builder exports a JSON preset for the selected game's
+basic campaign options. In the launcher, click Load settings..., select the
+JSON, choose the relevant game, review it and click Apply settings or
+Save & launch game. Then start New Game. Downloading or loading a preset
+alone does not apply it. The full installer does not import a loose CFG
+placed beside its EXE. Use the launcher for additional feature settings.
 
-1. Close the game and back up your saves and BepInEx\config folder.
-2. If BepInEx is new to you, download the 6.0.0-pre.2 Unity IL2CPP Windows x64 build and extract it beside Suikoden I and II HD Remaster.exe. Launch the game once and close it.
-   https://github.com/BepInEx/BepInEx/releases/tag/v6.0.0-pre.2
-3. Choose a seed, mode, start point, and joining weapon level on the website. Select Build installer ZIP.
-4. Extract the entire ZIP. Keep the configuration file beside StarsOfDestiny-Setup.exe. Open Setup, select the folder containing Suikoden I and II HD Remaster.exe, and follow the prompts. The current installer is unsigned.
-5. Launch Suikoden I and start a New Game.
+MODES AND STARTS
+Both games offer Character Shuffle, a fixed roster with five chosen
+companions beside the protagonist, and a seeded random fixed roster.
+Protagonist shuffle is optional. Story progression controls active party
+slots; native recruitment requirements stay unchanged.
+Normal opening is the fresh default. S1 can start before Viktor joins at
+the Gregminster checkpoint; S2 can start in Viktor's camp before the chores.
+S1 joining weapons default to Tir's current level +/-3 at first party join.
+S2 defaults to Riou's current level +/-3, including a possible exact match.
+Both offer Match original character and Level 1. Earned sharpening is kept
+on later rejoining and save/load; S2 natural weapons remain level 0.
 
-MODES & START POINT
+SAVES AND UPGRADES
+S1 and S2 seeds, settings and campaign bindings are separate. New campaign
+choices apply to New Game. Existing randomized saves retain their own seed,
+cast and weapon policy. Do not delete bindings to force different settings.
+Starting New Game may replace autosave: keep a manual and paired backup.
+Setup preserves existing settings, saves, bindings and unrelated plugins.
+Fresh defaults do not replace existing choices. An upgrade may retain an
+older S2 weapon setting; choose Riou +/-3 for new campaigns if wanted.
 
-- Character Shuffle uses the seed to shuffle combat heroes into story roles. Enable Include Tir in the shuffle to add the protagonist.
-- Fixed Roster uses Tir and the five companions you select.
-- Random Roster uses Tir and five companions drawn from your seed.
-- Before Viktor starts in Gregminster after the inn scene. Recruit Viktor to continue.
-- Joining weapon level defaults to Match Tir at first join (±3): at the first actual party join, use the current weapon level of Tir plus a seeded modifier from -3 to +3 (including 0), clamped to levels 1-16. Applied once; rejoining and later sharpening preserve earned levels. Match original character and Level 1 remain available.
+OPTIONAL S1 FEATURES
+Treasure shuffle is experimental and off by default. Enable the global
+allowance and new/unbound-policy option in Treasure. A saved disabled chest
+policy needs reset through the selected-save manager, then a reload. The
+manager keeps a backup. Protected recruitment items and special rewards
+stay original. Disabling the allowance pauses the shuffle; earned items and
+open chest flags are retained. S2 chest shuffle is not included.
 
-Seed, roster, start point, and joining weapon level settings apply to New Game. Existing campaigns keep their saved joining weapon behavior. Existing randomized saves keep their saved roster and story progress. Keep each randomized save with its matching BepInEx\config backup.
+ATB is optional and experimental. Install its component, then disable S1's
+Enable shuffled-character Unite attacks in Battle & ATB before enabling
+ATB. Apply and relaunch. ATB and shuffled Unites cannot run together. To
+return to standard combat, turn ATB off and re-enable Unites if wanted.
+S2 retains native turn-based combat. Nuzlocke is not included.
 
-BepInEx installation help
-https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html
+TROUBLESHOOTING
+- First launch may take several minutes. Check BepInEx/LogOutput.log for
+  download/interop progress or errors. Do not add another loader.
+- No F6 panel is the default: focus the game and press F6. Visible modes
+  show text without a black box. Startup view is configurable in launcher.
+- For a seed/start that did not change, load the preset and apply it with
+  the game closed, then start New Game in the selected game. Existing
+  campaigns keep their bound seed and policy.
+- Setup loader conflicts or duplicate plugins require the reported files
+  to be checked. A renamed folder under BepInEx/plugins still loads DLLs.
+  Keep backups and move duplicate copies outside the plugins tree. Do not
+  mix BepInEx core/runtime versions or bypass supported-build checks.
+- Keep the whole StarsOfDestiny Launcher folder together. It contains its
+  own runtime; do not copy only the EXE or mix it with BepInEx's runtime.
+
+UNDO INSTALLATION
+Close the game and launcher. Open the Start Menu support shortcut or
+<game>/StarsOfDestiny Setup and run Restore.cmd. Supply the FullPreview-*
+transaction backup path printed by setup under <game>/SRR-Backups. It checks
+current files before undoing one installation transaction. Follow any
+conflict message or undo later transactions first. This does not rewind
+game progress or undo later settings edits. Restore a campaign from its
+paired Save and BepInEx/config backup. Launcher config backups are under
+BepInEx/config/StarsOfDestiny.Launcher/backups.
+
+TESTING AND SUPPORT
+Representative shuffled parties, Unites, saves and F6 were tested in-game;
+every scripted encounter and Unite combination has not been played through.
+The package passed 24 installer checks, including upgrade and restore.
+Native first-join testing of the new Riou weapon option is pending.
+For an issue, include S1/S2, versions, seed, mode, scene and LogOutput.log.
+Patch notes: https://suikodenrand.github.io/changelog.html
+Full guide: https://suikodenrand.github.io/guide.html
