@@ -26,6 +26,13 @@
     background: rgba(255, 254, 250, 0.94);
   }
 
+  .site-header .brand img {
+    height: auto;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+
   .hero-copy {
     background: linear-gradient(90deg, rgba(250, 247, 235, 0.94), rgba(250, 247, 235, 0.78) 85%, transparent);
     border-radius: 8px;
