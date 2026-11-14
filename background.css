@@ -1,0 +1,77 @@
+/* Shared parchment artwork. Screen-only so printed guides stay clean. */
+@media screen {
+  html {
+    background: #f5eedc;
+  }
+
+  body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    background: transparent;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(rgba(247, 245, 239, 0.16), rgba(247, 245, 239, 0.16)),
+      url("/assets/parchment-map.png") center / cover no-repeat;
+  }
+
+  .site-header {
+    background: rgba(255, 254, 250, 0.94);
+  }
+
+  .hero-copy {
+    background: linear-gradient(90deg, rgba(250, 247, 235, 0.94), rgba(250, 247, 235, 0.78) 85%, transparent);
+    border-radius: 8px;
+  }
+
+  .hero-art img {
+    mix-blend-mode: multiply;
+  }
+
+  .generator-form,
+  .mapping-preview {
+    background: rgba(255, 254, 250, 0.94);
+  }
+
+  .release-download {
+    background: rgba(245, 246, 236, 0.93);
+  }
+
+  .download-section > .section-heading,
+  .generator-section > .section-heading {
+    background: rgba(250, 247, 235, 0.94);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+
+  .how-section,
+  footer {
+    background: rgba(239, 240, 231, 0.88);
+  }
+
+  .scope-section,
+  .resources-section {
+    background: rgba(250, 247, 235, 0.88);
+  }
+
+  main.guide-shell {
+    background: rgba(255, 253, 245, 0.95);
+    border: 1px solid rgba(174, 154, 112, 0.22);
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(72, 55, 27, 0.06);
+  }
+}
+
+@media screen and (min-width: 761px) {
+  .hero-art {
+    min-width: 0;
+    margin-right: 0;
+  }
+}
