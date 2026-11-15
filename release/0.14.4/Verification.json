@@ -1,72 +1,132 @@
 {
   "status": "passed",
-  "version": "0.14.4",
-  "sourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
-  "sourceUrl": "https://github.com/suikodenrand/suikodenrando/commit/9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+  "packageVersion": "0.14.4",
+  "packageRevision": "r2",
+  "launcherVersion": "1.0.5",
+  "sourceCommit": "b5ad9e38486e56e0a853f0c1a94042f34d2ee52a",
+  "runtimeSourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+  "launcherSourceCommit": "c45431e68926b863d5914c8cb7d11c70f589359d",
+  "originalManualSha256": "cdfdd33b8ceb2cc5c2304f4879700e26306b73ceec3fb5b18d87a6fd198f17b5",
+  "publishedLauncherSha256": "951a19f4b9a0014a9a1a5aec05e17a0c702a98bff0492512ec4ad2dcbdfcfcf3",
+  "manualFiles": 301,
+  "manualManifestRecords": 297,
+  "manualInternalChecksums": 300,
+  "unchangedGameplayFixAtbConfigFiles": 11,
+  "unchangedLauncherPayloadFiles": 276,
+  "setupStageFiles": 1029,
+  "setupManifestRecords": 1027,
+  "upstreamCorrespondingSourceFiles": 478,
+  "freshDefaults": "unchanged; chest and ATB disabled; MatchRole; TirVariance/RiouVariance; F6 Hidden",
+  "optionalAtb": "manual dormant; setup component optional; config disabled",
+  "checks": [
+    "Pinned input SHA-256",
+    "ZIP paths, CRC, duplicates and no nested archives",
+    "Every manual member equals stage; complete internal manifest/checksums/file list",
+    "Game/Fix/ATB/default payload exactly equals published 0.14.4",
+    "Complete launcher payload exactly equals published launcher 1.0.5",
+    "Setup payload manifest, corresponding-source hashes/sizes and defaults",
+    "Actual setup EXE statically extracted: every payload member matches stage; NSIS extras separately identified"
+  ],
+  "limitation": "Static packaging verification only. No native gameplay, live installation, save reload or antivirus/platform approval is claimed.",
+  "actualInstallerExtraction": {
+    "status": "passed",
+    "extractedPayloadFiles": 1029,
+    "payloadRoot": "$PLUGINSDIR/FullPackage",
+    "excludedNsisPluginAndUiFiles": [
+      {
+        "path": "$PLUGINSDIR/modern-wizard.bmp",
+        "sha256": "3ad2dc318056d0a2024af1804ea741146cfc18cc404649a44610cbf8b2056cf2",
+        "nsisMatches": [
+          "Contrib/Graphics/Wizard/win.bmp"
+        ]
+      },
+      {
+        "path": "$PLUGINSDIR/nsDialogs.dll",
+        "sha256": "b1350f487692057c8ffde75dcc55287a52a3272240d4d4912f24464b27551fc0",
+        "nsisMatches": [
+          "Plugins/x86-unicode/nsDialogs.dll"
+        ]
+      },
+      {
+        "path": "$PLUGINSDIR/nsExec.dll",
+        "sha256": "b121689861b506dbc9c3797b49bc8a90d555cb7db58cb959165cc758391c00bb",
+        "nsisMatches": [
+          "Plugins/x86-unicode/nsExec.dll"
+        ]
+      },
+      {
+        "path": "$PLUGINSDIR/System.dll",
+        "sha256": "8b4c47c4cf5e76ec57dd5a050d5acd832a0d532ee875d7b44f6cdaf68f90d37c",
+        "nsisMatches": [
+          "Plugins/x86-unicode/System.dll"
+        ]
+      }
+    ],
+    "installerExecuted": false
+  },
   "artifacts": [
     {
-      "name": "Stars-of-Destiny-0.14.4-Setup.exe",
-      "sha256": "42d4c073cb713dde6d8c7e24c16d64b2b824e43839674a54775f6032f9456ff2",
-      "bytes": 60534802
+      "name": "Stars-of-Destiny-0.14.4-r2-Mod-Only-Windows.zip",
+      "bytes": 52168602,
+      "sha256": "a74cdf9c9d237bc272fdb627334cfc559f40428b61ddb51012242799a27815ae"
     },
     {
-      "name": "Stars-of-Destiny-0.14.4-Mod-Only-Windows.zip",
-      "sha256": "cdfdd33b8ceb2cc5c2304f4879700e26306b73ceec3fb5b18d87a6fd198f17b5",
-      "bytes": 52167067
+      "name": "Stars-of-Destiny-0.14.4-r2-Setup.exe",
+      "bytes": 60544880,
+      "sha256": "b3a53dfb88c5cf75263e88b05c5e37a2c579f808a0bca0def2f3e39b979e9b8d"
     }
   ],
+  "schema": "stars-of-destiny-release-qualification-v2",
+  "version": "0.14.4",
+  "distributionVersion": "0.14.4-r2",
+  "sourceUrl": "https://github.com/suikodenrand/suikodenrando/commit/b5ad9e38486e56e0a853f0c1a94042f34d2ee52a",
+  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.4",
   "validation": {
-    "compiledHostPeChecks": 38,
-    "nativeSignatureChecks": 165,
-    "actualReleasedLauncherAtbChecks": 5,
-    "packageMetadataChecks": 6,
-    "setupPayloadHashes": 1026,
-    "manualZipEntries": 301,
-    "manualInternalChecksums": 300,
-    "correspondingSourceFiles": 478,
-    "installerFullSuite": {
+    "packageMetadataChecks": 20,
+    "launcherSettingsChecks": 30,
+    "launcherFormChecks": 12,
+    "actualPublishedLauncherAtbChecks": 5
+  },
+  "nativeCoverage": "S1 Meg replacing Viktor first join and subsequent native save observed; native reload not observed. Broader S1/S2 join/rejoin coverage remains limited.",
+  "historicalEvidence": {
+    "scope": "Retained from the original 0.14.4/launcher 1.0.4 release; not a new r2 installer or import-harness execution.",
+    "runtimeManagedChecks": {
+      "s1": 109,
+      "s2": 69,
+      "s2Dialogue": 13,
+      "launcherSettings": 25,
+      "launcherUi": 11,
+      "implementationUnchangedSinceTestedCommit": "a2b626323295bee8446b844186236dcba6ee790e"
+    },
+    "originalInstallerFullSuite": {
       "checks": 24,
       "sourceCommit": "5afa850bb33d7630d1941a0c546be35943503afb",
       "installerSha256": "ce501681179a11d19ccb2cff69628f6ec01c499d537c4060ceebfc36b658d867",
       "scope": "Full production-EXE fixture suite before the license-only merge."
     },
-    "finalInstallerSmoke": {
+    "originalFinalInstallerSmoke": {
       "checks": 2,
       "installerSha256": "42d4c073cb713dde6d8c7e24c16d64b2b824e43839674a54775f6032f9456ff2",
       "sourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
       "scope": "Exact final EXE fresh install, restore preflight, actual installed Restore.cmd undo and self-removal."
-    }
-  },
-  "preservedUserLicense": {
-    "copyright": "Copyright (c) 2026 Agilen",
-    "onlyMergedChangeSinceFullSuite": [
-      "LICENSE"
-    ]
-  },
-  "freshJoiningEquipment": "MatchRole",
-  "manualBepInExExternal": true,
-  "atbOptionalAndDisabled": true,
-  "nativeCoverage": "S1 Meg replacing Viktor first join and subsequent native save observed; native reload not observed. Broader S1/S2 join/rejoin coverage remains limited.",
-  "gameModifiedByReleaseQualification": false,
-  "newNativeGameBootPerformed": false,
-  "antivirusApprovalClaimed": false,
-  "schema": "stars-of-destiny-release-qualification-v1",
-  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.4",
-  "runtimeManagedChecks": {
-    "s1": 109,
-    "s2": 69,
-    "s2Dialogue": 13,
-    "launcherSettings": 25,
-    "launcherUi": 11,
-    "implementationUnchangedSinceTestedCommit": "a2b626323295bee8446b844186236dcba6ee790e"
+    },
+    "launcherImportCases": {
+      "checks": 18,
+      "launcherVersion": "1.0.4"
+    },
+    "unchangedBrowserProfileChecks": 9,
+    "profileVectorsFromFinalCores": 152,
+    "historicalS1Goldens": 24
   },
   "websiteChecks": {
-    "profileVectorsFromFinalCores": 152,
-    "historicalS1Goldens": 24,
-    "gameModePolicyCombinations": 144,
-    "automatedBrowserModuleChecks": 9,
-    "actualPackagedLauncherImportCases": 18,
+    "staticHtmlDocuments": 4,
+    "localLinksAndFragments": "passed",
+    "generatorCodeChanged": false,
     "visualBrowserCheckCompleted": false,
-    "visualBrowserCheckLimit": "Computer-use URL detection stopped the check; no visual pass is claimed."
-  }
+    "visualBrowserCheckLimit": "No new browser visual pass is claimed for this bounded download/documentation update."
+  },
+  "antivirusApprovalClaimed": false,
+  "gameModifiedByReleaseQualification": false,
+  "liveInstallationTestPerformed": false,
+  "newNativeGameBootPerformed": false
 }

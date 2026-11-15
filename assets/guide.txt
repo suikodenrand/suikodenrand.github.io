@@ -5,7 +5,7 @@ https://suikodenrand.github.io/
 FULL INSTALLER
 1. Close the game and launcher. Back up Save and BepInEx/config together
    outside the game folder. Keep the pair for your campaign.
-2. Download and run Stars-of-Destiny-0.14.4-Setup.exe. Select the folder
+2. Download and run Stars-of-Destiny-0.14.4-r2-Setup.exe. Select the folder
    containing Suikoden I and II HD Remaster.exe and GameAssembly.dll.
    In Steam use Manage > Browse local files to locate it.
 3. Leave optional Experimental S1 ATB unchecked for standard turn-based
@@ -19,7 +19,9 @@ FULL INSTALLER
    Full, Compact and Hidden text views.
 
 The full installer includes BepInEx 6 IL2CPP Windows x64 build 697,
-Suikoden Fix, the combined randomizer and the complete launcher. Their
+Suikoden Fix, the combined randomizer and complete launcher 1.0.5.
+Package revision 2 changes the launcher and package instructions, not the
+released randomizer or gameplay defaults. Their
 private runtimes are included; no separate .NET SDK or compiler is needed.
 
 MANUAL ZIP
@@ -35,7 +37,7 @@ its backup and file list for undo.
 
 WEBSITE SETTINGS PRESETS
 The website exports a JSON settings preset for the selected game. In
-launcher 1.0.4 use Load settings..., select the JSON, review the game and
+launcher 1.0.5 use Load settings..., select the JSON, review the game and
 options, then Apply settings or Save & launch game. Downloading a preset
 does not apply it; setup does not read a loose config beside its EXE.
 The preset merges only its supplied options and preserves unrelated
@@ -63,9 +65,14 @@ autosave, so make a manual save and paired backup first. Never delete
 campaign sidecars to force new settings onto an old save.
 
 OPTIONAL S1 FEATURES
-Chest shuffle is experimental and off by default. The launcher's Treasure
-tab controls new/unbound campaigns and the saved policy; turning off the
-global allowance pauses it without removing earned items or closing chests.
+Chest shuffle is experimental and off by default. In Treasure settings,
+tick Enable chest shuffle for new campaigns before a new game. Existing
+saves retain their own chest policy when this checkbox changes.
+To change an existing save, choose checked for shuffled rewards or unchecked
+for original rewards, Apply settings, select its snapshot, then Reset selected
+save's chest settings. Load that save to adopt the policy. Its prior policy
+is backed up; acquired items and opened chests stay intact. Applying settings
+in launcher 1.0.5 also clears a legacy global pause left by older launchers.
 ATB is optional and experimental. Disable S1 shuffled Unites before enabling
 ATB in Battle & ATB. For a dormant manual ZIP installation, first click
 Activate ATB preview after disabling S1 shuffled Unites, then enable ATB and
@@ -91,10 +98,19 @@ manual upgrade.
 
 DOWNLOADS
 Full setup, loader included:
-https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-Setup.exe
+https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-r2-Setup.exe
 Manual mod-only ZIP, loader required separately:
-https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-Mod-Only-Windows.zip
+https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-r2-Mod-Only-Windows.zip
 Tested official loader:
 https://builds.bepinex.dev/projects/bepinex_be/697/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.697%2B5362580.zip
 Source, release notes and checksums:
 https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.4
+
+OPTIONAL SEPARATE DOWNLOADS
+Plugins-only Nexus ZIP (no launcher EXEs/runtime; BepInEx required separately):
+https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-Plugins-Only-Nexus.zip
+Optional launcher 1.0.5 (complete folder; plugins and BepInEx not included):
+https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-Launcher-1.0.5-Windows.zip
+For a launcher-only upgrade, close the game and launcher, back up the old
+launcher folder/preferences, then replace the complete launcher folder beside
+the game EXE. No separate .NET installation is needed.
