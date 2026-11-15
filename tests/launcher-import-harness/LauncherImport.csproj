@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable><NuGetAudit>false</NuGetAudit></PropertyGroup>
+  <ItemGroup>
+    <Reference Include="StarsOfDestiny.Launcher.Core"><HintPath>$(LauncherPath)/StarsOfDestiny.Launcher.Core.dll</HintPath></Reference>
+    <Reference Include="SuikodenRandomizer.Core"><HintPath>$(LauncherPath)/SuikodenRandomizer.Core.dll</HintPath></Reference>
+    <Reference Include="SuikodenRandomizer.Suikoden2.Core"><HintPath>$(LauncherPath)/SuikodenRandomizer.Suikoden2.Core.dll</HintPath></Reference>
+  </ItemGroup>
+  <Target Name="RequirePackagedLauncher" BeforeTargets="ResolveReferences" Condition="!Exists('$(LauncherPath)/StarsOfDestiny.Launcher.Core.dll')">
+    <Error Text="Pass -p:LauncherPath=&lt;actual packaged 1.0.4 launcher directory&gt;. No game code is loaded." />
+  </Target>
+</Project>

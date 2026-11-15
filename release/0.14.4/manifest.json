@@ -1,0 +1,39 @@
+{
+  "schema": "stars-full-release-v1",
+  "version": "0.14.4",
+  "components": {
+    "randomizer": "0.14.4",
+    "launcher": "1.0.4",
+    "optionalS1Atb": "0.10.1",
+    "bepInEx": "6.0.0-be.697+5362580",
+    "suikodenFix": "1.5.2b"
+  },
+  "games": [
+    "GSD1",
+    "GSD2"
+  ],
+  "settingsMethod": "launcher-preset-import",
+  "sourcePackaging": "extracted-folders-in-full-setup",
+  "source": {
+    "repository": "https://github.com/suikodenrand/suikodenrando",
+    "commit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+    "tag": "v0.14.4",
+    "license": "MIT",
+    "copyrightHolder": "Agilen"
+  },
+  "setup": {
+    "name": "Stars-of-Destiny-0.14.4-Setup.exe",
+    "sha256": "42d4c073cb713dde6d8c7e24c16d64b2b824e43839674a54775f6032f9456ff2",
+    "bytes": 60534802,
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-Setup.exe",
+    "bepInExIncluded": true
+  },
+  "manual": {
+    "name": "Stars-of-Destiny-0.14.4-Mod-Only-Windows.zip",
+    "sha256": "cdfdd33b8ceb2cc5c2304f4879700e26306b73ceec3fb5b18d87a6fd198f17b5",
+    "bytes": 52167067,
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.4/Stars-of-Destiny-0.14.4-Mod-Only-Windows.zip",
+    "bepInExIncluded": false
+  },
+  "verification": "Verification.json"
+}

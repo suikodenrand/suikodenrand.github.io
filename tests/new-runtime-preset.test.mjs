@@ -1,23 +1,47 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { generateAdventure, getCombatPool, getGameRoster, getStartPoints, getJoiningWeaponLevels, getProfileMetadata, normalizeSeed, validateCompanions } from '../js/randomizer-core.mjs';
+import { generateAdventure, getCombatPool, getGameRoster, getStartPoints, getJoiningWeaponLevels, getJoiningEquipmentOptions, getProfileMetadata, normalizeSeed, validateCompanions } from '../js/randomizer-core.mjs';
 import { GSD2_CATALOG } from '../js/gsd2-catalog.mjs';
 import { configFor, createLauncherPreset, presetFilename, profileCsv } from '../js/launcher-preset.mjs';
 import { settingsUrl, readSettingsUrl } from '../js/settings-links.mjs';
 
 const fixture = name => readFile(new URL(name, import.meta.url), 'utf8').then(JSON.parse);
 const current = await fixture('new-current-runtime-vectors.json');
+const packaged0144 = await fixture('new-0144-runtime-vectors.json');
 const mapping = p => p.assignments?.map(row => [row.roleId, row.donorId]) ?? [];
 const ids = p => p.heroes?.map(hero => hero.id) ?? [];
 
-test('current packaged 0.14.3 core DLL hashes identify parity evidence', () => {
+test('published 0.14.3 core DLL hashes identify the retained parity evidence', () => {
   assert.equal(current.packageVersion, '0.14.3');
   assert.deepEqual(current.assemblies, [
     { file: 'SuikodenRandomizer.Core.dll', sha256: '0ecc72748f848dc7c116375bb0ad63d2ca0b9869f5fd6d6fbc7f2bb897c96dac' },
     { file: 'SuikodenRandomizer.Suikoden2.Core.dll', sha256: 'ec57741be645193f4367fd5ac55d20e11ddfea2093dbb2e1f270280494fb7da5' }
   ]);
   assert.equal(current.vectors.length, 152);
+});
+
+test('actual 0.14.4 packaged C# cores retain every published catalog, mapping and fingerprint under both inventory choices', async () => {
+  assert.equal(packaged0144.packageVersion, '0.14.4');
+  assert.equal(packaged0144.sourceCommit, '9d46ab15e033027e6381c639c65ecb9aad3ca0f2');
+  assert.deepEqual(packaged0144.assemblies, [
+    { file: 'SuikodenRandomizer.Core.dll', sha256: '72aed38db1ee90def67326b4f426b5fbc5941f91adddad1f29ab73579c4505ba' },
+    { file: 'SuikodenRandomizer.Suikoden2.Core.dll', sha256: '1bc7ce58fb288d044cb7dc735485bbaafb7c19e9673a6b8fc9749ec8fe1bd488' }
+  ]);
+  assert.deepEqual(packaged0144.vectors, current.vectors);
+  assert.deepEqual(packaged0144.s1Catalog, current.s1Catalog);
+  assert.deepEqual(packaged0144.s2Catalog, current.s2Catalog);
+  assert.deepEqual(packaged0144.iniRoundtrips, current.iniRoundtrips);
+  for (const row of packaged0144.vectors)
+    for (const joiningEquipment of Object.keys(getJoiningEquipmentOptions(row.game))) {
+      const p = await generateAdventure(row.seed, { game: row.game, mode: row.mode, joiningEquipment,
+        includeTir: row.protagonist, includeProtagonist: row.protagonist,
+        companions: row.game === 'GSD2' ? [2,3,4,5,6] : [0,1,2,3,4] });
+      assert.equal(p.fingerprint, row.fingerprint);
+      assert.equal(p.profileId, row.profileId);
+      assert.deepEqual(mapping(p), row.assignments);
+      assert.deepEqual(ids(p), row.heroes);
+    }
 });
 
 test('both browser catalogs match all current packaged C# catalog identities and eligibility', () => {
@@ -40,10 +64,11 @@ test('152 vectors from actual packaged C# cores match complete browser mappings,
   }
 });
 
-test('all 24 published S1 golden profiles retain mappings and fingerprints under every joining weapon policy', async () => {
+test('all 24 published S1 golden profiles retain mappings and fingerprints under every joining weapon and inventory policy', async () => {
   for (const row of (await fixture('new-gsd1-v087-golden.json')).cases) {
-    for (const joiningWeaponLevel of Object.keys(getJoiningWeaponLevels('GSD1'))) {
-      const p = await generateAdventure(row.seed, {...row.options, joiningWeaponLevel});
+    for (const joiningWeaponLevel of Object.keys(getJoiningWeaponLevels('GSD1')))
+      for (const joiningEquipment of Object.keys(getJoiningEquipmentOptions('GSD1'))) {
+      const p = await generateAdventure(row.seed, {...row.options, joiningWeaponLevel, joiningEquipment});
       assert.equal(p.fingerprint, row.expected.fingerprint);
       assert.deepEqual(mapping(p), mapping(row.expected));
       assert.deepEqual(ids(p), ids(row.expected));
@@ -53,13 +78,16 @@ test('all 24 published S1 golden profiles retain mappings and fingerprints under
 
 test('both game defaults and all mode/start/policy/protagonist variants export exact partial launcher presets and roundtrip links', async () => {
   for (const game of ['GSD1','GSD2']) {
-    assert.equal(getProfileMetadata(game).pluginVersion, '0.14.3');
+    assert.equal(getProfileMetadata(game).pluginVersion, '0.14.4');
+    assert.equal(getProfileMetadata(game).minimumRuntimeVersion, '0.14.4');
+    assert.equal((await generateAdventure('defaults',{game})).joiningEquipment, 'MatchRole');
     assert.equal((await generateAdventure('defaults',{game})).joiningWeaponLevel, game === 'GSD2' ? 'RiouVariance' : 'TirVariance');
     for (const mode of ['Shuffle','FixedChosen','FixedRandom'])
       for (const startPoint of Object.keys(getStartPoints(game)))
         for (const joiningWeaponLevel of Object.keys(getJoiningWeaponLevels(game)))
+          for (const joiningEquipment of Object.keys(getJoiningEquipmentOptions(game)))
           for (const protagonist of [false,true]) {
-            const p = await generateAdventure('quotes-"\'=#;星', {game,mode,startPoint,joiningWeaponLevel,
+            const p = await generateAdventure('quotes-"\'=#;星', {game,mode,startPoint,joiningWeaponLevel,joiningEquipment,
               includeTir:protagonist,includeProtagonist:protagonist,companions:game==='GSD2'?[2,3,4,5,6]:[0,1,2,3,4]});
             const preset = await createLauncherPreset(p);
             assert.equal(preset.schema,'stars-of-destiny-settings-v1');
@@ -70,6 +98,7 @@ test('both game defaults and all mode/start/policy/protagonist variants export e
             assert.ok(ini.includes('Seed = '+p.seed+'\r\n'));
             assert.ok(ini.includes('Mode = '+mode+'\r\n'));
             assert.ok(ini.includes('JoiningWeaponLevel = '+joiningWeaponLevel+'\r\n'));
+            assert.ok(ini.includes('JoiningEquipment = '+joiningEquipment+'\r\n'));
             assert.ok(ini.includes('Point = '+startPoint+'\r\n'));
             assert.ok(!ini.includes('[Battle]') && !ini.includes('[Treasure]') && !ini.includes('[Interface]'));
             const link = settingsUrl(p,'https://suikodenrand.github.io/?discard=1');
@@ -78,11 +107,14 @@ test('both game defaults and all mode/start/policy/protagonist variants export e
             assert.equal(restored.fingerprint,p.fingerprint);
             assert.equal(restored.startPoint,p.startPoint);
             assert.equal(restored.joiningWeaponLevel,p.joiningWeaponLevel);
+            assert.equal(restored.joiningEquipment,p.joiningEquipment);
+            assert.equal(link.searchParams.get('equipment'),joiningEquipment);
             assert.deepEqual(restored.companionIds,p.companionIds);
             assert.equal(restored.includeTir,p.includeTir);
             assert.equal(restored.includeProtagonist,p.includeProtagonist);
-            assert.match(presetFilename(p),/^StarsOfDestiny-0\.14\.3-SuikodenII?-[a-f0-9]{12}-Settings\.json$/);
-            assert.ok(profileCsv(p).includes('Joining weapon policy'));
+            assert.match(presetFilename(p),/^StarsOfDestiny-0\.14\.4-SuikodenII?-[a-f0-9]{12}-Settings\.json$/);
+            assert.ok(profileCsv(p).includes('Joining weapon policy,Joining inventory policy'));
+            assert.ok(profileCsv(p).includes(joiningEquipment));
           }
   }
 });
@@ -93,6 +125,7 @@ test('published singular weapon parameter and legacy S1 links remain valid', asy
     assert.equal(options.game,'GSD1');
     assert.equal(options.joiningWeaponLevel,weapon);
     assert.equal(options.includeTir,true);
+    assert.equal(options.joiningEquipment,'MatchRole');
     assert.equal((await generateAdventure(options.seed,options)).startPoint,'BeforeViktor');
   }
 });
@@ -113,6 +146,11 @@ test('bad games, cross-game starts/weapons, malformed seeds and forged profiles 
   for (const game of ['GSD1','GSD2']) {
     for (const joiningWeaponLevel of [null,true,'','Donor',game==='GSD2'?'TirVariance':'RiouVariance'])
       await assert.rejects(generateAdventure('x',{game,joiningWeaponLevel}),/joining weapon level/);
+    for (const joiningEquipment of [null,true,'','Level1','matchrole','<script>']) {
+      await assert.rejects(generateAdventure('x',{game,joiningEquipment}),/joining inventory and equipment/);
+      const valid=await generateAdventure('x',{game});
+      await assert.rejects(createLauncherPreset({...valid,joiningEquipment}),/joining inventory and equipment/);
+    }
     await assert.rejects(generateAdventure('x',{game,mode:'Nuzlocke'}));
     await assert.rejects(generateAdventure('x',{game,startPoint:game==='GSD2'?'BeforeViktor':'ViktorCamp'}));
     for (const seed of ['x\ny','x\ry','x\0y','x\\y','\ud800']) await assert.rejects(generateAdventure(seed,{game}));
@@ -122,6 +160,6 @@ test('bad games, cross-game starts/weapons, malformed seeds and forged profiles 
     await assert.rejects(createLauncherPreset({...p,assignments:p.assignments.map((row,index)=>index?row:{...row,donorId:-1})}),/preview changed/);
     assert.throws(()=>validateCompanions([2,3,4,5,2],game));
   }
-  for (const query of ['game=bad','game=GSD2&weapon=TirVariance','game=GSD2&start=BeforeViktor','weapon=RiouVariance','mode=Nuzlocke','mode=FixedChosen&companions=0,1,2,3,x'])
+  for (const query of ['equipment=Level1','equipment=','equipment=matchrole','game=bad','game=GSD2&weapon=TirVariance','game=GSD2&start=BeforeViktor','weapon=RiouVariance','mode=Nuzlocke','mode=FixedChosen&companions=0,1,2,3,x'])
     assert.throws(()=>readSettingsUrl('https://suikodenrand.github.io/?seed=x&'+query));
 });

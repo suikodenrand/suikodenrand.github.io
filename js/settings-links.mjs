@@ -1,4 +1,4 @@
-import { GAMES, MODES, getStartPoints, getJoiningWeaponLevels, normalizeSeed, validateCompanions } from './randomizer-core.mjs?v=0.14.3';
+import { GAMES, MODES, getStartPoints, getJoiningWeaponLevels, getJoiningEquipmentOptions, normalizeSeed, validateCompanions } from './randomizer-core.mjs?v=0.14.4';
 
 export function settingsUrl(profile, currentUrl) {
   const link = new URL(currentUrl);
@@ -11,6 +11,7 @@ export function settingsUrl(profile, currentUrl) {
   if (profile.includeProtagonist) link.searchParams.set('hero', '1');
   if (profile.startPoint !== 'Opening') link.searchParams.set('start', profile.startPoint);
   link.searchParams.set('weapon', profile.joiningWeaponLevel ?? (profile.game === 'GSD2' ? 'RiouVariance' : 'TirVariance'));
+  link.searchParams.set('equipment', profile.joiningEquipment ?? 'MatchRole');
   link.hash = 'generate';
   return link;
 }
@@ -25,6 +26,8 @@ export function readSettingsUrl(value) {
   if (!Object.hasOwn(getStartPoints(game), startPoint)) throw new Error('This settings link uses a start point from another game.');
   const joiningWeaponLevel = params.get('weapon') ?? params.get('weapons') ?? (game === 'GSD2' ? 'RiouVariance' : 'TirVariance');
   if (!Object.hasOwn(getJoiningWeaponLevels(game), joiningWeaponLevel)) throw new Error('This settings link uses an unsupported joining weapon level for this game.');
+  const joiningEquipment = params.get('equipment') ?? 'MatchRole';
+  if (!Object.hasOwn(getJoiningEquipmentOptions(game), joiningEquipment)) throw new Error('This settings link uses an unsupported joining inventory and equipment option.');
   const companionStrings = mode === 'FixedChosen' ? (params.get('companions') ?? '').split(',') : [];
   if (mode === 'FixedChosen') {
     if (companionStrings.some(id => !/^\d+$/.test(id))) throw new Error('This settings link contains invalid companions.');
@@ -34,5 +37,5 @@ export function readSettingsUrl(value) {
     companionStrings, companions: companionStrings.map(Number),
     includeTir: game === 'GSD1' && mode === 'Shuffle' && params.get('tir') === '1',
     includeProtagonist: game === 'GSD2' && mode === 'Shuffle' && params.get('hero') === '1',
-    startPoint, joiningWeaponLevel };
+    startPoint, joiningWeaponLevel, joiningEquipment };
 }

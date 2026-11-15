@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "version": "0.14.4",
+  "sourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+  "sourceUrl": "https://github.com/suikodenrand/suikodenrando/commit/9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+  "artifacts": [
+    {
+      "name": "Stars-of-Destiny-0.14.4-Setup.exe",
+      "sha256": "42d4c073cb713dde6d8c7e24c16d64b2b824e43839674a54775f6032f9456ff2",
+      "bytes": 60534802
+    },
+    {
+      "name": "Stars-of-Destiny-0.14.4-Mod-Only-Windows.zip",
+      "sha256": "cdfdd33b8ceb2cc5c2304f4879700e26306b73ceec3fb5b18d87a6fd198f17b5",
+      "bytes": 52167067
+    }
+  ],
+  "validation": {
+    "compiledHostPeChecks": 38,
+    "nativeSignatureChecks": 165,
+    "actualReleasedLauncherAtbChecks": 5,
+    "packageMetadataChecks": 6,
+    "setupPayloadHashes": 1026,
+    "manualZipEntries": 301,
+    "manualInternalChecksums": 300,
+    "correspondingSourceFiles": 478,
+    "installerFullSuite": {
+      "checks": 24,
+      "sourceCommit": "5afa850bb33d7630d1941a0c546be35943503afb",
+      "installerSha256": "ce501681179a11d19ccb2cff69628f6ec01c499d537c4060ceebfc36b658d867",
+      "scope": "Full production-EXE fixture suite before the license-only merge."
+    },
+    "finalInstallerSmoke": {
+      "checks": 2,
+      "installerSha256": "42d4c073cb713dde6d8c7e24c16d64b2b824e43839674a54775f6032f9456ff2",
+      "sourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+      "scope": "Exact final EXE fresh install, restore preflight, actual installed Restore.cmd undo and self-removal."
+    }
+  },
+  "preservedUserLicense": {
+    "copyright": "Copyright (c) 2026 Agilen",
+    "onlyMergedChangeSinceFullSuite": [
+      "LICENSE"
+    ]
+  },
+  "freshJoiningEquipment": "MatchRole",
+  "manualBepInExExternal": true,
+  "atbOptionalAndDisabled": true,
+  "nativeCoverage": "S1 Meg replacing Viktor first join and subsequent native save observed; native reload not observed. Broader S1/S2 join/rejoin coverage remains limited.",
+  "gameModifiedByReleaseQualification": false,
+  "newNativeGameBootPerformed": false,
+  "antivirusApprovalClaimed": false,
+  "schema": "stars-of-destiny-release-qualification-v1",
+  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.4",
+  "runtimeManagedChecks": {
+    "s1": 109,
+    "s2": 69,
+    "s2Dialogue": 13,
+    "launcherSettings": 25,
+    "launcherUi": 11,
+    "implementationUnchangedSinceTestedCommit": "a2b626323295bee8446b844186236dcba6ee790e"
+  },
+  "websiteChecks": {
+    "profileVectorsFromFinalCores": 152,
+    "historicalS1Goldens": 24,
+    "gameModePolicyCombinations": 144,
+    "automatedBrowserModuleChecks": 9,
+    "actualPackagedLauncherImportCases": 18,
+    "visualBrowserCheckCompleted": false,
+    "visualBrowserCheckLimit": "Computer-use URL detection stopped the check; no visual pass is claimed."
+  }
+}

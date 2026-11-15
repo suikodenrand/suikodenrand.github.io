@@ -5,7 +5,7 @@
  * Tests compare complete mappings and fingerprints with the actual C# Core.
  */
 import { sha256Bytes } from "./sha256.mjs";
-import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.3";
+import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.4";
 
 const NAMES = Object.freeze([
   "Eileen", "Cleo", "Gremio", "Camille", "Kirkis", "Mose", "Pahn", "Luikan", "Tir McDohl",
@@ -32,7 +32,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.14.3",
+  pluginVersion: "0.14.4", minimumRuntimeVersion: "0.14.4",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",
@@ -55,6 +55,7 @@ export const NON_COMBAT_HEROES = Object.freeze(ROSTER.filter(hero => !hero.eligi
 export const MODES = Object.freeze({ Shuffle: "Character Shuffle", FixedChosen: "Fixed Roster", FixedRandom: "Random Roster" });
 export const START_POINTS = Object.freeze({ Opening: "Normal Opening", BeforeViktor: "Before Viktor" });
 export const JOINING_WEAPON_LEVELS = Object.freeze({ TirVariance: "Match Tir at first join (±3)", MatchRole: "Match original character", Level1: "Level 1" });
+const JOINING_EQUIPMENT = Object.freeze({ MatchRole: "Original role's starting inventory (default)", Donor: "Replacement's starting inventory" });
 export const COMPANION_COUNT = 5;
 const TIR_ID = 8;
 const TIR_PROFILE_ID = "combat-avatar-shuffle-with-tir-v1";
@@ -216,11 +217,15 @@ export function getStartPointHelp(game = "GSD1", startPoint = "Opening") {
 }
 export function getProfileMetadata(game = "GSD1") { return checkedGame(game) === "GSD2" ? GSD2_METADATA : PROFILE_METADATA; }
 export function getJoiningWeaponLevels(game = "GSD1") { return checkedGame(game) === "GSD2" ? S2_WEAPONS : JOINING_WEAPON_LEVELS; }
+export function getJoiningEquipmentOptions(game = "GSD1") { checkedGame(game); return JOINING_EQUIPMENT; }
 export function validateCompanions(ids, game = "GSD1") { return checkedGame(game) === "GSD2" ? gsd2.validateCompanions(ids) : validateS1Companions(ids); }
 export async function generateAdventure(value, options = {}) {
   const game = checkedGame(options.game ?? "GSD1");
   const joiningWeaponLevel = options.joiningWeaponLevel === undefined ? (game === "GSD2" ? "RiouVariance" : "TirVariance") : options.joiningWeaponLevel;
   if (!Object.hasOwn(getJoiningWeaponLevels(game), joiningWeaponLevel)) throw new Error("Choose a joining weapon level for this game.");
-  return game === "GSD2" ? Object.freeze({ ...await gsd2.generateAdventure(value, options), joiningWeaponLevel })
-    : generateS1Adventure(value, { ...options, joiningWeaponLevel });
+  const joiningEquipment = options.joiningEquipment === undefined ? "MatchRole" : options.joiningEquipment;
+  if (!Object.hasOwn(getJoiningEquipmentOptions(game), joiningEquipment)) throw new Error("Choose a joining inventory and equipment option.");
+  const profile = game === "GSD2" ? await gsd2.generateAdventure(value, options)
+    : await generateS1Adventure(value, { ...options, joiningWeaponLevel });
+  return Object.freeze({ ...profile, joiningWeaponLevel, joiningEquipment });
 }

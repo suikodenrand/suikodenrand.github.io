@@ -1,0 +1,43 @@
+{
+  "sourceRepository": "https://github.com/suikodenrand/suikodenrando",
+  "sourcePath": "src/StarsOfDestiny.Launcher/MainForm.Presets.cs",
+  "sourceVersion": "0.14.4",
+  "sourceSha256": "5622db791a654c9fd7e154c2a688d4bce93f83501b10c3613b4607d709eb6382",
+  "methodSha256": {
+    "ImportPreset": "01c4773dc00f4f3cfadda48dd64d37e5332000c6487baba116de7df743798b1e",
+    "Entries": "548881dd8d6973a61d9f167c305ed817ece120c483f7941c274247bef20c2362"
+  },
+  "methodBodiesUnmodified": true,
+  "uiShimsOnly": [
+    "file-dialog selection",
+    "status label",
+    "page rebuild callback",
+    "error display callback"
+  ],
+  "sourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+  "testedPackage": {
+    "version": "0.14.4",
+    "launcherVersion": "1.0.4",
+    "sourceCommit": "9d46ab15e033027e6381c639c65ecb9aad3ca0f2",
+    "actualPackagedAssemblies": [
+      {
+        "file": "StarsOfDestiny.Launcher.Core.dll",
+        "sha256": "058b8414c42041db663b42d8f72ae32217d3af678fcde74b4031dce9a8a5fc7b"
+      },
+      {
+        "file": "SuikodenRandomizer.Core.dll",
+        "sha256": "bdd3e8498650f98de187564d8facbfe9f5183ff3f6bf1002b3bd63aaac78010f"
+      },
+      {
+        "file": "SuikodenRandomizer.Suikoden2.Core.dll",
+        "sha256": "804a1d2ad150519994e1de15cf593fc41980a78d59d615e4aa6d8264b81e469d"
+      }
+    ],
+    "launcherGuiSha256": "46aa78e2d51629cf57a921a876901473bbad9af96a11b83305c082c4a39dd6a0",
+    "metadataOnlyRuntimeHostSha256": "7ef6238f8753d3ddd792207390a65481b4bc0a10e5ec7ff7abb3f9e72c19ecb0",
+    "importCasesPassed": 18,
+    "legacyPartialPresetCasesPassed": 6,
+    "targetGameCodeExecuted": false,
+    "liveGameModified": false
+  }
+}

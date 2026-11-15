@@ -1,8 +1,8 @@
-import { GSD2_CATALOG } from './gsd2-catalog.mjs?v=0.14.3';
+import { GSD2_CATALOG } from './gsd2-catalog.mjs?v=0.14.4';
 import { sha256Bytes } from './sha256.mjs';
 
 export const GSD2_METADATA = Object.freeze({
-  pluginVersion: '0.14.3', version: 1,
+  pluginVersion: '0.14.4', minimumRuntimeVersion: '0.14.4', version: 1,
   profileId: 'gsd2-combat-avatar-shuffle-v1',
   protagonistProfileId: 'gsd2-combat-avatar-shuffle-with-protagonist-v1',
   fixedProfileId: 'gsd2-fixed-roster-v1',

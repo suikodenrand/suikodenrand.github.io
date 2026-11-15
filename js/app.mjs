@@ -1,6 +1,6 @@
-import { COMPANION_COUNT, generateAdventure, MODES, GAMES, getCombatPool, getStartPoints, getStartPointHelp, getProfileMetadata, getJoiningWeaponLevels, validateCompanions } from './randomizer-core.mjs?v=0.14.3';
-import { createLauncherPreset, profileCsv, presetFilename } from './launcher-preset.mjs?v=0.14.3';
-import { settingsUrl, readSettingsUrl } from './settings-links.mjs?v=0.14.3';
+import { COMPANION_COUNT, generateAdventure, MODES, GAMES, getCombatPool, getStartPoints, getStartPointHelp, getProfileMetadata, getJoiningWeaponLevels, getJoiningEquipmentOptions, validateCompanions } from './randomizer-core.mjs?v=0.14.4';
+import { createLauncherPreset, profileCsv, presetFilename } from './launcher-preset.mjs?v=0.14.4';
+import { settingsUrl, readSettingsUrl } from './settings-links.mjs?v=0.14.4';
 
 const $ = id => document.getElementById(id);
 const modeInputs = [...document.querySelectorAll('input[name="mode"]')];
@@ -24,6 +24,7 @@ let downloadURL = null;
 let debounce;
 let toastTimer;
 let populatedGame = null;
+const joiningEquipmentByGame = new Map();
 
 const selectedGame = () => $('game').value;
 const selectedMode = () => modeInputs.find(input => input.checked)?.value ?? 'Shuffle';
@@ -39,6 +40,7 @@ function toast(message) {
 function renderGame() {
   const game = selectedGame();
   if (populatedGame === game) return;
+  if (populatedGame) joiningEquipmentByGame.set(populatedGame, $('joining-equipment').value);
   const heroes = [...getCombatPool(game)].sort((a, b) => a.name.localeCompare(b.name, 'en'));
   for (const select of companionSelects) {
     select.replaceChildren(new Option('Select a hero', ''));
@@ -51,6 +53,8 @@ function renderGame() {
   }
   $('start-point').replaceChildren(...Object.entries(getStartPoints(game)).map(([id, name]) => new Option(name, id)));
   $('joining-weapon-level').replaceChildren(...Object.entries(getJoiningWeaponLevels(game)).map(([id, name]) => new Option(name, id)));
+  $('joining-equipment').replaceChildren(...Object.entries(getJoiningEquipmentOptions(game)).map(([id, name]) => new Option(name, id)));
+  $('joining-equipment').value = joiningEquipmentByGame.get(game) ?? 'MatchRole';
   $('include-tir').checked = false;
   populatedGame = game;
 }
@@ -74,11 +78,12 @@ function renderMode() {
   $('summary-mode').textContent = MODES[mode];
   const hero = game === 'GSD1' ? 'Tir' : 'Your hero';
   $('summary-game').textContent = GAMES[game];
-  $('summary-version').textContent = 'Runtime version ' + getProfileMetadata(game).pluginVersion;
+  $('summary-version').textContent = 'Requires randomizer ' + getProfileMetadata(game).minimumRuntimeVersion + ' or newer';
   $('summary-pool').textContent = fixed ? hero + ' + five companions'
     : (getCombatPool(game).length + ($('include-tir').checked ? 1 : 0)) + ' combat heroes';
   $('summary-start').textContent = getStartPoints(game)[$('start-point').value];
   $('summary-weapons').textContent = getJoiningWeaponLevels(game)[$('joining-weapon-level').value];
+  $('summary-equipment').textContent = getJoiningEquipmentOptions(game)[$('joining-equipment').value];
   $('joining-weapon-help').textContent = `Default: ${game === 'GSD1' ? 'Tir' : 'Riou'}’s current weapon level at first join, plus a seeded −3 to +3 (including a match). Applied once; later sharpening is kept.`;
   $('fixed-mode-description').textContent = game === 'GSD1' ? 'Choose five companions. Tir fills the sixth slot.' : 'Choose five single-slot companions. Your hero has a reserved slot.';
   $('random-mode-description').textContent = 'Your seed picks five distinct companions alongside ' + (game === 'GSD1' ? 'Tir.' : 'your hero.');
@@ -157,6 +162,7 @@ async function refreshSettings() {
     const profile = await generateAdventure($('seed').value, {
       game: selectedGame(),
       mode, companions, startPoint: $('start-point').value, joiningWeaponLevel: $('joining-weapon-level').value,
+      joiningEquipment: $('joining-equipment').value,
       includeTir: selectedGame() === 'GSD1' && mode === 'Shuffle' && $('include-tir').checked,
       includeProtagonist: selectedGame() === 'GSD2' && mode === 'Shuffle' && $('include-tir').checked
     });
@@ -208,7 +214,7 @@ $('random-seed').addEventListener('click', () => {
   $('seed').value = 'stars-' + [...bits].map(x => x.toString(16).padStart(2, '0')).join('');
   settingsChanged();
 });
-for (const input of [...modeInputs, ...companionSelects, $('game'), $('start-point'), $('joining-weapon-level'), $('include-tir')]) {
+for (const input of [...modeInputs, ...companionSelects, $('game'), $('start-point'), $('joining-weapon-level'), $('joining-equipment'), $('include-tir')]) {
   input.addEventListener('change', settingsChanged);
 }
 $('hero-search').addEventListener('input', renderMapping);
@@ -240,7 +246,7 @@ $('copy-seed').addEventListener('click', async () => {
 
 function setBuilding(value) {
   building = value;
-  for (const input of [...modeInputs, $('game'), $('seed'), $('random-seed'), $('start-point'), $('joining-weapon-level')]) {
+  for (const input of [...modeInputs, $('game'), $('seed'), $('random-seed'), $('start-point'), $('joining-weapon-level'), $('joining-equipment')]) {
     input.disabled = value;
   }
   renderMode();
@@ -263,7 +269,7 @@ $('generator-form').addEventListener('submit', async event => {
     $('download-again').href = downloadURL;
     $('download-again').download = result.filename;
     const modeLabel = MODES[profile.mode] + (profile.includeTir ? ' · Tir included' : profile.includeProtagonist ? ' · Protagonist included' : '');
-    $('download-summary').textContent = `${GAMES[profile.game ?? 'GSD1']} · ${modeLabel} · ${getStartPoints(profile.game ?? 'GSD1')[profile.startPoint]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
+    $('download-summary').textContent = `${GAMES[profile.game ?? 'GSD1']} · ${modeLabel} · ${getStartPoints(profile.game ?? 'GSD1')[profile.startPoint]} · ${getJoiningEquipmentOptions(profile.game)[profile.joiningEquipment]} · Seed ${profile.seed} · ${Math.ceil(result.blob.size / 1024)} KB`;
     $('download-result').hidden = false;
     $('build-status').textContent = 'Your download is ready.';
     const click = document.createElement('a');
@@ -302,6 +308,7 @@ try {
   modeInputs.find(input => input.value === linked.mode).checked = true;
   $('start-point').value = linked.startPoint;
   $('joining-weapon-level').value = linked.joiningWeaponLevel;
+  $('joining-equipment').value = linked.joiningEquipment;
   $('include-tir').checked = linked.includeTir || linked.includeProtagonist;
   if (linked.companionStrings.length === COMPANION_COUNT) companionSelects.forEach((select, index) => { select.value = linked.companionStrings[index]; });
   refreshSettings();
