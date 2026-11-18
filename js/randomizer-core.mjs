@@ -5,7 +5,7 @@
  * Tests compare complete mappings and fingerprints with the actual C# Core.
  */
 import { sha256Bytes } from "./sha256.mjs";
-import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.4";
+import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.5";
 
 const NAMES = Object.freeze([
   "Eileen", "Cleo", "Gremio", "Camille", "Kirkis", "Mose", "Pahn", "Luikan", "Tir McDohl",
@@ -32,7 +32,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.14.4", minimumRuntimeVersion: "0.14.4",
+  pluginVersion: "0.14.5", minimumRuntimeVersion: "0.14.4",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",
@@ -90,6 +90,23 @@ export function normalizeSeed(value) {
     throw new TypeError("Seed cannot contain control characters.");
   }
   return normalized;
+}
+
+export function normalizePresetSeed(value, game) {
+  const seed = normalizeSeed(value);
+  if (/[\u0000-\u001f\u007f-\u009f]/.test(value)) throw new Error("Seed cannot contain control characters.");
+  if (!seed.includes("\\")) return seed;
+  if (game === "GSD2") throw new Error("Suikoden II seeds cannot contain backslashes.");
+
+  // Match the BepInEx string writer and reader used to persist an S1 seed.
+  // A single-backslash Windows drive path is treated literally by the reader.
+  const written = seed.replace(/['"]/g, character => "\\" + character);
+  const drivePath = /^"?[\p{L}\p{Mn}\p{Nd}\p{Pc}]:\\(?!\\)(?![^\n]+\\\\)/u;
+  const escapes = { "0": "\0", a: "\u0007", b: "\b", t: "\t", n: "\n", v: "\v", f: "\f", r: "\r" };
+  const read = drivePath.test(written) ? written : written.replace(/\\([0abtnvfr'"\\])/g,
+    (_, character) => escapes[character] ?? character);
+  if (read !== seed) throw new Error("This seed contains an escape sequence the game changes when saving its settings.");
+  return seed;
 }
 
 const utf8 = new TextEncoder();
@@ -175,7 +192,6 @@ async function generateS1Adventure(value, { mode = "Shuffle", companions = [], s
   if (!Object.hasOwn(START_POINTS, startPoint)) throw new Error("Choose a start point.");
   if (!Object.hasOwn(JOINING_WEAPON_LEVELS, joiningWeaponLevel)) throw new Error("Choose a joining weapon level.");
   const seed = normalizeSeed(value);
-  if (seed.includes("\\")) throw new Error("Backslashes are not supported in installer seeds. Choose another character.");
 
   if (typeof includeTir !== "boolean") throw new Error("Choose whether to include Tir.");
   if (mode === "Shuffle") return Object.freeze({ ...await generateProfile(seed, includeTir), mode, startPoint, includeTir, joiningWeaponLevel });
@@ -221,11 +237,12 @@ export function getJoiningEquipmentOptions(game = "GSD1") { checkedGame(game); r
 export function validateCompanions(ids, game = "GSD1") { return checkedGame(game) === "GSD2" ? gsd2.validateCompanions(ids) : validateS1Companions(ids); }
 export async function generateAdventure(value, options = {}) {
   const game = checkedGame(options.game ?? "GSD1");
+  const seed = normalizePresetSeed(value, game);
   const joiningWeaponLevel = options.joiningWeaponLevel === undefined ? (game === "GSD2" ? "RiouVariance" : "TirVariance") : options.joiningWeaponLevel;
   if (!Object.hasOwn(getJoiningWeaponLevels(game), joiningWeaponLevel)) throw new Error("Choose a joining weapon level for this game.");
   const joiningEquipment = options.joiningEquipment === undefined ? "MatchRole" : options.joiningEquipment;
   if (!Object.hasOwn(getJoiningEquipmentOptions(game), joiningEquipment)) throw new Error("Choose a joining inventory and equipment option.");
-  const profile = game === "GSD2" ? await gsd2.generateAdventure(value, options)
-    : await generateS1Adventure(value, { ...options, joiningWeaponLevel });
+  const profile = game === "GSD2" ? await gsd2.generateAdventure(seed, options)
+    : await generateS1Adventure(seed, { ...options, joiningWeaponLevel });
   return Object.freeze({ ...profile, joiningWeaponLevel, joiningEquipment });
 }

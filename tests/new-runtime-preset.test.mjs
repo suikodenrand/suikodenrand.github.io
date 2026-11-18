@@ -78,7 +78,7 @@ test('all 24 published S1 golden profiles retain mappings and fingerprints under
 
 test('both game defaults and all mode/start/policy/protagonist variants export exact partial launcher presets and roundtrip links', async () => {
   for (const game of ['GSD1','GSD2']) {
-    assert.equal(getProfileMetadata(game).pluginVersion, '0.14.4');
+    assert.equal(getProfileMetadata(game).pluginVersion, '0.14.5');
     assert.equal(getProfileMetadata(game).minimumRuntimeVersion, '0.14.4');
     assert.equal((await generateAdventure('defaults',{game})).joiningEquipment, 'MatchRole');
     assert.equal((await generateAdventure('defaults',{game})).joiningWeaponLevel, game === 'GSD2' ? 'RiouVariance' : 'TirVariance');
@@ -112,7 +112,7 @@ test('both game defaults and all mode/start/policy/protagonist variants export e
             assert.deepEqual(restored.companionIds,p.companionIds);
             assert.equal(restored.includeTir,p.includeTir);
             assert.equal(restored.includeProtagonist,p.includeProtagonist);
-            assert.match(presetFilename(p),/^StarsOfDestiny-0\.14\.4-SuikodenII?-[a-f0-9]{12}-Settings\.json$/);
+            assert.match(presetFilename(p),/^StarsOfDestiny-0\.14\.5-SuikodenII?-[a-f0-9]{12}-Settings\.json$/);
             assert.ok(profileCsv(p).includes('Joining weapon policy,Joining inventory policy'));
             assert.ok(profileCsv(p).includes(joiningEquipment));
           }
@@ -153,7 +153,7 @@ test('bad games, cross-game starts/weapons, malformed seeds and forged profiles 
     }
     await assert.rejects(generateAdventure('x',{game,mode:'Nuzlocke'}));
     await assert.rejects(generateAdventure('x',{game,startPoint:game==='GSD2'?'BeforeViktor':'ViktorCamp'}));
-    for (const seed of ['x\ny','x\ry','x\0y','x\\y','\ud800']) await assert.rejects(generateAdventure(seed,{game}));
+    for (const seed of ['x\ny','x\ry','x\0y','x\\night','\tseed','\ud800']) await assert.rejects(generateAdventure(seed,{game}));
     const p=await generateAdventure('seed',{game});
     await assert.rejects(createLauncherPreset({...p,seed:'changed'}),/preview changed/);
     await assert.rejects(createLauncherPreset({...p,fingerprint:'0'.repeat(64)}),/preview changed/);
@@ -162,4 +162,14 @@ test('bad games, cross-game starts/weapons, malformed seeds and forged profiles 
   }
   for (const query of ['equipment=Level1','equipment=','equipment=matchrole','game=bad','game=GSD2&weapon=TirVariance','game=GSD2&start=BeforeViktor','weapon=RiouVariance','mode=Nuzlocke','mode=FixedChosen&companions=0,1,2,3,x'])
     assert.throws(()=>readSettingsUrl('https://suikodenrand.github.io/?seed=x&'+query));
+});
+
+test('public presets and share links use the same seed escaping as the launcher', async () => {
+  for (const seed of ['star\\moon', 'C:\\new\\roster']) {
+    const profile = await generateAdventure(seed, {game: 'GSD1'});
+    assert.equal(readSettingsUrl(settingsUrl(profile, 'https://example.org/')).seed, seed);
+    assert.ok((await configFor(profile)).includes('Seed = ' + seed.replaceAll('\\', '\\\\') + '\r\n'));
+    await assert.rejects(generateAdventure(seed, {game: 'GSD2'}), /backslashes/);
+  }
+  assert.throws(() => readSettingsUrl('https://example.org/?seed=race%5Cnight'), /escape sequence/);
 });

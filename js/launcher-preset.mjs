@@ -1,4 +1,4 @@
-import { generateAdventure } from './randomizer-core.mjs?v=0.14.4';
+import { generateAdventure } from './randomizer-core.mjs?v=0.14.5';
 
 const CONFIGS = Object.freeze({ GSD1: 'agilen.suikoden.recruitment_randomizer.cfg', GSD2: 'agilen.suikoden2.recruitment_randomizer.cfg' });
 
@@ -13,16 +13,12 @@ async function revalidate(profile) {
         !== JSON.stringify(profile.assignments?.map(row => [row.roleId, row.donorId]) ?? profile.heroes?.map(hero => hero.id))) {
     throw new Error('The roster preview changed. Generate it again before downloading settings.');
   }
-  // The launcher parses one INI value per line and trims .NET whitespace.
-  // Profile normalization rejects line/control characters and unsafe escapes;
-  // quotes, equals signs, non-ASCII names and literal punctuation remain literal.
-  if (/[\r\n\0\\]/.test(actual.seed)) throw new Error('This seed cannot be represented safely in launcher settings.');
   return { game, actual };
 }
 
 function ini(game, profile) {
   const lines = [...(game === 'GSD2' ? ['[Game]', 'Target = GSD2', ''] : []), '[Shuffle]',
-    'Seed = ' + profile.seed, 'Mode = ' + profile.mode, 'Companions = ' + (profile.companionIds?.join(',') ?? ''),
+    'Seed = ' + profile.seed.replaceAll('\\', '\\\\'), 'Mode = ' + profile.mode, 'Companions = ' + (profile.companionIds?.join(',') ?? ''),
     (game === 'GSD2' ? 'IncludeProtagonist = ' + !!profile.includeProtagonist : 'IncludeTir = ' + !!profile.includeTir),
     'JoiningWeaponLevel = ' + profile.joiningWeaponLevel, 'JoiningEquipment = ' + profile.joiningEquipment,
     '', '[Start]', 'Point = ' + profile.startPoint, ''];
@@ -42,7 +38,7 @@ export async function createLauncherPreset(profile) {
 export function presetFilename(profile) {
   const game = profile.game === 'GSD2' ? 'SuikodenII' : 'SuikodenI';
   if (!/^[0-9a-f]{64}$/.test(profile.fingerprint)) throw new Error('Generate a valid profile before downloading settings.');
-  return 'StarsOfDestiny-0.14.4-' + game + '-' + profile.fingerprint.slice(0, 12) + '-Settings.json';
+  return 'StarsOfDestiny-0.14.5-' + game + '-' + profile.fingerprint.slice(0, 12) + '-Settings.json';
 }
 
 export function profileCsv(profile) {

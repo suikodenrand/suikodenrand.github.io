@@ -1,0 +1,84 @@
+{
+  "version": "0.14.5",
+  "sourceCommit": "1a12ea5c610e51725b5549efc528db2c2a99298f",
+  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.5",
+  "artifacts": [
+    {
+      "name": "Stars-of-Destiny-0.14.5-Setup.exe",
+      "bytes": 60560610,
+      "sha256": "0cc466a4564d4a352539804f3a79cf2a08fd440bf8d6081d26527a900ace43c4"
+    },
+    {
+      "name": "Stars-of-Destiny-0.14.5-Mod-Only-Windows.zip",
+      "bytes": 52169787,
+      "sha256": "09a72ce9f0709a5d62e39e42744bd2edcc4cf043c1192a7b2f0ac009c48fd6bf"
+    },
+    {
+      "name": "Stars-of-Destiny-0.14.5-Plugins-Only-Nexus.zip",
+      "bytes": 491630,
+      "sha256": "d9642594b2ce0ae44b469af017ca322faef46522d6b880fb539106d69f4a08fe"
+    },
+    {
+      "name": "Stars-of-Destiny-Launcher-1.0.6-Windows.zip",
+      "bytes": 51673418,
+      "sha256": "533102f80f12007c77a4da9bbb9017f67ef3d642738f2381b6cae6840aa282f2"
+    }
+  ],
+  "checksumsSha256": "90bf49aca4d33551b0e83becfa6a0345070c8bfb4ad1161255269c2b5a22147c",
+  "optionalS1Atb": {
+    "version": "0.10.1",
+    "sha256": "03d453f68ef7ce32083746d8ab34b541c66a54e9a603f64d18fd055b27c45a0d"
+  },
+  "packageChecks": [
+    "The full setup and mod-only package were built from the tagged source.",
+    "The mod-only manifest identifies the source commit for the launcher and gameplay plugins.",
+    "The four runtime assemblies in the manual archive match their build output.",
+    "The plugins-only and launcher-only archives match the corresponding manual package files."
+  ],
+  "browserMappingParity": {
+    "packagedAssemblies": [
+      {
+        "file": "SuikodenRandomizer.Core.dll",
+        "sha256": "a97fd7dd1b13a0d1daef800ab63e49a163121ef4b98ad92509c31cfbd3c959c2"
+      },
+      {
+        "file": "SuikodenRandomizer.Suikoden2.Core.dll",
+        "sha256": "4604e4c9f2a4d579293d875041c2fccc0f4f4b3e8c652e8926c1e2bd7e5eb39e"
+      }
+    ],
+    "matchingVectors": 152,
+    "matchingS1CatalogEntries": 110,
+    "matchingS2CatalogEntries": 180,
+    "baseline": "../../tests/new-0144-runtime-vectors.json",
+    "browserRegressionSuitesPassed": 10,
+    "s1GoldenProfiles": 24
+  },
+  "launcherPresetImport": {
+    "launcherVersion": "1.0.6",
+    "packagedAssemblies": [
+      {
+        "file": "StarsOfDestiny.Launcher.Core.dll",
+        "sha256": "7dd426f963323ad765681f0c9c1e3dc71af442c346dee5eef6cf1045a4cdc840"
+      },
+      {
+        "file": "SuikodenRandomizer.Core.dll",
+        "sha256": "f62631832666772f4493594b46dd470df5fa6097492660b39824252962f15f2d"
+      },
+      {
+        "file": "SuikodenRandomizer.Suikoden2.Core.dll",
+        "sha256": "4f11c7686cd569ce35274d95ac37431cdfe9204486d59dcaa541f029f803db4c"
+      }
+    ],
+    "passed": 18,
+    "legacyPartialPresetsPassed": 6,
+    "scope": "Browser-generated S1 and S2 settings imported, applied, backed up and reloaded in disposable installations through the packaged launcher core."
+  },
+  "newNativeGameBootPerformed": false,
+  "installerSmoke": {
+    "setupCheckOnlyExitCode": 0,
+    "verifiedManifestEntries": 1027,
+    "journaledFileOperations": 1026,
+    "originalFilesRestoredByteForByte": 6,
+    "scope": "Install and restore in a disposable game folder with the optional public ATB selected. The compiled setup also passed silent preflight in a second disposable folder."
+  }
+}

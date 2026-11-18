@@ -1,0 +1,57 @@
+{
+  "schema": "stars-full-release-v1",
+  "version": "0.14.5",
+  "components": {
+    "randomizer": "0.14.5",
+    "launcher": "1.0.6",
+    "optionalS1Atb": "0.10.1",
+    "bepInEx": "6.0.0-be.697+5362580",
+    "suikodenFix": "1.5.2b"
+  },
+  "games": [
+    "GSD1",
+    "GSD2"
+  ],
+  "settingsMethod": "launcher-preset-import",
+  "sourcePackaging": "extracted-folders-in-full-setup",
+  "source": {
+    "repository": "https://github.com/suikodenrand/suikodenrando",
+    "commit": "1a12ea5c610e51725b5549efc528db2c2a99298f",
+    "tag": "v0.14.5",
+    "license": "MIT",
+    "copyrightHolder": "Agilen"
+  },
+  "setup": {
+    "name": "Stars-of-Destiny-0.14.5-Setup.exe",
+    "bytes": 60560610,
+    "sha256": "0cc466a4564d4a352539804f3a79cf2a08fd440bf8d6081d26527a900ace43c4",
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.5/Stars-of-Destiny-0.14.5-Setup.exe",
+    "bepInExIncluded": true
+  },
+  "manual": {
+    "name": "Stars-of-Destiny-0.14.5-Mod-Only-Windows.zip",
+    "bytes": 52169787,
+    "sha256": "09a72ce9f0709a5d62e39e42744bd2edcc4cf043c1192a7b2f0ac009c48fd6bf",
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.5/Stars-of-Destiny-0.14.5-Mod-Only-Windows.zip",
+    "bepInExIncluded": false
+  },
+  "nexusPlugins": {
+    "name": "Stars-of-Destiny-0.14.5-Plugins-Only-Nexus.zip",
+    "bytes": 491630,
+    "sha256": "d9642594b2ce0ae44b469af017ca322faef46522d6b880fb539106d69f4a08fe",
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.5/Stars-of-Destiny-0.14.5-Plugins-Only-Nexus.zip",
+    "bepInExIncluded": false,
+    "launcherIncluded": false
+  },
+  "optionalLauncher": {
+    "name": "Stars-of-Destiny-Launcher-1.0.6-Windows.zip",
+    "bytes": 51673418,
+    "sha256": "533102f80f12007c77a4da9bbb9017f67ef3d642738f2381b6cae6840aa282f2",
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.5/Stars-of-Destiny-Launcher-1.0.6-Windows.zip",
+    "bepInExIncluded": false,
+    "version": "1.0.6",
+    "pluginsIncluded": false
+  },
+  "verification": "Verification.json",
+  "checksums": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.5/SHA256SUMS.txt"
+}

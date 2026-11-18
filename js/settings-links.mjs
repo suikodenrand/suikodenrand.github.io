@@ -1,4 +1,4 @@
-import { GAMES, MODES, getStartPoints, getJoiningWeaponLevels, getJoiningEquipmentOptions, normalizeSeed, validateCompanions } from './randomizer-core.mjs?v=0.14.4';
+import { GAMES, MODES, getStartPoints, getJoiningWeaponLevels, getJoiningEquipmentOptions, normalizePresetSeed, validateCompanions } from './randomizer-core.mjs?v=0.14.5';
 
 export function settingsUrl(profile, currentUrl) {
   const link = new URL(currentUrl);
@@ -33,7 +33,7 @@ export function readSettingsUrl(value) {
     if (companionStrings.some(id => !/^\d+$/.test(id))) throw new Error('This settings link contains invalid companions.');
     validateCompanions(companionStrings.map(Number), game);
   }
-  return { game, ...(params.has('seed') ? { seed: normalizeSeed(params.get('seed')) } : {}), mode,
+  return { game, ...(params.has('seed') ? { seed: normalizePresetSeed(params.get('seed'), game) } : {}), mode,
     companionStrings, companions: companionStrings.map(Number),
     includeTir: game === 'GSD1' && mode === 'Shuffle' && params.get('tir') === '1',
     includeProtagonist: game === 'GSD2' && mode === 'Shuffle' && params.get('hero') === '1',

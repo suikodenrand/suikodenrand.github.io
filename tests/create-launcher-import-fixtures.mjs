@@ -10,7 +10,8 @@ const cases = [];
 for (const game of ['GSD1', 'GSD2'])
   for (const mode of ['Shuffle', 'FixedChosen', 'FixedRandom'])
     for (const joiningEquipment of ['MatchRole', 'Donor', null]) {
-      const seed = `web-0.14.4-${game}-${mode}-${joiningEquipment ?? 'legacy'}-"'星`;
+      const prefix = game === 'GSD1' && joiningEquipment === 'Donor' ? 'star\\moon-' : '';
+      const seed = `${prefix}web-0.14.5-${game}-${mode}-${joiningEquipment ?? 'legacy'}-"'星`;
       const joiningWeaponLevel = mode === 'Shuffle' ? (game === 'GSD1' ? 'TirVariance' : 'RiouVariance')
         : mode === 'FixedChosen' ? 'MatchRole' : 'Level1';
       const profile = await generateAdventure(seed, { game, mode, joiningEquipment: joiningEquipment ?? 'MatchRole', joiningWeaponLevel,
