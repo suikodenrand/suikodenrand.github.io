@@ -3,10 +3,10 @@
 Public website: https://suikodenrand.github.io/
 
 The full Windows installer includes the combined Suikoden I & II randomizer,
-launcher 1.0.7, BepInEx and Suikoden Fix. Four new S1 quality-of-life
+launcher 1.0.8, BepInEx and Suikoden Fix. Four new S1 quality-of-life
 features are on by default. The optional S1 CTB preview starts off. See
 [the patch notes](changelog.html) for the inventory, equipment, quick-start
-and battle changes. Players can also [join the official Discord](https://discord.gg/NbjPpcG3Cb).
+and battle changes. The [standalone launcher 1.0.8 update](https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-Launcher-1.0.8-Windows.zip) adds **Join our Discord** to the main window.
 
 The browser generates **launcher settings presets**, not configured installers.
 Players download the full package, use **Load settings…** in the launcher,
@@ -14,9 +14,7 @@ apply the preset, then start New Game in the selected game. Presets merge only
 the selected game's seed, character mode, roster, protagonist, start and
 joining-weapon and joining-inventory options. Other launcher options remain untouched.
 
-[The release manifest](release/0.14.6/manifest.json) records the download URLs,
-sizes and SHA-256 hashes for the setup, manual mod-only, plugins-only, launcher-only and CTB preview packages. The manual and plugins-only ZIPs require BepInEx
-separately. Keep older release files at their published paths.
+[The revision 2 manifest](release/0.14.6-r2/manifest.json) records package URLs, sizes and SHA-256 hashes. The [original 0.14.6 manifest](release/0.14.6/manifest.json) covers the first download set. The manual and plugins-only ZIPs require BepInEx separately.
 
 The S1-only 0.8.14 web installer generator remains at `/legacy/0.8.14/`, with its
 own frozen modules and matching precompiled release. Older release files remain

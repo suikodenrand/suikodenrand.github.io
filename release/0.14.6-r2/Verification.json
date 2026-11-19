@@ -1,0 +1,61 @@
+{
+  "version": "0.14.6",
+  "distributionVersion": "0.14.6-r2",
+  "launcherVersion": "1.0.8",
+  "sourceCommit": "1fa935875f4f9b371116ba0c7ed68c9f036c11c0",
+  "binarySourceCommits": {
+    "runtime": "8b88098933c1426648f7299c45ece85b7cbabb8a",
+    "launcher": "1fa935875f4f9b371116ba0c7ed68c9f036c11c0"
+  },
+  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.6",
+  "artifacts": [
+    {
+      "name": "Stars-of-Destiny-0.14.6-r2-Setup.exe",
+      "bytes": 60642324,
+      "sha256": "0520f098bdf8b19125077484981f2a381d70c534f8dde7837bbca1cefbfee5da"
+    },
+    {
+      "name": "Stars-of-Destiny-0.14.6-r2-Mod-Only-Windows.zip",
+      "bytes": 52390657,
+      "sha256": "4b11f4127150bc6c7e61050aeceadd1a08b318fcfce3f53f7eead5608706c9c4"
+    },
+    {
+      "name": "Stars-of-Destiny-0.14.6-Plugins-Only-Nexus.zip",
+      "bytes": 587806,
+      "sha256": "70496d1c7979a247b6f5ceeca2eefd4b7fbfade8313e318efa62d00547c5ea96"
+    },
+    {
+      "name": "Stars-of-Destiny-Launcher-1.0.8-Windows.zip",
+      "bytes": 51797681,
+      "sha256": "4343864528035eff82d279e88eb48359fbd37475a2d59fa622971df292209c8a"
+    },
+    {
+      "name": "Stars-of-Destiny-S1-CTB-Preview-0.5.2-r2-Windows.zip",
+      "bytes": 51898519,
+      "sha256": "623d5a36fa013be918dbd92d20758dab9d285cea78df62f390934bb7f9d49751"
+    }
+  ],
+  "checksumsSha256": "c097179fce23ca3473b485e82c7ac8201d97f21cac5a20d0f12a87c0b1084f00",
+  "launcherChecks": {
+    "uiTestsPassed": 18,
+    "officialInvite": "https://discord.gg/NbjPpcG3Cb",
+    "scope": "The published Windows launcher displayed its global Discord link before game selection and across both games. Pressing Enter with the link focused and no game folder configured produced one default-browser request for the invite. Discord independently confirmed the server."
+  },
+  "packageChecks": {
+    "reviewedBattleSha256": "6707b7c40572143ee0f1e6e4aa324bbcb10b37641e5a9276c5f25d7fdee73c18",
+    "originalGameplayAndEditorFilesMatched": 15,
+    "launcherFilesMatchedAcrossAllPackages": 280,
+    "setupStageFiles": 1033
+  },
+  "installerSmoke": {
+    "compiledSetupCheckOnlyExitCode": 0,
+    "compiledSetupFullInstallExitCode": 0,
+    "checkOnlyReadOnly": true,
+    "preservedConfig": true,
+    "fullRestore": true,
+    "verifiedManifestEntries": 1031,
+    "fixtureBaselineFiles": 6
+  },
+  "newNativeGameBootPerformed": false,
+  "gameplayVerification": "../0.14.6/Verification.json"
+}
