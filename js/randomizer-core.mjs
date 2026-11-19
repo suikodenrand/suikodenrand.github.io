@@ -5,7 +5,7 @@
  * Tests compare complete mappings and fingerprints with the actual C# Core.
  */
 import { sha256Bytes } from "./sha256.mjs";
-import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.5";
+import { createGsd2Generators, GSD2_METADATA, GSD2_START_POINTS, GSD2_CAMP_START_HELP, GSD2_ROSTER, GSD2_COMBAT_POOL } from "./gsd2-core.mjs?v=0.14.6";
 
 const NAMES = Object.freeze([
   "Eileen", "Cleo", "Gremio", "Camille", "Kirkis", "Mose", "Pahn", "Luikan", "Tir McDohl",
@@ -32,7 +32,7 @@ const ROLE_SET = new Set(ROLE_IDS);
 const PROTECTED_IDS = new Set([8, 108, 109]);
 
 export const PROFILE_METADATA = Object.freeze({
-  pluginVersion: "0.14.5", minimumRuntimeVersion: "0.14.4",
+  pluginVersion: "0.14.6", minimumRuntimeVersion: "0.14.4",
   profileId: "combat-avatar-shuffle-v1",
   version: 1,
   algorithm: "sha256-splitmix64-fisher-yates-v1",

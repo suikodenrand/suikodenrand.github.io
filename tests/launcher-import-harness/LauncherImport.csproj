@@ -8,6 +8,6 @@
     <Reference Include="SuikodenRandomizer.Suikoden2.Core"><HintPath>$(LauncherPath)/SuikodenRandomizer.Suikoden2.Core.dll</HintPath></Reference>
   </ItemGroup>
   <Target Name="RequirePackagedLauncher" BeforeTargets="ResolveReferences" Condition="!Exists('$(LauncherPath)/StarsOfDestiny.Launcher.Core.dll')">
-    <Error Text="Pass -p:LauncherPath=&lt;actual packaged 1.0.6 launcher directory&gt;. No game code is loaded." />
+    <Error Text="Pass -p:LauncherPath=&lt;actual packaged 1.0.7 launcher directory&gt;. No game code is loaded." />
   </Target>
 </Project>

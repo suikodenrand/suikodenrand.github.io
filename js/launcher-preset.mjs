@@ -1,4 +1,4 @@
-import { generateAdventure } from './randomizer-core.mjs?v=0.14.5';
+import { generateAdventure } from './randomizer-core.mjs?v=0.14.6';
 
 const CONFIGS = Object.freeze({ GSD1: 'agilen.suikoden.recruitment_randomizer.cfg', GSD2: 'agilen.suikoden2.recruitment_randomizer.cfg' });
 
@@ -38,7 +38,7 @@ export async function createLauncherPreset(profile) {
 export function presetFilename(profile) {
   const game = profile.game === 'GSD2' ? 'SuikodenII' : 'SuikodenI';
   if (!/^[0-9a-f]{64}$/.test(profile.fingerprint)) throw new Error('Generate a valid profile before downloading settings.');
-  return 'StarsOfDestiny-0.14.5-' + game + '-' + profile.fingerprint.slice(0, 12) + '-Settings.json';
+  return 'StarsOfDestiny-0.14.6-' + game + '-' + profile.fingerprint.slice(0, 12) + '-Settings.json';
 }
 
 export function profileCsv(profile) {

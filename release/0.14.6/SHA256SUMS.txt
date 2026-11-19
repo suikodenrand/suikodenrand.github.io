@@ -1,0 +1,5 @@
+efbba07eb0066bca00469eaa2f334572b3681b5b4f5b0acd35e74534008b64e2  Stars-of-Destiny-0.14.6-Setup.exe
+08e330a9931b124846a703ddb28c490316a2b2ad4974f0c0164ef438d363c5f3  Stars-of-Destiny-0.14.6-Mod-Only-Windows.zip
+70496d1c7979a247b6f5ceeca2eefd4b7fbfade8313e318efa62d00547c5ea96  Stars-of-Destiny-0.14.6-Plugins-Only-Nexus.zip
+609a96366c6d703c5dcd4941dc86d08b97ccffdf4495a8580418f9895f480a6a  Stars-of-Destiny-Launcher-1.0.7-Windows.zip
+012c8bd887c0aa3910e68d23c7234df217fd950601557bcdd23a4aa506167b4f  Stars-of-Destiny-S1-CTB-Preview-0.5.2-Windows.zip

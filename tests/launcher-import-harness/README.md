@@ -1,13 +1,13 @@
 # Website preset import verification
 
-Run the browser-generated presets through the packaged launcher 1.0.6
+Run the browser-generated presets through the packaged launcher 1.0.7
 `SettingsWorkspace.StagePreset` method. The previous 1.0.4 import method and
 its provenance are retained alongside this harness as historical evidence.
 
 Generate 18 fixtures: both games, all three modes, MatchRole, Donor and a legacy
 partial preset without JoiningEquipment. The legacy cases must preserve an
 existing Donor choice. The S1 Donor cases also cover a literal backslash. All cases check that
-unrelated settings and configs are preserved, import writes nothing before
+all four disabled S1 quality-of-life options and unrelated settings are preserved, import writes nothing before
 Apply, and Apply backs up the original selected config.
 
 ```powershell

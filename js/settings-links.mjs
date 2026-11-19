@@ -1,4 +1,4 @@
-import { GAMES, MODES, getStartPoints, getJoiningWeaponLevels, getJoiningEquipmentOptions, normalizePresetSeed, validateCompanions } from './randomizer-core.mjs?v=0.14.5';
+import { GAMES, MODES, getStartPoints, getJoiningWeaponLevels, getJoiningEquipmentOptions, normalizePresetSeed, validateCompanions } from './randomizer-core.mjs?v=0.14.6';
 
 export function settingsUrl(profile, currentUrl) {
   const link = new URL(currentUrl);

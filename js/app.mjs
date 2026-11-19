@@ -1,6 +1,6 @@
-import { COMPANION_COUNT, generateAdventure, MODES, GAMES, getCombatPool, getStartPoints, getStartPointHelp, getProfileMetadata, getJoiningWeaponLevels, getJoiningEquipmentOptions, validateCompanions } from './randomizer-core.mjs?v=0.14.5';
-import { createLauncherPreset, profileCsv, presetFilename } from './launcher-preset.mjs?v=0.14.5';
-import { settingsUrl, readSettingsUrl } from './settings-links.mjs?v=0.14.5';
+import { COMPANION_COUNT, generateAdventure, MODES, GAMES, getCombatPool, getStartPoints, getStartPointHelp, getProfileMetadata, getJoiningWeaponLevels, getJoiningEquipmentOptions, validateCompanions } from './randomizer-core.mjs?v=0.14.6';
+import { createLauncherPreset, profileCsv, presetFilename } from './launcher-preset.mjs?v=0.14.6';
+import { settingsUrl, readSettingsUrl } from './settings-links.mjs?v=0.14.6';
 
 const $ = id => document.getElementById(id);
 const modeInputs = [...document.querySelectorAll('input[name="mode"]')];

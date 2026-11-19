@@ -11,6 +11,7 @@ void Require(bool condition,string message){if(!condition)throw new InvalidOpera
 string Sha(byte[] value)=>Convert.ToHexString(SHA256.HashData(value)).ToLowerInvariant();
 var cases=JsonSerializer.Deserialize<Case[]>(File.ReadAllText(Path.Combine(presets,"cases.json")))!;
 var results=new List<object>();
+string[] qualityOfLife = ["WarehouseMenu", "SharedBattleItems", "OptimizeEquipment", "MatchViktorStarterLevels"];
 foreach(var item in cases)
 {
     string game=Path.Combine(root,Path.GetFileNameWithoutExtension(item.name));
@@ -22,6 +23,8 @@ foreach(var item in cases)
     {
         var ini=IniDocument.Parse(File.ReadAllText(Path.Combine(config,file)));
         ini.Set("Shuffle","JoiningEquipment","Donor");
+        if (file == SettingsCatalog.S1File)
+            foreach (string feature in qualityOfLife) ini.Set("QualityOfLife", feature, "false");
         File.WriteAllText(Path.Combine(config,file),ini.Render()+"\n# Keep this user's existing preference\n[Probe]\nSentinel = preserve-me\n");
     }
     string selected=item.game=="GSD1"?SettingsCatalog.S1File:SettingsCatalog.S2File;
@@ -45,6 +48,8 @@ foreach(var item in cases)
     foreach(string file in SettingsCatalog.FileNames.Where(file=>file!=selected))
         Require(File.ReadAllBytes(Path.Combine(config,file)).SequenceEqual(before[file]),"Apply changed another config's bytes.");
     var restored=SettingsWorkspace.Load(game,()=>false);
+    foreach (string feature in qualityOfLife)
+        Require(restored.Get("s1." + feature) == "false", "Website preset re-enabled " + feature + ".");
     Require(restored.Get(id+".joiningEquipment")==item.expectedInventoryPolicy,"Inventory policy did not survive save/reload.");
     Require(restored.Get(id+".seed")==item.seed,"Literal seed did not survive save/reload.");
     Require(saved.BackupDirectory is not null && File.ReadAllBytes(Path.Combine(saved.BackupDirectory,selected)).SequenceEqual(before[selected]),"Original config backup differs.");

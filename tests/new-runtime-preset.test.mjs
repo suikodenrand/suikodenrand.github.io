@@ -78,7 +78,7 @@ test('all 24 published S1 golden profiles retain mappings and fingerprints under
 
 test('both game defaults and all mode/start/policy/protagonist variants export exact partial launcher presets and roundtrip links', async () => {
   for (const game of ['GSD1','GSD2']) {
-    assert.equal(getProfileMetadata(game).pluginVersion, '0.14.5');
+    assert.equal(getProfileMetadata(game).pluginVersion, '0.14.6');
     assert.equal(getProfileMetadata(game).minimumRuntimeVersion, '0.14.4');
     assert.equal((await generateAdventure('defaults',{game})).joiningEquipment, 'MatchRole');
     assert.equal((await generateAdventure('defaults',{game})).joiningWeaponLevel, game === 'GSD2' ? 'RiouVariance' : 'TirVariance');
@@ -100,7 +100,7 @@ test('both game defaults and all mode/start/policy/protagonist variants export e
             assert.ok(ini.includes('JoiningWeaponLevel = '+joiningWeaponLevel+'\r\n'));
             assert.ok(ini.includes('JoiningEquipment = '+joiningEquipment+'\r\n'));
             assert.ok(ini.includes('Point = '+startPoint+'\r\n'));
-            assert.ok(!ini.includes('[Battle]') && !ini.includes('[Treasure]') && !ini.includes('[Interface]'));
+            assert.ok(!ini.includes('[Battle]') && !ini.includes('[Treasure]') && !ini.includes('[Interface]') && !ini.includes('[QualityOfLife]'));
             const link = settingsUrl(p,'https://suikodenrand.github.io/?discard=1');
             assert.equal(link.searchParams.has('discard'),false);
             const restored = await generateAdventure(p.seed,readSettingsUrl(link));
@@ -112,7 +112,7 @@ test('both game defaults and all mode/start/policy/protagonist variants export e
             assert.deepEqual(restored.companionIds,p.companionIds);
             assert.equal(restored.includeTir,p.includeTir);
             assert.equal(restored.includeProtagonist,p.includeProtagonist);
-            assert.match(presetFilename(p),/^StarsOfDestiny-0\.14\.5-SuikodenII?-[a-f0-9]{12}-Settings\.json$/);
+            assert.match(presetFilename(p),/^StarsOfDestiny-0\.14\.6-SuikodenII?-[a-f0-9]{12}-Settings\.json$/);
             assert.ok(profileCsv(p).includes('Joining weapon policy,Joining inventory policy'));
             assert.ok(profileCsv(p).includes(joiningEquipment));
           }
