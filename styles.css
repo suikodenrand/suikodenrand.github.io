@@ -64,6 +64,13 @@
 }
 .header-discord:hover { background: var(--ink); }
 
+.hero-actions { flex-wrap: wrap; }
+.trailer-section { max-width: 1028px; padding-block: 16px 48px; }
+.trailer-heading { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; margin-bottom: 12px; }
+.trailer-heading h2 { margin: 0; }
+.trailer-heading a { font-size: 13px; text-decoration: underline; text-underline-offset: 3px; }
+.trailer-player { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border: 0; border-radius: 4px; background: #15191b; }
+
 @media (min-width: 761px) and (max-width: 900px) {
   .nav-inner { gap: 14px; padding-inline: 20px; }
   .nav-inner nav { gap: 14px; }
