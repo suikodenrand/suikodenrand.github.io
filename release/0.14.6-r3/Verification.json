@@ -1,0 +1,39 @@
+{
+  "version": "0.14.6",
+  "distributionVersion": "0.14.6-r3",
+  "sourceCommit": "a19ee8048e6fa6975e811b15a4a47bdb80818a73",
+  "binarySourceCommits": {
+    "runtime": "8b88098933c1426648f7299c45ece85b7cbabb8a",
+    "launcher": "1fa935875f4f9b371116ba0c7ed68c9f036c11c0"
+  },
+  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.6",
+  "installer": {
+    "name": "Stars-of-Destiny-0.14.6-r3-Setup.exe",
+    "sha256": "1bd7a30180ee9f0346853d97a3691e9824e49f1d08668282ef2ff05ad22203cf",
+    "bytes": 60646811,
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe",
+    "checksum": "https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe.sha256"
+  },
+  "checksumsSha256": "d2f6eba42e7c374b663386b0925fe62f0ce2d5f1a568f484520644c2fbf75f14",
+  "matchedInstallerPayloadFiles": 1031,
+  "payloadFilesReusedFromRevision2": 1024,
+  "verifiedModes": [
+    "silent path guard",
+    "repair preview",
+    "repair from r2",
+    "uninstall preview",
+    "uninstall deleting configs",
+    "uninstall keeping configs",
+    "reinstall carrying through configs"
+  ],
+  "verifiedRetainedConfigurationFiles": 9,
+  "wizardChecks": [
+    "New installation goes to component selection.",
+    "Existing installation shows Repair and Uninstall.",
+    "Keep configuration is checked by default. The confirmation reflects changes to the choice.",
+    "Cancelling the confirmation returns to maintenance."
+  ],
+  "newUninstallBackups": false,
+  "newNativeGameBootPerformed": false,
+  "originalGameplayVerification": "../0.14.6/Verification.json"
+}

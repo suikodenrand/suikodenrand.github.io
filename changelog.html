@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Stars of Destiny 0.14.6 adds four Suikoden I inventory and quick-start options and the first public CTB battle preview.">
+  <meta name="description" content="Stars of Destiny 0.14.6-r3 adds repair and uninstall to the Windows setup. Read the full 0.14.6 patch notes and download the installer.">
   <meta name="theme-color" content="#172a35"><link rel="icon" href="/assets/title.jpg" type="image/jpg">
   <title>0.14.6 patch notes · Stars of Destiny</title>
   <style>
@@ -20,11 +20,20 @@
   <div class="eyebrow">Release notes</div>
   <h1>Stars of Destiny 0.14.6</h1>
   <p class="guide-lead">Share healing items in battle, optimize a fighter’s equipment, and open Roc’s Warehouse from the field. The first public CTB preview gives Suikoden I an optional SPD-based turn order.</p>
-  <div class="guide-meta"><span>19 November 2026</span><span>Windows x64 · Steam</span><span>Changes since 0.14.5</span></div>
-  <div class="guide-actions"><a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r2-Setup.exe" download>Download the full installer →</a><a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-S1-CTB-Preview-0.5.2-r2-Windows.zip" download>Download the CTB add-on</a><a href="/guide.html">Read the setup guide</a></div>
+  <div class="guide-meta"><span>Setup updated 22 November 2026</span><span>Windows x64 · Steam</span><span>Changes since 0.14.5</span></div>
+  <div class="guide-actions"><a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe" download>Download the full installer →</a><a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-S1-CTB-Preview-0.5.2-r2-Windows.zip" download>Download the CTB add-on</a><a href="/guide.html">Read the setup guide</a></div>
   <div class="guide-layout">
-    <aside class="guide-index" aria-label="Release contents"><h2>In this release</h2><a href="#launcher-108">Launcher 1.0.8</a><a href="#s1-qol">Inventory &amp; quick start</a><a href="#ctb-preview">CTB preview</a><a href="#upgrade-0146">Upgrading &amp; testing</a><a href="#release-0145">Previous release</a></aside>
+    <aside class="guide-index" aria-label="Release contents"><h2>In this release</h2><a href="#setup-0146-r3">Repair and uninstall</a><a href="#launcher-108">Launcher 1.0.8</a><a href="#s1-qol">Inventory &amp; quick start</a><a href="#ctb-preview">CTB preview</a><a href="#upgrade-0146">Upgrading &amp; testing</a><a href="#release-0145">Previous release</a></aside>
     <div class="guide-content">
+      <section id="setup-0146-r3"><h2>0.14.6-r3 Windows setup</h2>
+        <p>Run the same setup again and select your existing installation to open <strong>Repair</strong> or <strong>Uninstall</strong>.</p>
+        <ul>
+          <li><strong>Repair</strong> replaces missing or damaged package files and keeps your randomizer settings and campaign bindings.</li>
+          <li><strong>Uninstall</strong> asks whether to keep configuration and campaign bindings. The box starts checked. Uncheck it to remove that data for a clean reinstall.</li>
+          <li>Uninstall preserves native saves and keeps BepInEx available when other installed mods use it.</li>
+        </ul>
+        <p><a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe" download>Download setup 0.14.6-r3</a> · <a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe.sha256">Installer SHA-256</a> · <a href="/guide.html#maintenance">Repair and uninstall guide</a></p>
+      </section>
       <section id="launcher-108"><h2>Launcher 1.0.8 adds Discord</h2>
         <p>Select <strong>Join our Discord</strong> in the top-right corner of the launcher to open the randomizer server invite in your browser. The link is available on every tab for both games.</p>
         <p>Revision 2 of the 0.14.6 Windows installer, manual mod-only ZIP and CTB preview ZIP includes launcher 1.0.8. If you already have 0.14.6 installed, the standalone launcher ZIP is all you need for this update.</p>
@@ -47,7 +56,7 @@
         <p>Standard battles are the default. CTB applies to regular S1 battles. Suikoden II, duels and army battles use their usual systems. <a href="/guide.html#ctb">Enable CTB or return to standard battles →</a></p>
       </section>
       <section id="upgrade-0146"><h2>Upgrading and testing</h2>
-        <p>Close the game and launcher. Back up <code>Save</code> and <code>BepInEx/config</code> together, then run setup. An existing 0.14.6 installation can use the separate CTB add-on. <a href="/#download">All downloads</a> · <a href="/release/0.14.6-r2/Verification.json">Revision 2 verification</a> · <a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/SHA256SUMS-0.14.6-r2.txt">Revision 2 checksums</a> · <a href="/release/0.14.6/Verification.json">Original 0.14.6 verification</a></p>
+        <p>Close the game and launcher. Back up <code>Save</code> and <code>BepInEx/config</code> together, then run setup. An existing 0.14.6 installation can use the separate CTB add-on. <a href="/#download">All downloads</a> · <a href="/release/0.14.6-r3/Verification.json">Revision 3 verification</a> · <a href="/release/0.14.6-r2/Verification.json">Revision 2 verification</a> · <a href="https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/SHA256SUMS-0.14.6-r2.txt">Revision 2 checksums</a> · <a href="/release/0.14.6/Verification.json">Original 0.14.6 verification</a></p>
         <p>Development playtests confirmed that shared Mega Medicine used one charge from its carrier and that Eikei’s Master’s Robe and Goldlet remained equipped after a save and reload, bringing his equipment defense from 54 to 84. CTB trials included Zombie Dragon, Venus Shell and early-area encounters. Wider encounter testing continues.</p>
       </section>
       <div id="release-0145"><p class="eyebrow">Previous release · 18 November 2026</p><h2>Stars of Destiny 0.14.5</h2><p>More reliable campaign saves, party changes and recruitment, plus launcher 1.0.6. Existing seeds keep their character and treasure assignments.</p></div>
