@@ -2,6 +2,8 @@
 
 Public website: https://suikodenrand.github.io/
 
+The [PlayStation alpha](https://suikodenrand.github.io/#playstation) is a standalone seed generator for the original U.S. discs. The homepage describes the alpha's known Suikoden II scene bugs and links to its setup guide and ZIP checksum.
+
 The full Windows installer includes the combined Suikoden I & II randomizer,
 launcher 1.0.8, BepInEx and Suikoden Fix. Setup revision 3 offers repair and
 uninstall for an existing installation. Four new S1 quality-of-life
