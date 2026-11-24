@@ -5,7 +5,7 @@ https://suikodenrand.github.io/
 FULL INSTALLER
 1. Close the game and launcher. Back up Save and BepInEx/config together
    outside the game folder. Keep the pair for your campaign.
-2. Download and run Stars-of-Destiny-0.14.6-r3-Setup.exe. Select the folder
+2. Download and run Stars-of-Destiny-0.14.6-r4-Setup.exe. Select the folder
    containing Suikoden I and II HD Remaster.exe and GameAssembly.dll.
    In Steam use Manage > Browse local files to locate it.
 3. Select Experimental S1 ATB / CTB to install the optional battle preview.
@@ -24,7 +24,7 @@ The installer includes their private runtimes. No separate .NET SDK or
 compiler is needed.
 
 REPAIR OR UNINSTALL
-Close the game, launcher and CTB editor. Run setup 0.14.6-r3 again and
+Close the game, launcher and CTB editor. Run setup 0.14.6-r4 again and
 select the folder where Stars of Destiny is installed.
 
 - Repair restores missing or damaged files and keeps mod settings.
@@ -128,21 +128,21 @@ manual upgrade.
 
 DOWNLOADS
 Full setup, loader included:
-https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe
+https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/Stars-of-Destiny-0.14.6-r4-Setup.exe
 Manual mod-only ZIP, loader required separately:
-https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r2-Mod-Only-Windows.zip
+https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/Stars-of-Destiny-0.14.6-r4-Mod-Only-Windows.zip
 Tested official loader:
 https://builds.bepinex.dev/projects/bepinex_be/697/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.697%2B5362580.zip
 Source, release notes and checksums:
-https://github.com/suikodenrand/suikodenrando/releases/tag/v0.14.6
-Installer SHA-256
-https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-r3-Setup.exe.sha256
+https://github.com/suikodenrand/suikodenrando/releases/tag/package-v0.14.6-r4
+Installer and manual ZIP SHA-256
+https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/SHA256SUMS-0.14.6-r4.txt
 
 Revision 2 checksums
 https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/SHA256SUMS-0.14.6-r2.txt
 
 OPTIONAL SEPARATE DOWNLOADS
-Plugins-only Nexus ZIP (no launcher EXEs/runtime; BepInEx required separately):
+Original 0.14.6 Nexus ZIP (no launcher EXEs/runtime; BepInEx required separately):
 https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-0.14.6-Plugins-Only-Nexus.zip
 Optional launcher 1.0.8 for Windows (complete launcher folder)
 https://github.com/suikodenrand/suikodenrando/releases/download/v0.14.6/Stars-of-Destiny-Launcher-1.0.8-Windows.zip

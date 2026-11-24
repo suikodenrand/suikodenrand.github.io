@@ -1,0 +1,2 @@
+3a534944a78f23da24fa7e7525fbf1ab1a0f1e158ae1ab12afd60635470e610c  Stars-of-Destiny-0.14.6-r4-Setup.exe
+500128e0105c04baf89843297764ff7e51d0944bc8bfcf3b526d2c016bb45c5c  Stars-of-Destiny-0.14.6-r4-Mod-Only-Windows.zip

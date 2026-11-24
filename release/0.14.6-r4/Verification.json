@@ -1,0 +1,49 @@
+{
+  "version": "0.14.6",
+  "distributionVersion": "0.14.6-r4",
+  "sourceCommit": "18c0f9a8ae117a8bcddbc189e3a024745a6d6977",
+  "binarySourceCommits": {
+    "runtime": "18c0f9a8ae117a8bcddbc189e3a024745a6d6977",
+    "launcher": "1fa935875f4f9b371116ba0c7ed68c9f036c11c0"
+  },
+  "releaseUrl": "https://github.com/suikodenrand/suikodenrando/releases/tag/package-v0.14.6-r4",
+  "installer": {
+    "name": "Stars-of-Destiny-0.14.6-r4-Setup.exe",
+    "bytes": 60657120,
+    "sha256": "3a534944a78f23da24fa7e7525fbf1ab1a0f1e158ae1ab12afd60635470e610c",
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/Stars-of-Destiny-0.14.6-r4-Setup.exe",
+    "bepInExIncluded": true,
+    "checksum": "https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/SHA256SUMS-0.14.6-r4.txt",
+    "maintenance": true
+  },
+  "manual": {
+    "name": "Stars-of-Destiny-0.14.6-r4-Mod-Only-Windows.zip",
+    "bytes": 52390968,
+    "sha256": "500128e0105c04baf89843297764ff7e51d0944bc8bfcf3b526d2c016bb45c5c",
+    "url": "https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/Stars-of-Destiny-0.14.6-r4-Mod-Only-Windows.zip",
+    "bepInExIncluded": false,
+    "checksum": "https://github.com/suikodenrand/suikodenrando/releases/download/package-v0.14.6-r4/SHA256SUMS-0.14.6-r4.txt"
+  },
+  "checksumsSha256": "8b5f19be1e8f1e7b57a807f5a78f540bf56eca26e98fc93614a339c293bf631d",
+  "runtimeAssemblySha256": "ce54358260926806cbc387218349ed648abfbe444ce3f698e6bba795f63017cd",
+  "gameplayVerification": {
+    "game": "Suikoden I HD Remaster",
+    "scene": "Gregminster ending",
+    "result": "A local replay with a shuffled save recorded the original-sprite guard and reached the dialogue after Hix's and Gen's scripted animations.",
+    "scope": "The replay used the test build. The r4 runtime uses those same four DLLs."
+  },
+  "maintenanceVerification": "../0.14.6-r3/Verification.json",
+  "originalGameplayVerification": "../0.14.6/Verification.json",
+  "installerVerification": {
+    "scope": "Disposable Windows installation fixtures",
+    "nsisEntrypointExercised": true,
+    "payloadFilesVerified": 1031,
+    "defaultPayloadFilesVerified": 1029,
+    "repairPassed": true,
+    "uninstallKeepSettingsPassed": true,
+    "uninstallRemoveSettingsPassed": true,
+    "nativeSavesPreserved": true,
+    "sharedLoaderPreserved": true,
+    "nativeGameBootPerformed": false
+  }
+}
